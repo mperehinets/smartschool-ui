@@ -1,0 +1,26 @@
+{
+  "NAV-BAR": {
+    "MENU": "Меню",
+    "CONTACT": "Контакти",
+    "ABOUT-US": "Про нас",
+    "SIGN-IN": "Увійти",
+    "SIGN-OUT": "Вийти",
+    "EDIT-PROFILE": "Редагувати профіль"
+  },
+
+  "LOGIN": {
+    "TITLE": "Вхід",
+    "EMAIL": "Email",
+    "PASSWORD": "Пароль",
+    "LOGIN-BTN": "Увійти",
+    "FORGOT-PASSWORD": "Забули пароль?",
+    "NOT-MEMBER": "Ще не зареєстровані?",
+    "REGISTER": "Зареєструйтесь",
+    "ERROR": {
+      "EMAIL-REQUIRED": "Email є обов'язковий",
+      "EMAIL-INVALID": "Не коректний email",
+      "PASSWORD-REQUIRED": "Пароль є обов'язковий",
+      "PASSWORD-MIN-LENGTH": "Пароль повинен перевищувати 8 символів"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "NAV-BAR": {
+    "MENU": "Menu",
+    "CONTACT": "Contact",
+    "ABOUT-US": "About us",
+    "SIGN-IN": "Sign in",
+    "SIGN-OUT": "Sign out",
+    "EDIT-PROFILE": "Edit profile"
+  },
+
+  "LOGIN": {
+    "TITLE": "SignIn",
+    "EMAIL": "Email",
+    "PASSWORD": "Password",
+    "LOGIN-BTN": "Sign in",
+    "FORGOT-PASSWORD": "Forgot password?",
+    "NOT-MEMBER": "Not registered yet?",
+    "REGISTER": "Register",
+    "ERROR": {
+      "EMAIL-REQUIRED": "Email is required",
+      "EMAIL-INVALID": "Email is invalid",
+      "PASSWORD-REQUIRED": "Password is required",
+      "PASSWORD-MIN-LENGTH": "Password must be longer than 8 characters"
+    }
+  }
+}

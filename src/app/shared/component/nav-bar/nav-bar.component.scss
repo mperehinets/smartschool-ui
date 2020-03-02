@@ -1,0 +1,76 @@
+@import "../../../../light-theme";
+
+.sidenav-container {
+  height: 100%
+}
+
+.main-logo {
+  height: 40px;
+  margin-left: 14px;
+  cursor: pointer;
+}
+
+.sidenav {
+  width: 320px;
+}
+
+.space {
+  margin: 0 auto;
+}
+
+.language-btn {
+  margin-right: 16px;
+}
+
+.language-icon {
+  display: flex;
+  margin: 0 auto;
+  height: 32px;
+}
+
+.mat-menu-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-btn {
+  border: .0625rem solid #e0e0e0;
+
+  img {
+    height: 24px;
+    margin-bottom: 3px;
+  }
+}
+
+.user-info-container {
+  width: 250px;
+  padding: 20px 10px;
+  text-align: center;
+
+  .avatar {
+    margin-bottom: 20px;
+
+    img {
+      height: 80px;
+    }
+  }
+
+  .info {
+    font-size: 18px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+    p {
+      opacity: 0.7;
+      font-size: 16px;
+      margin-top: 3px;
+    }
+  }
+
+  .btn {
+    margin-top: 20px;
+    width: 90%;
+  }
+}
+

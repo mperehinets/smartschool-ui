@@ -1,1 +1,47 @@
 /* You can add global styles to this file, and also import other style files */
+@import "light-theme";
+
+.light-theme {
+  @include angular-material-theme($light-app-theme);
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+mat-toolbar {
+  height: 164px;
+}
+
+.mat-icon-button mat-icon {
+  display: flex !important;
+  margin: 0 auto;
+}
+
+.mat-icon-button {
+  opacity: 0.7;
+  transition: 0.3s;
+}
+
+.mat-icon-button:hover {
+  opacity: 1;
+  transition: 0.3s;
+}
+
+mat-toolbar {
+  border-bottom: .0625rem solid #e0e0e0;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+

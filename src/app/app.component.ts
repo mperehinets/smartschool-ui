@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'smartschool-ui';
+
+  constructor(private translate: TranslateService) {
+    translate.addLangs(['en', 'uk']);
+    translate.setDefaultLang('en');
+    let lang = localStorage.getItem('lang');
+    if (lang == null) {
+      localStorage.setItem('lang', 'en');
+      lang = 'en';
+    }
+    translate.use(lang);
+  }
 }
