@@ -9,11 +9,12 @@
     <mat-toolbar>
       <button
         (click)="sidenav.toggle()"
-        mat-icon-button>
+        mat-icon-button
+        class="menu-btn">
         <mat-icon>close</mat-icon>
       </button>
       <img
-        class="main-logo"
+        class="logo"
         src="/assets/img/logo.png"
         alt="Smartschool">
     </mat-toolbar>
@@ -23,16 +24,17 @@
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <mat-toolbar>
+    <mat-toolbar class="header">
       <button
         *ngIf="authService.isLoggedIn"
         (click)="sidenav.toggle()"
+        class="menu-btn"
         mat-icon-button>
         <mat-icon>menu</mat-icon>
       </button>
 
       <img *ngIf="!(isXSmall$ | async)"
-           class="main-logo"
+           class="logo"
            src="/assets/img/logo.png"
            alt="Smartschool">
 
@@ -56,7 +58,6 @@
               (click)="signIn()"
               mat-raised-button
               color="primary">
-        <mat-icon>perm_identity</mat-icon>
         {{'NAV-BAR.SIGN-IN' | translate}}
       </button>
 
@@ -92,7 +93,9 @@
         </mat-menu>
       </span>
     </mat-toolbar>
-    <ng-content></ng-content>
+    <div class="content">
+      <ng-content></ng-content>
+    </div>
   </mat-sidenav-content>
 
 </mat-sidenav-container>
