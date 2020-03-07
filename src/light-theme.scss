@@ -6,16 +6,22 @@ $app-primary: mat-palette($mat-blue, 500);
 $app-accent: mat-palette($mat-yellow, 700);
 $app-warn: mat-palette($mat-red, 500);
 
+$app-bg-color: mat-palette($mat-gray, A100);
+
 $light-app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
 
 @include angular-material-theme($light-app-theme);
 
 mat-toolbar {
-  background-color: mat-color(mat-palette($mat-gray, A100)) !important;
+  background-color: mat-color($app-bg-color) !important;
 }
 
 a {
   color: mat-color($app-primary);
+}
+
+.content {
+  background-color: mat-color($app-bg-color);
 }
 
 

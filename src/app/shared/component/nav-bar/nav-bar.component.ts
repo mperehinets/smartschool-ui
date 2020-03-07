@@ -1,6 +1,8 @@
 import {AuthService} from '../../service/auth.service';
+import {AvatarService} from '../../service/avatar.service';
+import {AppConstants} from '../../app-constants';
 
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {Observable} from 'rxjs';
 import {map, shareReplay} from 'rxjs/operators';
@@ -12,7 +14,7 @@ import {Router} from '@angular/router';
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.scss']
 })
-export class NavBarComponent {
+export class NavBarComponent implements OnInit {
 
   currentLang: string;
   languages: string[];
@@ -20,28 +22,20 @@ export class NavBarComponent {
   constructor(private breakpointObserver: BreakpointObserver,
               private translateService: TranslateService,
               private router: Router,
+              public avatarService: AvatarService,
               public authService: AuthService) {
-    this.languages = translateService.getLangs();
-    this.currentLang = localStorage.getItem('lang');
   }
-
-  isMedium$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Medium)
-    .pipe(
-      map(result => result.matches),
-      shareReplay()
-    );
-
-  isSmall$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Small)
-    .pipe(
-      map(result => result.matches),
-      shareReplay()
-    );
 
   isXSmall$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.XSmall)
     .pipe(
       map(result => result.matches),
       shareReplay()
     );
+
+  ngOnInit(): void {
+    this.languages = this.translateService.getLangs();
+    this.currentLang = localStorage.getItem(AppConstants.LANGUAGE_STORAGE_KEY);
+  }
 
   switchLang(selectedLanguage: string) {
     this.translateService.use(selectedLanguage);

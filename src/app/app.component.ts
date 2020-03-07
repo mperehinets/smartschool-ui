@@ -1,4 +1,6 @@
-import {Component} from '@angular/core';
+import {AppConstants} from './shared/app-constants';
+
+import {Component, OnInit} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 
 @Component({
@@ -6,16 +8,19 @@ import {TranslateService} from '@ngx-translate/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   constructor(private translate: TranslateService) {
-    translate.addLangs(['en', 'uk']);
-    translate.setDefaultLang('en');
-    let lang = localStorage.getItem('lang');
+  }
+
+  ngOnInit(): void {
+    this.translate.addLangs(['en', 'uk']);
+    this.translate.setDefaultLang('en');
+    let lang = localStorage.getItem(AppConstants.LANGUAGE_STORAGE_KEY);
     if (lang == null) {
-      localStorage.setItem('lang', 'en');
+      localStorage.setItem(AppConstants.LANGUAGE_STORAGE_KEY, 'en');
       lang = 'en';
     }
-    translate.use(lang);
+    this.translate.use(lang);
   }
 }

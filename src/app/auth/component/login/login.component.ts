@@ -41,7 +41,6 @@ export class LoginComponent implements OnInit {
   }
 
   signIn(loginForm: NgForm): void {
-    console.log(loginForm.value);
     this.authService.signIn(loginForm.value).subscribe(
       res => {
         localStorage.setItem(AppConstants.JWT_STORAGE_KEY, res.token);
