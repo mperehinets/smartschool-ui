@@ -6,14 +6,17 @@ $app-primary: mat-palette($mat-blue, 500);
 $app-accent: mat-palette($mat-yellow, 700);
 $app-warn: mat-palette($mat-red, 500);
 
+$app-green: mat-palette($mat-green, 500);
+$app-header-color: mat-palette($mat-gray, A100);
 $app-bg-color: mat-palette($mat-gray, A100);
+$app-table-row-hover-color: mat-palette($mat-blue, 50);
 
 $light-app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
 
 @include angular-material-theme($light-app-theme);
 
 mat-toolbar {
-  background-color: mat-color($app-bg-color) !important;
+  background-color: mat-color($app-header-color) !important;
 }
 
 a {
@@ -24,4 +27,39 @@ a {
   background-color: mat-color($app-bg-color);
 }
 
+.mat-row:hover {
+  background-color: mat-color($app-table-row-hover-color) !important;
+}
 
+.success-color {
+   color: mat-color($app-green) !important;
+ }
+
+.primary-color{
+  color: mat-color($app-primary) !important;
+}
+
+.accent-color{
+  color: mat-color($app-accent) !important;
+}
+
+.warn-color{
+  color: mat-color($app-warn) !important;
+}
+
+//ngx-toastr
+#toast-container > .toast-error {
+  background-color: mat-color($app-warn);
+}
+
+#toast-container > .toast-success {
+  background-color: mat-color($app-green);
+}
+
+#toast-container > .toast-info {
+  background-color: mat-color($app-primary);
+}
+
+#toast-container > .toast-warn {
+  background-color: mat-color($app-accent);
+}

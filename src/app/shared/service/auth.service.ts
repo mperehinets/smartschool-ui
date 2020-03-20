@@ -18,7 +18,7 @@ export class AuthService {
   }
 
   signIn(authenticationBody: { email, password }) {
-    return this.http.post<any>(`/auth/login`, authenticationBody);
+    return this.http.post<any>('/auth/login', authenticationBody);
   }
 
   signOut() {

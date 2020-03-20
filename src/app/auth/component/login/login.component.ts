@@ -1,12 +1,12 @@
+import {AuthService} from '../../../shared/service/auth.service';
 import {AppConstants} from '../../../shared/app-constants';
 import {NotificationService} from '../../../shared/service/notification.service';
-import {AuthService} from '../../../shared/service/auth.service';
 
 import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {map, shareReplay} from 'rxjs/operators';
-import {NgForm} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 
 @Component({
@@ -17,11 +17,13 @@ import {Router} from '@angular/router';
 export class LoginComponent implements OnInit {
 
   hidePassword = true;
+  form: FormGroup;
 
   constructor(private breakpointObserver: BreakpointObserver,
-              private notificationService: NotificationService,
               private router: Router,
-              private authService: AuthService
+              private authService: AuthService,
+              private notification: NotificationService,
+              private formBuilder: FormBuilder
   ) {
   }
 
@@ -38,20 +40,22 @@ export class LoginComponent implements OnInit {
     );
 
   ngOnInit(): void {
+    this.form = this.formBuilder.group({
+      email: new FormControl('', [Validators.email]),
+      password: new FormControl('', [Validators.minLength(8)]),
+    });
   }
 
-  signIn(loginForm: NgForm): void {
-    this.authService.signIn(loginForm.value).subscribe(
+  signIn(): void {
+    this.authService.signIn(this.form.value).subscribe(
       res => {
         localStorage.setItem(AppConstants.JWT_STORAGE_KEY, res.token);
         if (this.authService.userPrinciple.roles.includes('ROLE_ADMIN')) {
           this.router.navigate(['/admin']);
+          this.notification.showSuccessTranslateMsg('LOGIN.SUCCESS-LOGIN');
         }
       },
-      err => {
-        this.notificationService.infoNotification(err.error.message);
-        loginForm.reset();
-      }
+      () => this.form.reset()
     );
   }
 }

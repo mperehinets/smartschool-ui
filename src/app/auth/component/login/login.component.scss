@@ -10,17 +10,6 @@ mat-card {
   mat-card-content {
     margin-top: 20px;
 
-    input {
-      height: 17px;
-    }
-
-    input:-webkit-autofill,
-    input:-webkit-autofill:hover,
-    input:-webkit-autofill:focus,
-    input:-webkit-autofill:active {
-      -webkit-box-shadow: 0 0 0 30px white inset !important;
-    }
-
     mat-form-field {
       width: 80%;
       display: block;
@@ -30,15 +19,12 @@ mat-card {
     .login-btn {
       display: block;
       width: 80%;
-      margin: 30px auto 10px auto;
+      margin: 30px auto 20px auto;
     }
 
-    .forgot-password, .register {
+    .forgot-password {
       text-align: center;
-    }
-
-    .register {
-      margin-top: 10px;
+      margin: 10px;
     }
   }
 }

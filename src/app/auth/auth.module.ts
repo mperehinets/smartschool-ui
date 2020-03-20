@@ -1,15 +1,11 @@
 import {AuthComponent} from './auth.component';
 import {LoginComponent} from './component/login/login.component';
+import {AppMaterialModule} from '../app-material/app-material.module';
 
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
-import {MatCardModule} from '@angular/material/card';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
-import {FormsModule} from '@angular/forms';
-import {MatButtonModule} from '@angular/material/button';
-import {MatIconModule} from '@angular/material/icon';
+import {ReactiveFormsModule} from '@angular/forms';
 import {TranslateModule} from '@ngx-translate/core';
 
 const routes: Routes = [
@@ -27,13 +23,9 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    MatCardModule,
-    MatFormFieldModule,
-    MatInputModule,
-    FormsModule,
-    MatButtonModule,
-    MatIconModule,
-    TranslateModule
+    ReactiveFormsModule,
+    TranslateModule,
+    AppMaterialModule
   ]
 })
 export class AuthModule {

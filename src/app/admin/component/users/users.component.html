@@ -1,0 +1,137 @@
+<div class="container">
+  <mat-form-field>
+    <mat-label>{{'USERS.SEARCH' | translate}}</mat-label>
+    <input (keyup)="applyFilter()"
+           [(ngModel)]="searchKey"
+           autocomplete="off"
+           matInput
+           matTooltip="{{'GLOBAL-TOOLTIP.MULTI-FILTER' | translate}}"
+           placeholder="Ex. Maksym Perehinets">
+    <button (click)="onClear()" *ngIf="searchKey" mat-button mat-icon-button matSuffix>
+      <mat-icon>clear</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <div class="mat-elevation-z8">
+    <div class="data-container">
+      <table [dataSource]="dataSource" mat-table matSort>
+
+        <!--  Action column-->
+        <ng-container matColumnDef="actions">
+          <th *matHeaderCellDef mat-header-cell>
+            <button (click)="onCreate()"
+                    mat-raised-button
+                    matTooltip="{{'USERS.TOOL-TIP.CREATE-USER' | translate}}">
+              <mat-icon>add</mat-icon>
+            </button>
+          </th>
+          <td *matCellDef="let user" mat-cell>
+            <button (click)="onEdit(user)"
+                    [disabled]="user.id === currentUser.id"
+                    mat-button
+                    mat-icon-button
+                    matTooltip="{{'USERS.TOOL-TIP.EDIT-USER' | translate}}">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button (click)="onResetPassword(user)"
+                    [disabled]="user.id === currentUser.id"
+                    mat-button
+                    mat-icon-button
+                    matTooltip="{{'USERS.TOOL-TIP.RESET-PASSWORD' | translate}}">
+              <mat-icon>security</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <!--  First name name column-->
+        <ng-container matColumnDef="firstName">
+          <th *matHeaderCellDef mat-header-cell mat-sort-header>{{'USERS.TABLE-HEADER.FIRST-NAME' | translate}}</th>
+          <td *matCellDef="let user" mat-cell>{{user.firstName}}</td>
+        </ng-container>
+
+        <!--  Second name name column-->
+        <ng-container matColumnDef="secondName">
+          <th *matHeaderCellDef mat-header-cell mat-sort-header>{{'USERS.TABLE-HEADER.SECOND-NAME' | translate}}</th>
+          <td *matCellDef="let user" mat-cell>{{user.secondName}}</td>
+        </ng-container>
+
+        <!--  Email column-->
+        <ng-container matColumnDef="email">
+          <th *matHeaderCellDef mat-header-cell mat-sort-header>{{'USERS.TABLE-HEADER.EMAIL' | translate}}</th>
+          <td *matCellDef="let user" mat-cell>
+            {{user.email}}
+            <span *ngIf="user.id === currentUser.id" class="primary-color">*</span>
+          </td>
+        </ng-container>
+
+        <!--  Date birth column-->
+        <ng-container matColumnDef="dateBirth">
+          <th *matHeaderCellDef mat-header-cell mat-sort-header>{{'USERS.TABLE-HEADER.DATE-BIRTH' | translate}}</th>
+          <td *matCellDef="let user" mat-cell>{{user.dateBirth}}</td>
+        </ng-container>
+
+        <!--  Status column-->
+        <ng-container matColumnDef="status">
+          <th *matHeaderCellDef mat-header-cell mat-sort-header>{{'USERS.TABLE-HEADER.STATUS' | translate}}</th>
+          <td *matCellDef="let user" mat-cell>
+            <button [disabled]="user.id === currentUser.id"
+                    [matMenuTriggerFor]="menu"
+                    [ngClass]="{
+                'success-color': user.status === modelStatus.ACTIVE,
+                'accent-color': user.status === modelStatus.NOT_ACTIVE,
+                'warn-color': user.status === modelStatus.DELETED}"
+                    mat-stroked-button>
+              {{user.status}}
+            </button>
+            <mat-menu #menu="matMenu">
+              <button (click)="changeStatus(user, modelStatus.ACTIVE)"
+                      class="success-color"
+                      mat-menu-item>{{modelStatus.ACTIVE}}
+              </button>
+              <button (click)="changeStatus(user, modelStatus.NOT_ACTIVE)"
+                      class="accent-color"
+                      mat-menu-item>{{modelStatus.NOT_ACTIVE}}
+              </button>
+              <button (click)="changeStatus(user, modelStatus.DELETED)"
+                      class="warn-color"
+                      mat-menu-item>{{modelStatus.DELETED}}
+              </button>
+            </mat-menu>
+          </td>
+        </ng-container>
+
+        <!--  Role pupil column-->
+        <ng-container matColumnDef="pupil">
+          <th *matHeaderCellDef mat-header-cell mat-sort-header>{{'USERS.TABLE-HEADER.PUPIL' | translate}}</th>
+          <td *matCellDef="let user" mat-cell>
+            <mat-checkbox [checked]="this.hasRole(user, 'ROLE_PUPIL')" disabled></mat-checkbox>
+          </td>
+        </ng-container>
+
+        <!--  Role teacher column-->
+        <ng-container matColumnDef="teacher">
+          <th *matHeaderCellDef mat-header-cell mat-sort-header>{{'USERS.TABLE-HEADER.TEACHER' | translate}}</th>
+          <td *matCellDef="let user" mat-cell>
+            <mat-checkbox [checked]="this.hasRole(user, 'ROLE_TEACHER')" disabled></mat-checkbox>
+          </td>
+        </ng-container>
+
+        <!--  Role admin column-->
+        <ng-container matColumnDef="admin">
+          <th *matHeaderCellDef mat-header-cell mat-sort-header>{{'USERS.TABLE-HEADER.ADMIN' | translate}}</th>
+          <td *matCellDef="let user" mat-cell>
+            <mat-checkbox (change)="onChangeAdmin($event, user)"
+                          [checked]="this.hasRole(user, 'ROLE_ADMIN')"
+                          [disabled]="user.id === currentUser.id">
+            </mat-checkbox>
+          </td>
+        </ng-container>
+
+        <tr *matHeaderRowDef="displayedColumns; sticky: true" mat-header-row></tr>
+        <tr *matRowDef="let user; columns: displayedColumns;" mat-row></tr>
+      </table>
+    </div>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" pageSize="10"></mat-paginator>
+  </div>
+</div>
+

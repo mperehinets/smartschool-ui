@@ -1,0 +1,22 @@
+mat-toolbar {
+  margin-bottom: 10px;
+  padding: 0;
+}
+
+mat-form-field {
+  display: block;
+}
+
+img {
+  height: 32px;
+  vertical-align: middle;
+}
+
+.field-connector {
+  display: flex;
+  justify-content: space-between;
+
+  mat-form-field {
+    width: 49%;
+  }
+}

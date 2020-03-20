@@ -1,4 +1,10 @@
 {
+  "UNKNOWN-ERROR": "Something went wrong :(",
+
+  "GLOBAL-TOOLTIP": {
+    "MULTI-FILTER": "You can use multi-filter. Ex: value1+value2"
+  },
+
   "NAV-BAR": {
     "MENU": "Menu",
     "CONTACT": "Contact",
@@ -8,19 +14,88 @@
     "EDIT-PROFILE": "Edit profile"
   },
 
+  "BTN": {
+    "SUBMIT": "Submit",
+    "CANCEL": "Cancel"
+  },
+
+  "MODEL-ERROR": {
+    "FIRST-NAME-REQUIRED": "First name is required",
+    "FIRST-NAME-PATTERN": "Invalid first name",
+    "SECOND-NAME-REQUIRED": "Second name is required",
+    "SECOND-NAME-PATTERN": "Invalid second name",
+    "DATE-BIRTH-REQUIRED": "Date birth is required",
+    "EMAIL-REQUIRED": "Email is required",
+    "EMAIL-INVALID": "Email is invalid",
+    "PASSWORD-REQUIRED": "Password is required",
+    "PASSWORD-MIN-LENGTH": "Password must be longer than 8 characters",
+    "PASSWORD-CONFIRM": "Password confirm does not match",
+    "PASSWORD-CONFIRM-REQUIRED": "Password confirm is required"
+  },
+
   "LOGIN": {
     "TITLE": "SignIn",
     "EMAIL": "Email",
     "PASSWORD": "Password",
     "LOGIN-BTN": "Sign in",
     "FORGOT-PASSWORD": "Forgot password?",
-    "NOT-MEMBER": "Not registered yet?",
-    "REGISTER": "Register",
     "ERROR": {
       "EMAIL-REQUIRED": "Email is required",
       "EMAIL-INVALID": "Email is invalid",
       "PASSWORD-REQUIRED": "Password is required",
       "PASSWORD-MIN-LENGTH": "Password must be longer than 8 characters"
+    },
+    "SUCCESS-LOGIN": "Sign in successfully completed"
+  },
+
+  "USERS": {
+    "SEARCH": "Search",
+    "TABLE-HEADER": {
+      "FIRST-NAME": "First name",
+      "SECOND-NAME": "Second name",
+      "EMAIL": "Email",
+      "DATE-BIRTH": "Date birth",
+      "STATUS": "Status",
+      "PUPIL": "Pupil",
+      "TEACHER": "Teacher",
+      "ADMIN": "Admin"
+    },
+    "MESSAGE": {
+      "STATUS-CHANGED": "Status successfully changed",
+      "GOT-ADMIN": "User successfully got role: ADMIN",
+      "LOST-ADMIN": "User successfully lost role: ADMIN"
+    },
+    "TOOL-TIP": {
+      "CREATE-USER": "Create user",
+      "EDIT-USER": "Edit user",
+      "RESET-PASSWORD": "Reset password"
+    }
+  },
+
+  "USER": {
+    "TITLE-CREATE": "Create user",
+    "TITLE-EDIT": "Edit user",
+    "FORM-TITLE": {
+      "FIRST-NAME": "First name",
+      "SECOND-NAME": "Second name",
+      "DATE-BIRTH": "Date birth",
+      "AVATAR": "Avatar",
+      "EMAIL": "Email",
+      "PASSWORD": "Password",
+      "PASSWORD-CONFIRM": "Confirm password"
+    },
+    "SUCCESSFULLY-CREATED": "Admin successfully created",
+    "SUCCESSFULLY-EDITED": "User successfully edited"
+  },
+
+  "RESET-PASSWORD": {
+    "TITLE": "Reset password",
+    "FIELD": {
+      "PASSWORD": "New password",
+      "PASSWORD-CONFIRM": "Confirm new password"
+    },
+    "MESSAGE": {
+      "SUCCESSFULLY-CHANGED": "Password successfully changed"
     }
   }
 }

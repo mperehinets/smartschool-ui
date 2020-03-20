@@ -1,0 +1,167 @@
+<mat-toolbar>
+  <h4 *ngIf="!data">{{'USER.TITLE-CREATE' | translate}}</h4>
+  <h4 *ngIf="data">{{'USER.TITLE-EDIT' | translate}}</h4>
+  <span class="space"></span>
+  <button mat-button mat-dialog-close mat-icon-button>
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-toolbar>
+<mat-dialog-content>
+  <form [formGroup]="userService.userForm">
+    <div [ngClass]="{'field-connector': !(isXSmall$ | async)}">
+
+      <!--      Id-->
+      <input formControlName="id" hidden>
+
+      <!--    First name-->
+      <mat-form-field appearance="outline">
+        <mat-label>{{'USER.FORM-TITLE.FIRST-NAME' | translate}}</mat-label>
+        <input
+          formControlName="firstName"
+          matInput
+          maxlength="60"
+          placeholder="Ex. Maksym"
+          required>
+        <mat-error
+          *ngIf="userService.userForm.controls['firstName'].errors?.required">
+          {{'MODEL-ERROR.FIRST-NAME-REQUIRED' | translate}}
+        </mat-error>
+        <mat-error
+          *ngIf="userService.userForm.controls['firstName'].errors?.minlength">
+          {{'MODEL-ERROR.FIRST-NAME-MIN-LENGTH' | translate}}
+        </mat-error>
+        <mat-error
+          *ngIf="userService.userForm.controls['firstName'].errors?.pattern">
+          {{'MODEL-ERROR.FIRST-NAME-PATTERN' | translate}}
+        </mat-error>
+      </mat-form-field>
+
+      <!--    Second name-->
+      <mat-form-field appearance="outline">
+        <mat-label>{{'USER.FORM-TITLE.SECOND-NAME' | translate}}</mat-label>
+        <input
+          formControlName="secondName"
+          matInput
+          maxlength="60"
+          placeholder="Ex. Perehinets"
+          required>
+        <mat-error
+          *ngIf="userService.userForm.controls['secondName'].errors?.required">
+          {{'MODEL-ERROR.SECOND-NAME-REQUIRED' | translate}}
+        </mat-error>
+        <mat-error
+          *ngIf="userService.userForm.controls['secondName'].errors?.minlength">
+          {{'MODEL-ERROR.SECOND-NAME-MIN-LENGTH' | translate}}
+        </mat-error>
+        <mat-error
+          *ngIf="userService.userForm.controls['secondName'].errors?.pattern">
+          {{'MODEL-ERROR.SECOND-NAME-PATTERN' | translate}}
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div [ngClass]="{'field-connector': !(isXSmall$ | async)}">
+      <!--    Date birth-->
+      <mat-form-field appearance="outline" color="primary">
+        <mat-label>{{'USER.FORM-TITLE.DATE-BIRTH' | translate}}</mat-label>
+        <input [matDatepicker]="dateBirthPicker"
+               [max]="maxDate"
+               [min]="minDate"
+               formControlName="dateBirth"
+               matInput
+               placeholder="Ex. 12/17/200"
+               required>
+        <mat-error
+          *ngIf="userService.userForm.controls['dateBirth'].errors?.required">
+          {{'MODEL-ERROR.DATE-BIRTH-REQUIRED' | translate}}
+        </mat-error>
+        <mat-datepicker-toggle [for]="dateBirthPicker" matSuffix></mat-datepicker-toggle>
+        <mat-datepicker #dateBirthPicker></mat-datepicker>
+      </mat-form-field>
+
+      <!--    Avatar-->
+      <mat-form-field appearance="outline">
+        <mat-label>{{'USER.FORM-TITLE.AVATAR' | translate}}</mat-label>
+        <mat-select formControlName="avatarName">
+          <mat-option>-- None --</mat-option>
+          <mat-option *ngFor="let avatar of avatars | keyvalue" [value]="avatar.key">
+            <img [alt]="avatar.key" [src]="avatar.value">
+            {{avatar.key}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <!--    Email-->
+    <mat-form-field *ngIf="!data" appearance="outline">
+      <mat-label>{{'USER.FORM-TITLE.EMAIL' | translate}}</mat-label>
+      <input
+        formControlName="email"
+        matInput
+        maxlength="75"
+        placeholder="Ex. mpereginec1@gmail.com"
+        required>
+      <mat-error
+        *ngIf="userService.userForm.controls['email'].errors?.required">
+        {{'MODEL-ERROR.EMAIL-REQUIRED' | translate}}
+      </mat-error>
+      <mat-error
+        *ngIf="userService.userForm.controls['email'].errors?.email">
+        {{'MODEL-ERROR.EMAIL-INVALID' | translate}}
+      </mat-error>
+    </mat-form-field>
+
+    <!--    Password-->
+    <mat-form-field *ngIf="!data" appearance="outline">
+      <mat-label>{{'USER.FORM-TITLE.PASSWORD' | translate}}</mat-label>
+      <input
+        [type]="hidePassword ? 'password' : 'text'"
+        formControlName="password"
+        matInput
+        maxlength="32"
+        placeholder="Ex. password"
+        required>
+      <mat-icon (click)="hidePassword = !hidePassword" matSuffix>
+        {{hidePassword ? 'visibility_off' : 'visibility'}}
+      </mat-icon>
+      <mat-error
+        *ngIf="userService.userForm.controls['password'].errors?.required">
+        {{'MODEL-ERROR.PASSWORD-REQUIRED' | translate}}
+      </mat-error>
+      <mat-error
+        *ngIf="userService.userForm.controls['password'].errors?.minlength">
+        {{'MODEL-ERROR.PASSWORD-MIN-LENGTH' | translate}}
+      </mat-error>
+    </mat-form-field>
+
+    <!--    Confirm password-->
+    <mat-form-field *ngIf="!data" appearance="outline">
+      <mat-label>{{'USER.FORM-TITLE.PASSWORD-CONFIRM' | translate}}</mat-label>
+      <input
+        formControlName="confirmPassword"
+        matInput
+        maxlength="32"
+        required
+        type="password">
+      <mat-error
+        *ngIf="userService.userForm.controls['confirmPassword'].errors?.required">
+        {{'MODEL-ERROR.PASSWORD-CONFIRM-REQUIRED' | translate}}
+      </mat-error>
+      <mat-error
+        *ngIf="userService.userForm.controls['confirmPassword'].errors?.compare">
+        {{'MODEL-ERROR.PASSWORD-CONFIRM' | translate}}
+      </mat-error>
+    </mat-form-field>
+
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button (click)="onSubmit()"
+          [disabled]="userService.userForm.invalid"
+          color="primary"
+          mat-raised-button
+          type="submit">
+    {{'BTN.SUBMIT' | translate}}
+  </button>
+  <button color="warn" mat-dialog-close mat-raised-button>{{'BTN.CANCEL' | translate}}</button>
+</mat-dialog-actions>

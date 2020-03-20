@@ -9,6 +9,7 @@
     <mat-toolbar>
       <button
         (click)="sidenav.toggle()"
+        mat-button
         mat-icon-button
         class="menu-btn">
         <mat-icon>close</mat-icon>
@@ -18,8 +19,11 @@
         src="/assets/img/logo.png"
         alt="Smartschool">
     </mat-toolbar>
-    <mat-nav-list>
-      <!--      Add side menu items here-->
+    <mat-nav-list (click)="sidenav.toggle()">
+      <a mat-list-item routerLink="admin/users">
+        <mat-icon>supervised_user_circle</mat-icon>
+        <span class="menu-item-text">Users</span>
+      </a>
     </mat-nav-list>
   </mat-sidenav>
 
@@ -29,6 +33,7 @@
         *ngIf="authService.isLoggedIn"
         (click)="sidenav.toggle()"
         class="menu-btn"
+        mat-button
         mat-icon-button>
         <mat-icon>menu</mat-icon>
       </button>
@@ -40,7 +45,7 @@
 
       <span class="space"></span>
 
-      <button [matMenuTriggerFor]="langMenu" mat-icon-button class="language-btn">
+      <button [matMenuTriggerFor]="langMenu" class="language-btn" mat-button mat-icon-button>
         <img [src]="'assets/img/' + currentLang + '.png'"
              [alt]="currentLang"
              class="language-icon">
@@ -64,7 +69,8 @@
       <span *ngIf="authService.isLoggedIn">
         <button
           [matMenuTriggerFor]="userInfo"
-          mat-raised-button
+          mat-button
+          mat-icon-button
           class="user-btn">
           <img [src]="this.avatarService.getUrlByAvatarName(this.authService.userPrinciple.avatarName)" alt="avatar">
         </button>

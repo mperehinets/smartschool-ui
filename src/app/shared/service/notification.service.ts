@@ -1,17 +1,33 @@
 import {Injectable} from '@angular/core';
-import {MatSnackBar} from '@angular/material/snack-bar';
+import {TranslateService} from '@ngx-translate/core';
+import {ToastrService} from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NotificationService {
 
-  constructor(private snackBar: MatSnackBar) {
+  constructor(private translate: TranslateService,
+              private toastr: ToastrService) {
   }
 
-  infoNotification(message: string, action?: string) {
-    this.snackBar.open(message, action, {
-      duration: 2000,
-    });
+  showSuccessTranslateMsg(msgKey: string) {
+    this.translate.get(msgKey).subscribe(
+      msg => this.toastr.success(msg)
+    );
+  }
+
+  showSuccessMsg(msg: string) {
+    this.toastr.success(msg);
+  }
+
+  showErrorTranslateMsg(msgKey: string) {
+    this.translate.get(msgKey).subscribe(
+      msg => this.toastr.error(msg)
+    );
+  }
+
+  showErrorMsg(msg: string) {
+    this.toastr.error(msg);
   }
 }

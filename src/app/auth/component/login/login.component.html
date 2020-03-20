@@ -1,62 +1,53 @@
 <mat-card [ngStyle]="{'width': (isSmall$ | async) ? '50%' : (isXSmall$ | async) ? '80%' : '35%'}"
-          class="mat-elevation-z12">
+          class="mat-elevation-z8">
 
   <mat-card-title>{{'LOGIN.TITLE' | translate}}</mat-card-title>
 
   <mat-card-content>
-    <form #loginForm="ngForm">
+    <form [formGroup]="form">
 
+      <!--      Email-->
       <mat-form-field appearance="outline">
         <mat-label>{{'LOGIN.EMAIL' | translate}}</mat-label>
         <input
           matInput
           placeholder="Ex. mpereginec@gmail.com"
-          name="email"
-          ngModel
-          #email="ngModel"
-          required
-          email>
-        <mat-error *ngIf="email.errors && email.errors.required">
+          formControlName="email"
+          required>
+        <mat-error *ngIf="form.controls['email'].errors?.required">
           {{'LOGIN.ERROR.EMAIL-REQUIRED' | translate}}
         </mat-error>
-        <mat-error *ngIf="email.errors && email.errors.email">
+        <mat-error *ngIf="form.controls['email'].errors?.email">
           {{'LOGIN.ERROR.EMAIL-INVALID' | translate}}
         </mat-error>
       </mat-form-field>
 
+      <!--      Password-->
       <mat-form-field appearance="outline">
         <mat-label>{{'LOGIN.PASSWORD' | translate}}</mat-label>
         <input
           [type]="hidePassword ? 'password' : 'text'"
           matInput
           placeholder="Ex. helloWorld"
-          name="password"
-          ngModel
-          #password="ngModel"
-          type="password"
+          formControlName="password"
           required
-          minlength="8"
           maxlength="32">
         <mat-error
-          *ngIf="password.errors && password.errors.required">
+          *ngIf="form.controls['password'].errors?.required">
           {{'LOGIN.ERROR.PASSWORD-REQUIRED' | translate}}
         </mat-error>
         <mat-error
-          *ngIf="password.errors && password.errors.minlength">
+          *ngIf="form.controls['password'].errors?.minlength">
           {{'LOGIN.ERROR.PASSWORD-MIN-LENGTH' | translate}}
         </mat-error>
-        <mat-error
-          *ngIf="password.errors && password.errors.maxlength">
-          {{'LOGIN.ERROR.PASSWORD-MAX-LENGTH' | translate}}
-        </mat-error>
-        <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword">
-          <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
-        </button>
+        <mat-icon (click)="hidePassword = !hidePassword" matSuffix>
+          {{hidePassword ? 'visibility_off' : 'visibility'}}
+        </mat-icon>
       </mat-form-field>
 
       <button
-        [disabled]="!loginForm.valid"
-        (click)="signIn(loginForm)"
+        (click)="signIn()"
+        [disabled]="!form.valid"
         mat-raised-button
         color="primary"
         class="login-btn">
@@ -67,14 +58,7 @@
         <a class="effect-1" href="#">{{'LOGIN.FORGOT-PASSWORD' | translate}}</a>
       </div>
 
-      <div class="register">
-        <p>{{'LOGIN.NOT-MEMBER' | translate}}
-          <a href="#">{{'LOGIN.REGISTER' | translate}}</a>
-        </p>
-      </div>
-
     </form>
-
   </mat-card-content>
 
 </mat-card>

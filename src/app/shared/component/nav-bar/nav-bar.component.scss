@@ -25,11 +25,13 @@
 }
 
 .sidenav {
-  width: 320px;
-}
+  width: 280px;
 
-.space {
-  margin: 0 auto;
+  .menu-item-text {
+    margin-left: 20px;
+    font-size: 17px;
+    font-weight: 500;
+  }
 }
 
 .language-btn {
@@ -49,8 +51,11 @@
 }
 
 .user-btn {
+  border: .0625rem solid #e0e0e0;
+
   img {
-    height: 40px;
+    height: 32px;
+    border-radius: 50%;
   }
 }
 

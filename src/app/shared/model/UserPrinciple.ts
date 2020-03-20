@@ -1,5 +1,6 @@
-export class UserPrinciple {
-  id: number;
+import {BaseModel} from './BaseModel';
+
+export interface UserPrinciple extends BaseModel {
   firstName: string;
   secondName: string;
   avatarName: string;
