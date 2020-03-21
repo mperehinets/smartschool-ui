@@ -1,8 +1,8 @@
-import {Component, Inject, OnInit} from '@angular/core';
 import {UserService} from '../../service/user.service';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {User} from '../../model/User';
+import {MatDialogRef} from '@angular/material/dialog';
 import {NotificationService} from '../../service/notification.service';
+
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-reset-password',
@@ -13,16 +13,12 @@ export class ResetPasswordComponent implements OnInit {
 
   hidePassword = true;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: User,
-              public userService: UserService,
+  constructor(public userService: UserService,
               private notification: NotificationService,
               private dialogRef: MatDialogRef<ResetPasswordComponent>) {
   }
 
   ngOnInit(): void {
-    this.userService.resetPasswordForm.patchValue({
-      id: this.data.id
-    });
   }
 
   onSubmit() {

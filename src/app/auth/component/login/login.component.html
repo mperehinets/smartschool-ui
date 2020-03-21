@@ -10,9 +10,9 @@
       <mat-form-field appearance="outline">
         <mat-label>{{'LOGIN.EMAIL' | translate}}</mat-label>
         <input
+          formControlName="email"
           matInput
           placeholder="Ex. mpereginec@gmail.com"
-          formControlName="email"
           required>
         <mat-error *ngIf="form.controls['email'].errors?.required">
           {{'LOGIN.ERROR.EMAIL-REQUIRED' | translate}}
@@ -27,11 +27,11 @@
         <mat-label>{{'LOGIN.PASSWORD' | translate}}</mat-label>
         <input
           [type]="hidePassword ? 'password' : 'text'"
-          matInput
-          placeholder="Ex. helloWorld"
           formControlName="password"
-          required
-          maxlength="32">
+          matInput
+          maxlength="32"
+          placeholder="Ex. helloWorld"
+          required>
         <mat-error
           *ngIf="form.controls['password'].errors?.required">
           {{'LOGIN.ERROR.PASSWORD-REQUIRED' | translate}}
@@ -48,9 +48,9 @@
       <button
         (click)="signIn()"
         [disabled]="!form.valid"
-        mat-raised-button
+        class="login-btn"
         color="primary"
-        class="login-btn">
+        mat-raised-button>
         {{'LOGIN.LOGIN-BTN' | translate}}
       </button>
 

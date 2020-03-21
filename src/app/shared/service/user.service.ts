@@ -14,6 +14,7 @@ export class UserService {
 
   userForm: FormGroup;
   resetPasswordForm: FormGroup;
+  updateAvatarForm: FormGroup;
 
   constructor(private httpClient: HttpClient) {
     this.userForm = new FormGroup({
@@ -38,6 +39,11 @@ export class UserService {
       newPassword: new FormControl('', [Validators.minLength(8)]),
       confirmNewPassword: new FormControl('', compareValidator('newPassword'))
     });
+
+    this.updateAvatarForm = new FormGroup({
+      id: new FormControl(''),
+      newAvatarName: new FormControl('')
+    });
   }
 
   populateUserForm(user: User) {
@@ -53,6 +59,19 @@ export class UserService {
     });
   }
 
+  populateResetPasswordForm(user: User) {
+    this.resetPasswordForm.patchValue({
+      id: user.id
+    });
+  }
+
+  populateUpdateAvatarForm(user: User) {
+    this.updateAvatarForm.patchValue({
+      id: user.id,
+      newAvatarName: user.avatarName
+    });
+  }
+
   create(): Observable<User> {
     return this.httpClient.post<User>(`/users`, this.userForm.value);
   }
@@ -61,13 +80,21 @@ export class UserService {
     return this.httpClient.put<User>(`/users/${this.userForm.value.id}`, this.userForm.value);
   }
 
+  findAll(): Observable<User[]> {
+    return this.httpClient.get<User[]>('/users');
+  }
+
+  findById(id: number): Observable<User> {
+    return this.httpClient.get<User>(`/users/${id}`);
+  }
+
+  updateAvatar(): Observable<User> {
+    return this.httpClient.put<User>(`/users/update-avatar/${this.updateAvatarForm.value.id}`, this.updateAvatarForm.value);
+  }
+
   resetPasswordByAdmin(): Observable<User> {
     console.log(this.resetPasswordForm.value);
     return this.httpClient.put<User>(`/users/reset-password-by-admin/${this.resetPasswordForm.value.id}`, this.resetPasswordForm.value);
-  }
-
-  findAll(): Observable<User[]> {
-    return this.httpClient.get<User[]>('/users');
   }
 
   changeStatusById(id: number, status: ModelStatus): Observable<void> {

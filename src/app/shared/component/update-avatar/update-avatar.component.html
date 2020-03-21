@@ -1,0 +1,35 @@
+<mat-toolbar class="dialog-header">
+  <h4>{{'UPDATE-AVATAR.TITLE' | translate}}</h4>
+  <span class="space"></span>
+  <button mat-button mat-dialog-close mat-icon-button>
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-toolbar>
+<mat-dialog-content>
+  <form [formGroup]="userService.updateAvatarForm">
+
+    <!--    Id-->
+    <input formControlName="id" hidden>
+
+    <!--    Avatar-->
+    <mat-form-field appearance="outline">
+      <mat-label>{{'UPDATE-AVATAR.FIELD.NEW-AVATAR' | translate}}</mat-label>
+      <mat-select formControlName="newAvatarName">
+        <mat-option>-- None --</mat-option>
+        <mat-option *ngFor="let avatar of avatars | keyvalue" [value]="avatar.key">
+          <img [alt]="avatar.key" [src]="avatar.value">
+          {{avatar.key}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button (click)="onSubmit()"
+          color="primary"
+          mat-raised-button
+          type="submit">
+    {{'BTN.SUBMIT' | translate}}
+  </button>
+  <button color="warn" mat-dialog-close mat-raised-button>{{'BTN.CANCEL' | translate}}</button>
+</mat-dialog-actions>

@@ -111,9 +111,6 @@ export class UsersComponent implements OnInit {
     this.userService.populateUserForm(user);
     const dialogRef = this.dialog.open(UserComponent,
       {
-        maxWidth: '100vm',
-        maxHeight: '100vm',
-        panelClass: 'responsive-dialog',
         data: user
       });
     dialogRef.afterClosed().subscribe(
@@ -128,12 +125,7 @@ export class UsersComponent implements OnInit {
   }
 
   onCreate() {
-    const dialogRef = this.dialog.open(UserComponent,
-      {
-        maxWidth: '100vm',
-        maxHeight: '100vm',
-        panelClass: 'responsive-dialog',
-      });
+    const dialogRef = this.dialog.open(UserComponent);
     dialogRef.afterClosed().subscribe(
       res => {
         this.userService.userForm.reset();
@@ -145,13 +137,8 @@ export class UsersComponent implements OnInit {
   }
 
   onResetPassword(user: User) {
-    const dialogRef = this.dialog.open(ResetPasswordComponent,
-      {
-        maxWidth: '100vm',
-        maxHeight: '100vm',
-        panelClass: 'responsive-dialog',
-        data: user
-      });
+    this.userService.populateResetPasswordForm(user);
+    const dialogRef = this.dialog.open(ResetPasswordComponent);
     dialogRef.afterClosed().subscribe(() => this.userService.resetPasswordForm.reset());
   }
 }

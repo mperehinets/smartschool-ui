@@ -50,13 +50,8 @@
   align-items: center;
 }
 
-.user-btn {
-  border: .0625rem solid #e0e0e0;
-
-  img {
-    height: 32px;
-    border-radius: 50%;
-  }
+.user-btn img {
+  height: 34px;
 }
 
 .user-info-container {
@@ -69,6 +64,10 @@
 
     img {
       height: 100px;
+    }
+
+    .update-btn {
+      position: absolute;
     }
   }
 

@@ -5,6 +5,7 @@ import {HttpApiInterceptor} from './shared/interceptor/HttpApiInterceptor';
 import {JwtInterceptor} from './shared/interceptor/JwtInterceptor';
 import {AppMaterialModule} from './app-material/app-material.module';
 import {ResetPasswordComponent} from './shared/component/reset-password/reset-password.component';
+import {UpdateAvatarComponent} from './shared/component/update-avatar/update-avatar.component';
 
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
@@ -15,6 +16,7 @@ import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {ToastrModule} from 'ngx-toastr';
 import {ReactiveFormsModule} from '@angular/forms';
+import {MAT_DIALOG_DEFAULT_OPTIONS, MatDialogConfig} from '@angular/material/dialog';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -24,7 +26,8 @@ export function HttpLoaderFactory(http: HttpClient) {
   declarations: [
     AppComponent,
     NavBarComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    UpdateAvatarComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +52,11 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: HttpApiInterceptor, multi: true},
-    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
+    {
+      provide: MAT_DIALOG_DEFAULT_OPTIONS,
+      useValue: {...new MatDialogConfig(), maxWidth: '100vm', maxHeight: '100vm', panelClass: 'responsive-dialog'} as MatDialogConfig
+    }
   ],
   bootstrap: [AppComponent]
 })

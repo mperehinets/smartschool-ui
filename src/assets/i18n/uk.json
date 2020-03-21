@@ -11,7 +11,7 @@
     "ABOUT-US": "Про нас",
     "SIGN-IN": "Увійти",
     "SIGN-OUT": "Вийти",
-    "EDIT-PROFILE": "Редагувати профіль"
+    "EDIT-PROFILE": "Оновити пароль"
   },
 
   "BTN": {
@@ -96,6 +96,16 @@
     },
     "MESSAGE": {
       "SUCCESSFULLY-CHANGED": "Пароль успішно змінено"
+    }
+  },
+
+  "UPDATE-AVATAR": {
+    "TITLE": "Оновлення аватара",
+    "FIELD":{
+      "NEW-AVATAR": "Новий аватар"
+    },
+    "MESSAGE": {
+      "SUCCESSFULLY-CHANGED": "Аватар успішно змінений"
     }
   }
 }

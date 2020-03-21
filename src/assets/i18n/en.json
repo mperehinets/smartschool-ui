@@ -11,7 +11,7 @@
     "ABOUT-US": "About us",
     "SIGN-IN": "Sign in",
     "SIGN-OUT": "Sign out",
-    "EDIT-PROFILE": "Edit profile"
+    "EDIT-PROFILE": "Update password"
   },
 
   "BTN": {
@@ -96,6 +96,16 @@
     },
     "MESSAGE": {
       "SUCCESSFULLY-CHANGED": "Password successfully changed"
+    }
+  },
+
+  "UPDATE-AVATAR": {
+    "TITLE": "Update avatar",
+    "FIELD":{
+      "NEW-AVATAR": "New avatar"
+    },
+    "MESSAGE": {
+      "SUCCESSFULLY-CHANGED": "Avatar successfully changed"
     }
   }
 }

@@ -17,15 +17,6 @@ export class AuthService {
   ) {
   }
 
-  signIn(authenticationBody: { email, password }) {
-    return this.http.post<any>('/auth/login', authenticationBody);
-  }
-
-  signOut() {
-    localStorage.removeItem(AppConstants.JWT_STORAGE_KEY);
-    this.router.navigate(['auth/login']);
-  }
-
   get userPrinciple(): UserPrinciple {
     try {
       return jwt_decode(localStorage.getItem(AppConstants.JWT_STORAGE_KEY));
@@ -38,5 +29,14 @@ export class AuthService {
   get isLoggedIn(): boolean {
     const authToken = localStorage.getItem(AppConstants.JWT_STORAGE_KEY);
     return (authToken !== null);
+  }
+
+  signIn(authenticationBody: { email, password }) {
+    return this.http.post<any>('/auth/login', authenticationBody);
+  }
+
+  signOut() {
+    localStorage.removeItem(AppConstants.JWT_STORAGE_KEY);
+    this.router.navigate(['auth/login']);
   }
 }

@@ -18,6 +18,16 @@ export class LoginComponent implements OnInit {
 
   hidePassword = true;
   form: FormGroup;
+  isSmall$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Small)
+    .pipe(
+      map(result => result.matches),
+      shareReplay()
+    );
+  isXSmall$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.XSmall)
+    .pipe(
+      map(result => result.matches),
+      shareReplay()
+    );
 
   constructor(private breakpointObserver: BreakpointObserver,
               private router: Router,
@@ -26,18 +36,6 @@ export class LoginComponent implements OnInit {
               private formBuilder: FormBuilder
   ) {
   }
-
-  isSmall$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Small)
-    .pipe(
-      map(result => result.matches),
-      shareReplay()
-    );
-
-  isXSmall$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.XSmall)
-    .pipe(
-      map(result => result.matches),
-      shareReplay()
-    );
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({

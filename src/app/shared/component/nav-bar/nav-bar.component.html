@@ -9,15 +9,15 @@
     <mat-toolbar>
       <button
         (click)="sidenav.toggle()"
+        class="menu-btn"
         mat-button
-        mat-icon-button
-        class="menu-btn">
+        mat-icon-button>
         <mat-icon>close</mat-icon>
       </button>
       <img
+        alt="Smartschool"
         class="logo"
-        src="/assets/img/logo.png"
-        alt="Smartschool">
+        src="/assets/img/logo.png">
     </mat-toolbar>
     <mat-nav-list (click)="sidenav.toggle()">
       <a mat-list-item routerLink="admin/users">
@@ -30,8 +30,8 @@
   <mat-sidenav-content>
     <mat-toolbar class="header">
       <button
-        *ngIf="authService.isLoggedIn"
         (click)="sidenav.toggle()"
+        *ngIf="authService.isLoggedIn"
         class="menu-btn"
         mat-button
         mat-icon-button>
@@ -39,61 +39,63 @@
       </button>
 
       <img *ngIf="!(isXSmall$ | async)"
+           alt="Smartschool"
            class="logo"
-           src="/assets/img/logo.png"
-           alt="Smartschool">
+           src="/assets/img/logo.png">
 
       <span class="space"></span>
 
       <button [matMenuTriggerFor]="langMenu" class="language-btn" mat-button mat-icon-button>
-        <img [src]="'assets/img/' + currentLang + '.png'"
-             [alt]="currentLang"
+        <img [alt]="currentLang"
+             [src]="'assets/img/' + currentLang + '.png'"
              class="language-icon">
       </button>
 
       <mat-menu #langMenu="matMenu">
-        <button *ngFor="let lang of languages"
-                (click)="switchLang(lang)"
+        <button (click)="switchLang(lang)"
+                *ngFor="let lang of languages"
                 mat-menu-item>
-          <img [src]="'assets/img/' + lang + '.png'" [alt]=lang class="language-icon">
+          <img [alt]=lang [src]="'assets/img/' + lang + '.png'" class="language-icon">
         </button>
       </mat-menu>
 
-      <button *ngIf="!authService.isLoggedIn"
-              (click)="signIn()"
-              mat-raised-button
-              color="primary">
+      <button (click)="signIn()"
+              *ngIf="!authService.isLoggedIn"
+              color="primary"
+              mat-raised-button>
         {{'NAV-BAR.SIGN-IN' | translate}}
       </button>
 
       <span *ngIf="authService.isLoggedIn">
         <button
           [matMenuTriggerFor]="userInfo"
-          mat-button
-          mat-icon-button
-          class="user-btn">
-          <img [src]="this.avatarService.getUrlByAvatarName(this.authService.userPrinciple.avatarName)" alt="avatar">
+          class="user-btn"
+          mat-raised-button>
+          <img [src]="this.currentAvatar" alt="avatar">
         </button>
 
         <mat-menu #userInfo="matMenu">
           <div class="user-info-container">
             <div class="avatar">
-              <img [src]="this.avatarService.getUrlByAvatarName(this.authService.userPrinciple.avatarName)"
+              <img [src]="this.currentAvatar"
                    alt="avatar">
+              <button (click)="onUpdateAvatar()" class="update-btn" mat-button mat-icon-button>
+                <mat-icon>photo</mat-icon>
+              </button>
             </div>
             <div class="info">
-              {{this.authService.userPrinciple.firstName}} {{this.authService.userPrinciple.secondName}}
-              <p>{{this.authService.userPrinciple.sub}}</p>
+              {{this.currentUser?.firstName}} {{this.currentUser?.secondName}}
+              <p>{{this.currentUser?.email}}</p>
             </div>
-            <button mat-raised-button
-                    class="btn"
-                    color="primary">
+            <button class="btn"
+                    color="primary"
+                    mat-raised-button>
               {{'NAV-BAR.EDIT-PROFILE' | translate}}
             </button>
             <button (click)="signOut()"
-                    mat-raised-button
                     class="btn"
-                    color="warn">
+                    color="warn"
+                    mat-raised-button>
               {{'NAV-BAR.SIGN-OUT' | translate}}
             </button>
           </div>
