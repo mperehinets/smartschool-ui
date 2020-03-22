@@ -1,0 +1,13 @@
+<div class="menu-container">
+  <mat-card *ngFor="let item of menuItems" [routerLink]="item.rout" class="menu-item mat-elevation-z8">
+    <mat-card-header>
+      <mat-card-title>{{item.name | translate}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <img [src]="item.icon" alt="icon">
+    </mat-card-content>
+    <mat-card-actions>
+      {{'HOME.COUNT' | translate}}: {{item.count}}
+    </mat-card-actions>
+  </mat-card>
+</div>

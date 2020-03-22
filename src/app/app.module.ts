@@ -19,6 +19,7 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {ToastrModule} from 'ngx-toastr';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MAT_DIALOG_DEFAULT_OPTIONS, MatDialogConfig} from '@angular/material/dialog';
+import {HomeComponent} from './shared/component/home/home.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -30,7 +31,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     NavBarComponent,
     ResetPasswordComponent,
     UpdateAvatarComponent,
-    LoaderComponent
+    LoaderComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

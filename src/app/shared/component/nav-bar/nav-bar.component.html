@@ -20,9 +20,21 @@
         src="/assets/img/logo.png">
     </mat-toolbar>
     <mat-nav-list (click)="sidenav.toggle()">
-      <a mat-list-item routerLink="admin/users">
+      <a mat-list-item routerLink="home" routerLinkActive="active-rout">
+        <mat-icon>home</mat-icon>
+        <span>{{'MENU-ITEM.HOME' | translate}}</span>
+      </a>
+      <a mat-list-item routerLink="admin/users" routerLinkActive="active-rout">
         <mat-icon>supervised_user_circle</mat-icon>
-        <span class="menu-item-text">{{'NAV-BAR.MENU-ITEM.USERS' | translate}}</span>
+        <span>{{'MENU-ITEM.USERS' | translate}}</span>
+      </a>
+      <a mat-list-item routerLink="">
+        <mat-icon>school</mat-icon>
+        <span>{{'MENU-ITEM.PUPILS' | translate}}</span>
+      </a>
+      <a mat-list-item routerLink="">
+        <mat-icon>contact_mail</mat-icon>
+        <span>{{'MENU-ITEM.TEACHERS' | translate}}</span>
       </a>
     </mat-nav-list>
   </mat-sidenav>

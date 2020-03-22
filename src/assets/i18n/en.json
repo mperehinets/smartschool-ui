@@ -5,16 +5,24 @@
     "MULTI-FILTER": "You can use multi-filter. Ex: value1+value2"
   },
 
+  "MENU-ITEM": {
+    "HOME": "Home",
+    "USERS": "Users",
+    "PUPILS": "Pupils",
+    "TEACHERS": "Teachers"
+  },
+
   "NAV-BAR": {
     "MENU": "Menu",
     "CONTACT": "Contact",
     "ABOUT-US": "About us",
     "SIGN-IN": "Sign in",
     "SIGN-OUT": "Sign out",
-    "EDIT-PROFILE": "Update password",
-    "MENU-ITEM": {
-      "USERS": "Users"
-    }
+    "EDIT-PROFILE": "Update password"
+  },
+
+  "HOME": {
+    "COUNT": "Count"
   },
 
   "BTN": {

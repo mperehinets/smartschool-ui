@@ -3,6 +3,7 @@ import {AvatarService} from '../../service/avatar.service';
 import {AppConstants} from '../../app-constants';
 import {UpdateAvatarComponent} from '../update-avatar/update-avatar.component';
 import {User} from '../../model/User';
+import {UserService} from '../../service/user.service';
 
 import {Component, OnInit} from '@angular/core';
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
@@ -11,7 +12,6 @@ import {map, shareReplay} from 'rxjs/operators';
 import {TranslateService} from '@ngx-translate/core';
 import {Router} from '@angular/router';
 import {MatDialog} from '@angular/material/dialog';
-import {UserService} from '../../service/user.service';
 
 @Component({
   selector: 'app-nav-bar',

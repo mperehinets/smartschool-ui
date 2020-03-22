@@ -114,4 +114,9 @@ export class UserService {
   takeAdminAwayById(id: number): Observable<User> {
     return this.httpClient.put<User>(`/users/take-admin-away/${id}`, null);
   }
+
+  getCount(): Observable<number> {
+    return this.httpClient.get<number>(`/users/count`);
+  }
+
 }

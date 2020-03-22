@@ -27,10 +27,18 @@
 .sidenav {
   width: 280px;
 
-  .menu-item-text {
-    margin-left: 20px;
-    font-size: 17px;
-    font-weight: 500;
+  mat-nav-list {
+    padding: 0;
+
+    .mat-list-item {
+      margin: 10px 0;
+
+      span {
+        margin-left: 20px;
+        font-size: 17px;
+        font-weight: 500;
+      }
+    }
   }
 }
 
@@ -88,4 +96,3 @@
     width: 90%;
   }
 }
-

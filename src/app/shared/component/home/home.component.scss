@@ -1,0 +1,30 @@
+.menu-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  mat-card {
+    width: 320px;
+    margin: 4%;
+
+    mat-card-content {
+      text-align: center;
+      padding: 15px;
+
+      img {
+        height: 120px;
+        filter: grayscale(100%);
+        transition: 0.5s;
+      }
+    }
+  }
+
+  mat-card:hover {
+    cursor: pointer;
+
+    mat-card-content img {
+      filter: none;
+      transition: 0.5s;
+    }
+  }
+}

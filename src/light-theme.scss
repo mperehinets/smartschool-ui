@@ -31,6 +31,10 @@ a {
   background-color: mat-color($app-table-row-hover-color) !important;
 }
 
+.active-rout{
+  background-color: mat-color($app-table-row-hover-color) !important;
+}
+
 .success-color {
    color: mat-color($app-green) !important;
  }

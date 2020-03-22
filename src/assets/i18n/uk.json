@@ -5,16 +5,24 @@
     "MULTI-FILTER": "Ви можете використовувати мульти-фільтер. Ex: value1+value2"
   },
 
+  "MENU-ITEM": {
+    "HOME": "Головна",
+    "USERS": "Користувачі",
+    "PUPILS": "Учні",
+    "TEACHERS": "Вчителі"
+  },
+
   "NAV-BAR": {
     "MENU": "Меню",
     "CONTACT": "Контакти",
     "ABOUT-US": "Про нас",
     "SIGN-IN": "Увійти",
     "SIGN-OUT": "Вийти",
-    "EDIT-PROFILE": "Оновити пароль",
-    "MENU-ITEM": {
-      "USERS": "Користувачі"
-    }
+    "EDIT-PROFILE": "Оновити пароль"
+  },
+
+  "HOME": {
+    "COUNT": "Кількість"
   },
 
   "BTN": {
@@ -50,6 +58,7 @@
     },
     "SUCCESS-LOGIN": "Вхід успішно виконано"
   },
+
 
   "USERS": {
     "SEARCH": "Пошук",
