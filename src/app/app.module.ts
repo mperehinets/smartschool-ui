@@ -6,6 +6,8 @@ import {JwtInterceptor} from './shared/interceptor/JwtInterceptor';
 import {AppMaterialModule} from './app-material/app-material.module';
 import {ResetPasswordComponent} from './shared/component/reset-password/reset-password.component';
 import {UpdateAvatarComponent} from './shared/component/update-avatar/update-avatar.component';
+import {LoaderComponent} from './shared/component/loader/loader.component';
+import {LoaderInterceptor} from './shared/interceptor/LoaderInterceptor';
 
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
@@ -27,7 +29,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppComponent,
     NavBarComponent,
     ResetPasswordComponent,
-    UpdateAvatarComponent
+    UpdateAvatarComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
@@ -53,6 +56,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: HttpApiInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true},
     {
       provide: MAT_DIALOG_DEFAULT_OPTIONS,
       useValue: {...new MatDialogConfig(), maxWidth: '100vm', maxHeight: '100vm', panelClass: 'responsive-dialog'} as MatDialogConfig

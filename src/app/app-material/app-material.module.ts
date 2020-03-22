@@ -16,6 +16,7 @@ import {MatNativeDateModule} from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     MatNativeDateModule,
     MatSelectModule,
     MatPaginatorModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatProgressBarModule
   ]
 })
 export class AppMaterialModule {

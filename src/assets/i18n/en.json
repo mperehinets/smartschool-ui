@@ -11,7 +11,10 @@
     "ABOUT-US": "About us",
     "SIGN-IN": "Sign in",
     "SIGN-OUT": "Sign out",
-    "EDIT-PROFILE": "Update password"
+    "EDIT-PROFILE": "Update password",
+    "MENU-ITEM": {
+      "USERS": "Users"
+    }
   },
 
   "BTN": {

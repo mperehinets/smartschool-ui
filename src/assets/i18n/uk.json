@@ -11,7 +11,10 @@
     "ABOUT-US": "Про нас",
     "SIGN-IN": "Увійти",
     "SIGN-OUT": "Вийти",
-    "EDIT-PROFILE": "Оновити пароль"
+    "EDIT-PROFILE": "Оновити пароль",
+    "MENU-ITEM": {
+      "USERS": "Користувачі"
+    }
   },
 
   "BTN": {
