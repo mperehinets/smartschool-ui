@@ -4,7 +4,7 @@
       <mat-card-title>{{item.name | translate}}</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <img [src]="item.icon" alt="icon">
+      <img [src]="'assets/img/' + item.icon" alt="icon">
     </mat-card-content>
     <mat-card-actions>
       {{'HOME.COUNT' | translate}}: {{item.count}}

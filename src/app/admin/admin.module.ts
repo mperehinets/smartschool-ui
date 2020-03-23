@@ -2,6 +2,7 @@ import {AdminComponent} from './admin.component';
 import {UsersComponent} from './component/users/users.component';
 import {UserComponent} from './component/users/user/user.component';
 import {AppMaterialModule} from '../app-material/app-material.module';
+import {HomeComponent} from './component/home/home.component';
 
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
@@ -13,7 +14,10 @@ const routes: Routes = [
   {
     path: '', component: AdminComponent, children: [
       {
-        path: '', redirectTo: '/home', pathMatch: 'full'
+        path: 'home', component: HomeComponent
+      },
+      {
+        path: '', redirectTo: 'home', pathMatch: 'full'
       },
       {
         path: 'users', component: UsersComponent
@@ -24,7 +28,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AdminComponent, UsersComponent, UserComponent],
+  declarations: [AdminComponent, UsersComponent, UserComponent, HomeComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),

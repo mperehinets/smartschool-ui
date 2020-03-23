@@ -1,3 +1,4 @@
+@import "src/styles.scss";
 .menu-container {
   display: flex;
   justify-content: center;
@@ -5,7 +6,11 @@
 
   mat-card {
     width: 320px;
-    margin: 4%;
+    margin: 3%;
+
+    @media (max-width: $break-XSmall) {
+      width: 80%;
+    }
 
     mat-card-content {
       text-align: center;
@@ -14,7 +19,7 @@
       img {
         height: 120px;
         filter: grayscale(100%);
-        transition: 0.5s;
+        transition: 0.4s;
       }
     }
   }
@@ -24,7 +29,7 @@
 
     mat-card-content img {
       filter: none;
-      transition: 0.5s;
+      transition: 0.4s;
     }
   }
 }

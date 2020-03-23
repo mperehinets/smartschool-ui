@@ -5,7 +5,6 @@ import {RedirectGuard} from './guard/redirect.guard';
 
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {HomeComponent} from './shared/component/home/home.component';
 
 
 const routes: Routes = [
@@ -13,8 +12,7 @@ const routes: Routes = [
   {path: 'teacher', loadChildren: () => import('./teacher/teacher.module').then(m => m.TeacherModule), canLoad: [TeacherGuard]},
   {path: 'pupil', loadChildren: () => import('./pupil/pupil.module').then(m => m.PupilModule), canLoad: [PupilGuard]},
   {path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)},
-  {path: '', children: [], canActivate: [RedirectGuard]},
-  {path: 'home', component: HomeComponent},
+  {path: '', children: [], canActivate: [RedirectGuard]}
 ];
 
 

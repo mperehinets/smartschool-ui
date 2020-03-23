@@ -16,7 +16,7 @@ export class RedirectGuard implements CanActivate {
 
   canActivate(): boolean {
     if (this.authService.userPrinciple.roles.includes('ROLE_ADMIN')) {
-      this.router.navigate(['/home']);
+      this.router.navigate(['admin/home']);
     }
     return true;
   }

@@ -20,7 +20,7 @@
         src="/assets/img/logo.png">
     </mat-toolbar>
     <mat-nav-list (click)="sidenav.toggle()">
-      <a mat-list-item routerLink="home" routerLinkActive="active-rout">
+      <a mat-list-item routerLink="admin/home" routerLinkActive="active-rout">
         <mat-icon>home</mat-icon>
         <span>{{'MENU-ITEM.HOME' | translate}}</span>
       </a>
@@ -49,11 +49,12 @@
         mat-icon-button>
         <mat-icon>menu</mat-icon>
       </button>
-
-      <img *ngIf="!(isXSmall$ | async)"
-           alt="Smartschool"
-           class="logo"
-           src="/assets/img/logo.png">
+      <a routerLink="/admin/home">
+        <img *ngIf="!(isXSmall$ | async)"
+             alt="Smartschool"
+             class="logo"
+             src="/assets/img/logo.png">
+      </a>
 
       <span class="space"></span>
 
