@@ -20,6 +20,10 @@
   cursor: pointer;
 }
 
+.logo:focus {
+  outline: none;
+}
+
 .menu-btn {
   margin-right: 16px;
 }

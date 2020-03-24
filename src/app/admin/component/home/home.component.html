@@ -1,5 +1,7 @@
 <div class="menu-container">
-  <mat-card *ngFor="let item of menuItems" [routerLink]="item.rout" class="menu-item mat-elevation-z8">
+  <mat-card *ngFor="let item of menuItems"
+            [routerLink]="item.rout"
+            class="menu-item">
     <mat-card-header>
       <mat-card-title>{{item.name | translate}}</mat-card-title>
     </mat-card-header>

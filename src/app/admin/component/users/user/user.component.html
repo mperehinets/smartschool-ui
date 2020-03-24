@@ -7,7 +7,7 @@
   </button>
 </mat-toolbar>
 <mat-dialog-content>
-  <form [formGroup]="userService.userForm">
+  <form [formGroup]="form">
     <div [ngClass]="{'field-connector': !(isXSmall$ | async)}">
 
       <!--      Id-->
@@ -23,15 +23,15 @@
           placeholder="Ex. Maksym"
           required>
         <mat-error
-          *ngIf="userService.userForm.controls['firstName'].errors?.required">
+          *ngIf="form.controls['firstName'].errors?.required">
           {{'MODEL-ERROR.FIRST-NAME-REQUIRED' | translate}}
         </mat-error>
         <mat-error
-          *ngIf="userService.userForm.controls['firstName'].errors?.minlength">
+          *ngIf="form.controls['firstName'].errors?.minlength">
           {{'MODEL-ERROR.FIRST-NAME-MIN-LENGTH' | translate}}
         </mat-error>
         <mat-error
-          *ngIf="userService.userForm.controls['firstName'].errors?.pattern">
+          *ngIf="form.controls['firstName'].errors?.pattern">
           {{'MODEL-ERROR.FIRST-NAME-PATTERN' | translate}}
         </mat-error>
       </mat-form-field>
@@ -46,15 +46,15 @@
           placeholder="Ex. Perehinets"
           required>
         <mat-error
-          *ngIf="userService.userForm.controls['secondName'].errors?.required">
+          *ngIf="form.controls['secondName'].errors?.required">
           {{'MODEL-ERROR.SECOND-NAME-REQUIRED' | translate}}
         </mat-error>
         <mat-error
-          *ngIf="userService.userForm.controls['secondName'].errors?.minlength">
+          *ngIf="form.controls['secondName'].errors?.minlength">
           {{'MODEL-ERROR.SECOND-NAME-MIN-LENGTH' | translate}}
         </mat-error>
         <mat-error
-          *ngIf="userService.userForm.controls['secondName'].errors?.pattern">
+          *ngIf="form.controls['secondName'].errors?.pattern">
           {{'MODEL-ERROR.SECOND-NAME-PATTERN' | translate}}
         </mat-error>
       </mat-form-field>
@@ -72,7 +72,7 @@
                placeholder="Ex. 12/17/200"
                required>
         <mat-error
-          *ngIf="userService.userForm.controls['dateBirth'].errors?.required">
+          *ngIf="form.controls['dateBirth'].errors?.required">
           {{'MODEL-ERROR.DATE-BIRTH-REQUIRED' | translate}}
         </mat-error>
         <mat-datepicker-toggle [for]="dateBirthPicker" matSuffix></mat-datepicker-toggle>
@@ -102,11 +102,11 @@
         placeholder="Ex. mpereginec1@gmail.com"
         required>
       <mat-error
-        *ngIf="userService.userForm.controls['email'].errors?.required">
+        *ngIf="form.controls['email'].errors?.required">
         {{'MODEL-ERROR.EMAIL-REQUIRED' | translate}}
       </mat-error>
       <mat-error
-        *ngIf="userService.userForm.controls['email'].errors?.email">
+        *ngIf="form.controls['email'].errors?.email">
         {{'MODEL-ERROR.EMAIL-INVALID' | translate}}
       </mat-error>
     </mat-form-field>
@@ -125,11 +125,11 @@
         {{hidePassword ? 'visibility_off' : 'visibility'}}
       </mat-icon>
       <mat-error
-        *ngIf="userService.userForm.controls['password'].errors?.required">
+        *ngIf="form.controls['password'].errors?.required">
         {{'MODEL-ERROR.PASSWORD-REQUIRED' | translate}}
       </mat-error>
       <mat-error
-        *ngIf="userService.userForm.controls['password'].errors?.minlength">
+        *ngIf="form.controls['password'].errors?.minlength">
         {{'MODEL-ERROR.PASSWORD-MIN-LENGTH' | translate}}
       </mat-error>
     </mat-form-field>
@@ -144,11 +144,11 @@
         required
         type="password">
       <mat-error
-        *ngIf="userService.userForm.controls['confirmPassword'].errors?.required">
+        *ngIf="form.controls['confirmPassword'].errors?.required">
         {{'MODEL-ERROR.PASSWORD-CONFIRM-REQUIRED' | translate}}
       </mat-error>
       <mat-error
-        *ngIf="userService.userForm.controls['confirmPassword'].errors?.compare">
+        *ngIf="form.controls['confirmPassword'].errors?.compare">
         {{'MODEL-ERROR.PASSWORD-CONFIRM' | translate}}
       </mat-error>
     </mat-form-field>
@@ -157,7 +157,7 @@
 </mat-dialog-content>
 <mat-dialog-actions>
   <button (click)="onSubmit()"
-          [disabled]="userService.userForm.invalid"
+          [disabled]="form.invalid"
           color="primary"
           mat-raised-button
           type="submit">

@@ -1,5 +1,4 @@
 import {AuthService} from '../../../shared/service/auth.service';
-import {AppConstants} from '../../../shared/app-constants';
 import {NotificationService} from '../../../shared/service/notification.service';
 
 import {Component, OnInit} from '@angular/core';
@@ -45,15 +44,6 @@ export class LoginComponent implements OnInit {
   }
 
   signIn(): void {
-    this.authService.signIn(this.form.value).subscribe(
-      res => {
-        localStorage.setItem(AppConstants.JWT_STORAGE_KEY, res.token);
-        if (this.authService.userPrinciple.roles.includes('ROLE_ADMIN')) {
-          this.router.navigate(['/admin']);
-          this.notification.showSuccessTranslateMsg('LOGIN.SUCCESS-LOGIN');
-        }
-      },
-      () => this.form.reset()
-    );
+    this.authService.signIn(this.form.value);
   }
 }

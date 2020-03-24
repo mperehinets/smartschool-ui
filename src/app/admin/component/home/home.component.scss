@@ -1,4 +1,5 @@
 @import "src/styles.scss";
+
 .menu-container {
   display: flex;
   justify-content: center;
@@ -7,6 +8,7 @@
   mat-card {
     width: 320px;
     margin: 3%;
+    @include mat-elevation(3);
 
     @media (max-width: $break-XSmall) {
       width: 80%;
@@ -17,19 +19,17 @@
       padding: 15px;
 
       img {
-        height: 120px;
-        filter: grayscale(100%);
-        transition: 0.4s;
+        height: 130px;
       }
     }
   }
 
   mat-card:hover {
     cursor: pointer;
+    @include mat-elevation(10);
+  }
 
-    mat-card-content img {
-      filter: none;
-      transition: 0.4s;
-    }
+  mat-card:focus {
+    outline: none;
   }
 }

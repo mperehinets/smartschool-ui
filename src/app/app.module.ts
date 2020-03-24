@@ -4,7 +4,6 @@ import {NavBarComponent} from './shared/component/nav-bar/nav-bar.component';
 import {HttpApiInterceptor} from './shared/interceptor/HttpApiInterceptor';
 import {JwtInterceptor} from './shared/interceptor/JwtInterceptor';
 import {AppMaterialModule} from './app-material/app-material.module';
-import {ResetPasswordComponent} from './shared/component/reset-password/reset-password.component';
 import {UpdateAvatarComponent} from './shared/component/update-avatar/update-avatar.component';
 import {LoaderComponent} from './shared/component/loader/loader.component';
 import {LoaderInterceptor} from './shared/interceptor/LoaderInterceptor';
@@ -28,7 +27,6 @@ export function HttpLoaderFactory(http: HttpClient) {
   declarations: [
     AppComponent,
     NavBarComponent,
-    ResetPasswordComponent,
     UpdateAvatarComponent,
     LoaderComponent
   ],

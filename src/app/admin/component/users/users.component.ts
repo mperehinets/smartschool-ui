@@ -1,17 +1,17 @@
 import {User} from '../../../shared/model/User';
-import {UserService} from '../../../shared/service/user.service';
 import {ModelStatus} from '../../../shared/model/ModelStatus';
 import {UserComponent} from './user/user.component';
 import {UserPrinciple} from '../../../shared/model/UserPrinciple';
 import {AuthService} from '../../../shared/service/auth.service';
 import {NotificationService} from '../../../shared/service/notification.service';
-import {ResetPasswordComponent} from '../../../shared/component/reset-password/reset-password.component';
+import {ResetPasswordComponent} from './reset-password/reset-password.component';
 
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatSort} from '@angular/material/sort';
 import {MatDialog} from '@angular/material/dialog';
 import {MatPaginator} from '@angular/material/paginator';
+import {UserService} from '../../../shared/service/user.service';
 
 @Component({
   selector: 'app-users',
@@ -108,14 +108,12 @@ export class UsersComponent implements OnInit {
   }
 
   onEdit(user: User) {
-    this.userService.populateUserForm(user);
     const dialogRef = this.dialog.open(UserComponent,
       {
         data: user
       });
     dialogRef.afterClosed().subscribe(
       res => {
-        this.userService.userForm.reset();
         if (res) {
           const foundIndex = this.dataSource.data.findIndex(item => item.id === res.id);
           this.dataSource.data[foundIndex] = res;
@@ -128,7 +126,6 @@ export class UsersComponent implements OnInit {
     const dialogRef = this.dialog.open(UserComponent);
     dialogRef.afterClosed().subscribe(
       res => {
-        this.userService.userForm.reset();
         if (res) {
           this.dataSource.data.push(res);
           this.dataSource._updateChangeSubscription();
@@ -137,8 +134,6 @@ export class UsersComponent implements OnInit {
   }
 
   onResetPassword(user: User) {
-    this.userService.populateResetPasswordForm(user);
-    const dialogRef = this.dialog.open(ResetPasswordComponent);
-    dialogRef.afterClosed().subscribe(() => this.userService.resetPasswordForm.reset());
+    this.dialog.open(ResetPasswordComponent, {data: user});
   }
 }

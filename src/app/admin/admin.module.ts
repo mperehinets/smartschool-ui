@@ -3,6 +3,7 @@ import {UsersComponent} from './component/users/users.component';
 import {UserComponent} from './component/users/user/user.component';
 import {AppMaterialModule} from '../app-material/app-material.module';
 import {HomeComponent} from './component/home/home.component';
+import {ResetPasswordComponent} from './component/users/reset-password/reset-password.component';
 
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
@@ -28,7 +29,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AdminComponent, UsersComponent, UserComponent, HomeComponent],
+  declarations: [AdminComponent, UsersComponent, UserComponent, ResetPasswordComponent, HomeComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),

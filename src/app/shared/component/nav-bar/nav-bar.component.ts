@@ -3,7 +3,6 @@ import {AvatarService} from '../../service/avatar.service';
 import {AppConstants} from '../../app-constants';
 import {UpdateAvatarComponent} from '../update-avatar/update-avatar.component';
 import {User} from '../../model/User';
-import {UserService} from '../../service/user.service';
 
 import {Component, OnInit} from '@angular/core';
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
@@ -24,6 +23,7 @@ export class NavBarComponent implements OnInit {
   currentAvatar: string;
   currentLang: string;
   languages: string[];
+  isLoggedIn$: Observable<boolean> = this.authService.isLoginSubject;
   isXSmall$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.XSmall)
     .pipe(
       map(result => result.matches),
@@ -35,19 +35,22 @@ export class NavBarComponent implements OnInit {
               private breakpointObserver: BreakpointObserver,
               private translateService: TranslateService,
               private router: Router,
-              private dialog: MatDialog,
-              private userService: UserService) {
+              private dialog: MatDialog) {
   }
 
   ngOnInit(): void {
     this.languages = this.translateService.getLangs();
     this.currentLang = localStorage.getItem(AppConstants.LANGUAGE_STORAGE_KEY);
-    this.userService.findById(this.authService.userPrinciple.id).subscribe(res => {
-      this.currentUser = res;
-      this.currentAvatar = this.avatarService.getUrlByAvatarName(res.avatarName);
+    this.isLoggedIn$.subscribe(value => {
+      if (value) {
+        this.authService.getCurrentUser().subscribe(res => {
+          this.currentUser = res;
+          this.currentAvatar = this.avatarService.getUrlByAvatarName(res.avatarName);
+        });
+      }
     });
-  }
 
+  }
 
   switchLang(selectedLanguage: string) {
     this.translateService.use(selectedLanguage);
@@ -55,20 +58,16 @@ export class NavBarComponent implements OnInit {
     localStorage.setItem('lang', selectedLanguage);
   }
 
-  signIn() {
-    this.router.navigate(['/auth/login']);
-  }
-
   signOut() {
     this.authService.signOut();
   }
 
   onUpdateAvatar() {
-    this.userService.populateUpdateAvatarForm(this.currentUser);
-    const dialogRef = this.dialog.open(UpdateAvatarComponent);
+    const dialogRef = this.dialog.open(UpdateAvatarComponent, {data: this.currentUser});
     dialogRef.afterClosed().subscribe(res => {
       if (res) {
         this.currentAvatar = this.avatarService.getUrlByAvatarName(res);
+        this.currentUser.avatarName = res;
       }
     });
   }
