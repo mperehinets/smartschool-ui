@@ -1,10 +1,9 @@
 {
   "UNKNOWN-ERROR": "Something went wrong :(",
-
+  "SEARCH": "Search",
   "GLOBAL-TOOLTIP": {
     "MULTI-FILTER": "You can use multi-filter. Ex: value1+value2"
   },
-
   "MENU-ITEM": {
     "HOME": "Home",
     "USERS": "Users",
@@ -43,7 +42,9 @@
     "PASSWORD-REQUIRED": "Password is required",
     "PASSWORD-MIN-LENGTH": "Password must be longer than 8 characters",
     "PASSWORD-CONFIRM": "Password confirm does not match",
-    "PASSWORD-CONFIRM-REQUIRED": "Password confirm is required"
+    "PASSWORD-CONFIRM-REQUIRED": "Password confirm is required",
+    "SUBJECT-NAME-REQUIRED": "Name of subject is required",
+    "SUBJECT-NAME-PATTERN": "Invalid name of subject"
   },
 
   "LOGIN": {
@@ -62,7 +63,6 @@
   },
 
   "USERS": {
-    "SEARCH": "Search",
     "TABLE-HEADER": {
       "FIRST-NAME": "First name",
       "SECOND-NAME": "Second name",
@@ -74,13 +74,13 @@
       "ADMIN": "Admin"
     },
     "MESSAGE": {
-      "STATUS-CHANGED": "Status successfully changed",
+      "STATUS-CHANGED": "Status of user successfully changed",
       "GOT-ADMIN": "User successfully got role: ADMIN",
       "LOST-ADMIN": "User successfully lost role: ADMIN"
     },
     "TOOL-TIP": {
-      "CREATE-USER": "Create user",
-      "EDIT-USER": "Edit user",
+      "CREATE": "Create user",
+      "EDIT": "Edit user",
       "RESET-PASSWORD": "Reset password"
     }
   },
@@ -97,7 +97,7 @@
       "PASSWORD": "Password",
       "PASSWORD-CONFIRM": "Confirm password"
     },
-    "SUCCESSFULLY-CREATED": "Admin successfully created",
+    "SUCCESSFULLY-CREATED": "User successfully created",
     "SUCCESSFULLY-EDITED": "User successfully edited"
   },
 
@@ -111,14 +111,35 @@
       "SUCCESSFULLY-CHANGED": "Password successfully changed"
     }
   },
-
   "UPDATE-AVATAR": {
     "TITLE": "Update avatar",
-    "FIELD":{
+    "FIELD": {
       "NEW-AVATAR": "New avatar"
     },
     "MESSAGE": {
       "SUCCESSFULLY-CHANGED": "Avatar successfully changed"
     }
+  },
+  "SUBJECTS": {
+    "TABLE-HEADER": {
+      "NAME": "Name",
+      "STATUS": "Status"
+    },
+    "MESSAGE": {
+      "STATUS-CHANGED": "Status of subject successfully changed"
+    },
+    "TOOL-TIP": {
+      "CREATE": "Create subject",
+      "EDIT": "Edit subject"
+    }
+  },
+  "SUBJECT": {
+    "TITLE-CREATE": "Create subject",
+    "TITLE-EDIT": "Edit subject",
+    "FORM-TITLE": {
+      "NAME": "Name"
+    },
+    "SUCCESSFULLY-CREATED": "Subject successfully created",
+    "SUCCESSFULLY-EDITED": "Subject successfully edited"
   }
 }

@@ -5,13 +5,13 @@ import {UserPrinciple} from '../../../shared/model/UserPrinciple';
 import {AuthService} from '../../../shared/service/auth.service';
 import {NotificationService} from '../../../shared/service/notification.service';
 import {ResetPasswordComponent} from './reset-password/reset-password.component';
+import {UserService} from '../../../shared/service/user.service';
 
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatSort} from '@angular/material/sort';
 import {MatDialog} from '@angular/material/dialog';
 import {MatPaginator} from '@angular/material/paginator';
-import {UserService} from '../../../shared/service/user.service';
 
 @Component({
   selector: 'app-users',
@@ -41,12 +41,12 @@ export class UsersComponent implements OnInit {
         this.dataSource = new MatTableDataSource(res);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
-        this.dataSource.filterPredicate = this.customFilterPredicate();
+        this.dataSource.filterPredicate = this.customFilterPredicateForUsers();
       }
     );
   }
 
-  customFilterPredicate() {
+  customFilterPredicateForUsers() {
     return (data: User, filter: string): boolean => {
       let userStr = '';
       this.displayedColumns.forEach(column => {
@@ -86,7 +86,7 @@ export class UsersComponent implements OnInit {
   }
 
   changeStatus(user: User, status: ModelStatus) {
-    this.userService.changeStatusById(user.id, status).subscribe(
+    this.userService.changeStatusById({id: user.id, newStatus: status}).subscribe(
       () => {
         user.status = status;
         this.notification.showSuccessTranslateMsg('USERS.MESSAGE.STATUS-CHANGED');

@@ -27,10 +27,6 @@
           {{'MODEL-ERROR.FIRST-NAME-REQUIRED' | translate}}
         </mat-error>
         <mat-error
-          *ngIf="form.controls['firstName'].errors?.minlength">
-          {{'MODEL-ERROR.FIRST-NAME-MIN-LENGTH' | translate}}
-        </mat-error>
-        <mat-error
           *ngIf="form.controls['firstName'].errors?.pattern">
           {{'MODEL-ERROR.FIRST-NAME-PATTERN' | translate}}
         </mat-error>
@@ -48,10 +44,6 @@
         <mat-error
           *ngIf="form.controls['secondName'].errors?.required">
           {{'MODEL-ERROR.SECOND-NAME-REQUIRED' | translate}}
-        </mat-error>
-        <mat-error
-          *ngIf="form.controls['secondName'].errors?.minlength">
-          {{'MODEL-ERROR.SECOND-NAME-MIN-LENGTH' | translate}}
         </mat-error>
         <mat-error
           *ngIf="form.controls['secondName'].errors?.pattern">

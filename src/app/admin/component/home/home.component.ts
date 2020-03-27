@@ -1,4 +1,5 @@
 import {UserService} from '../../../shared/service/user.service';
+import {SubjectService} from '../../../shared/service/subject.service';
 
 import {Component, OnInit} from '@angular/core';
 
@@ -17,10 +18,12 @@ export class HomeComponent implements OnInit {
     {name: 'MENU-ITEM.SUBJECTS', rout: '/admin/subjects', icon: 'subjects.png', count: 0}
   ];
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService,
+              private subjectService: SubjectService) {
   }
 
   ngOnInit(): void {
     this.userService.getCount().subscribe(res => this.menuItems[0].count = res);
+    this.subjectService.getCount().subscribe(res => this.menuItems[4].count = res);
   }
 }

@@ -1,0 +1,43 @@
+<mat-toolbar class="dialog-header">
+  <h4 *ngIf="!data">{{'SUBJECT.TITLE-CREATE' | translate}}</h4>
+  <h4 *ngIf="data">{{'SUBJECT.TITLE-EDIT' | translate}}</h4>
+  <span class="space"></span>
+  <button mat-button mat-dialog-close mat-icon-button>
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-toolbar>
+<mat-dialog-content>
+  <form [formGroup]="form">
+    <!--      Id-->
+    <input formControlName="id" hidden>
+
+    <!--    First name-->
+    <mat-form-field appearance="outline">
+      <mat-label>{{'SUBJECT.FORM-TITLE.NAME' | translate}}</mat-label>
+      <input
+        formControlName="name"
+        matInput
+        maxlength="60"
+        placeholder="Ex. Math"
+        required>
+      <mat-error
+        *ngIf="form.controls['name'].errors?.required">
+        {{'MODEL-ERROR.SUBJECT-NAME-REQUIRED' | translate}}
+      </mat-error>
+      <mat-error
+        *ngIf="form.controls['name'].errors?.pattern">
+        {{'MODEL-ERROR.SUBJECT-NAME-PATTERN' | translate}}
+      </mat-error>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button (click)="onSubmit()"
+          [disabled]="form.invalid"
+          color="primary"
+          mat-raised-button
+          type="submit">
+    {{'BTN.SUBMIT' | translate}}
+  </button>
+  <button color="warn" mat-dialog-close mat-raised-button>{{'BTN.CANCEL' | translate}}</button>
+</mat-dialog-actions>

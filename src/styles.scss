@@ -87,3 +87,23 @@ mat-option img {
 mat-card {
   border-radius: 8px !important;
 }
+
+.data-container {
+  width: 90%;
+  margin: 20px auto;
+
+  .search {
+    width: 100%;
+  }
+
+  .table-container {
+    max-height: 540px;
+    overflow: auto;
+
+    table {
+      width: 100%;
+      min-width: $break-Small;
+    }
+  }
+}
+

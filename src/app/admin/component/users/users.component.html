@@ -1,6 +1,6 @@
-<div class="container">
-  <mat-form-field>
-    <mat-label>{{'USERS.SEARCH' | translate}}</mat-label>
+<div class="data-container">
+  <mat-form-field class="search">
+    <mat-label>{{'SEARCH' | translate}}</mat-label>
     <input (keyup)="applyFilter()"
            [(ngModel)]="searchKey"
            autocomplete="off"
@@ -13,7 +13,7 @@
   </mat-form-field>
 
   <div class="mat-elevation-z8">
-    <div class="data-container">
+    <div class="table-container">
       <table [dataSource]="dataSource" mat-table matSort>
 
         <!--  Action column-->
@@ -21,7 +21,7 @@
           <th *matHeaderCellDef mat-header-cell>
             <button (click)="onCreate()"
                     mat-raised-button
-                    matTooltip="{{'USERS.TOOL-TIP.CREATE-USER' | translate}}">
+                    matTooltip="{{'USERS.TOOL-TIP.CREATE' | translate}}">
               <mat-icon>add</mat-icon>
             </button>
           </th>
@@ -30,7 +30,7 @@
                     [disabled]="user.id === currentUser.id"
                     mat-button
                     mat-icon-button
-                    matTooltip="{{'USERS.TOOL-TIP.EDIT-USER' | translate}}">
+                    matTooltip="{{'USERS.TOOL-TIP.EDIT' | translate}}">
               <mat-icon>edit</mat-icon>
             </button>
             <button (click)="onResetPassword(user)"
@@ -78,7 +78,7 @@
                     [matMenuTriggerFor]="menu"
                     [ngClass]="{
                 'success-color': user.status === modelStatus.ACTIVE,
-                'accent-color': user.status === modelStatus.NOT_ACTIVE,
+                'accent-color': user.status === modelStatus.EXCLUDED,
                 'warn-color': user.status === modelStatus.DELETED}"
                     mat-stroked-button>
               {{user.status}}
@@ -88,9 +88,9 @@
                       class="success-color"
                       mat-menu-item>{{modelStatus.ACTIVE}}
               </button>
-              <button (click)="changeStatus(user, modelStatus.NOT_ACTIVE)"
+              <button (click)="changeStatus(user, modelStatus.EXCLUDED)"
                       class="accent-color"
-                      mat-menu-item>{{modelStatus.NOT_ACTIVE}}
+                      mat-menu-item>{{modelStatus.EXCLUDED}}
               </button>
               <button (click)="changeStatus(user, modelStatus.DELETED)"
                       class="warn-color"

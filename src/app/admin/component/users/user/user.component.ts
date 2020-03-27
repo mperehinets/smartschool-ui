@@ -30,7 +30,7 @@ export class UserComponent implements OnInit {
     );
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: User,
-              public userService: UserService,
+              private userService: UserService,
               private avatarService: AvatarService,
               private notification: NotificationService,
               private dialogRef: MatDialogRef<UserComponent>,
@@ -43,11 +43,11 @@ export class UserComponent implements OnInit {
       id: new FormControl(''),
       firstName: new FormControl('',
         [
-          Validators.pattern('[A-Za-zА-Яа-яіІ\\- ]{3,60}')
+          Validators.pattern(/^[A-Za-zА-Яа-яіІїЇєЄ`'\- ]{3,60}$/)
         ]),
       secondName: new FormControl('',
         [
-          Validators.pattern('[A-Za-zА-Яа-яіІ\\- ]{3,60}')
+          Validators.pattern(/^[A-Za-zА-Яа-яіІїЇєЄ`'\- ]{3,60}$/)
         ]),
       dateBirth: new FormControl(''),
       avatarName: new FormControl(''),

@@ -39,7 +39,7 @@ export class ResetPasswordComponent implements OnInit {
   }
 
   onSubmit() {
-    this.userService.resetPasswordByAdmin(this.form.value).subscribe(
+    this.userService.resetPassword(this.form.value).subscribe(
       () => {
         this.dialogRef.close();
         this.form.reset();

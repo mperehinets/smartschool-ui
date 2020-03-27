@@ -1,0 +1,81 @@
+<div class="data-container">
+  <mat-form-field class="search">
+    <mat-label>{{'SEARCH' | translate}}</mat-label>
+    <input (keyup)="applyFilter()"
+           [(ngModel)]="searchKey"
+           autocomplete="off"
+           matInput
+           matTooltip="{{'GLOBAL-TOOLTIP.MULTI-FILTER' | translate}}"
+           placeholder="Ex. Math">
+    <button (click)="onClear()" *ngIf="searchKey" mat-button mat-icon-button matSuffix>
+      <mat-icon>clear</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <div class="mat-elevation-z8">
+    <div class="table-container">
+      <table [dataSource]="dataSource" mat-table matSort>
+
+        <!--  Action column-->
+        <ng-container matColumnDef="actions">
+          <th *matHeaderCellDef mat-header-cell>
+            <button (click)="onCreate()"
+                    mat-raised-button
+                    matTooltip="{{'SUBJECTS.TOOL-TIP.CREATE' | translate}}">
+              <mat-icon>add</mat-icon>
+            </button>
+          </th>
+          <td *matCellDef="let subject" mat-cell>
+            <button (click)="onEdit(subject)"
+                    mat-button
+                    mat-icon-button
+                    matTooltip="{{'SUBJECTS.TOOL-TIP.EDIT' | translate}}">
+              <mat-icon>edit</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <!-- Name column-->
+        <ng-container matColumnDef="name">
+          <th *matHeaderCellDef mat-header-cell mat-sort-header>{{'SUBJECTS.TABLE-HEADER.NAME' | translate}}</th>
+          <td *matCellDef="let subject" mat-cell>{{subject.name}}</td>
+        </ng-container>
+
+        <!--  Status column-->
+        <ng-container matColumnDef="status">
+          <th *matHeaderCellDef mat-header-cell mat-sort-header>{{'SUBJECTS.TABLE-HEADER.STATUS' | translate}}</th>
+          <td *matCellDef="let subject" mat-cell>
+            <button [matMenuTriggerFor]="menu"
+                    [ngClass]="{
+                'success-color': subject.status === modelStatus.ACTIVE,
+                'accent-color': subject.status === modelStatus.EXCLUDED,
+                'warn-color': subject.status === modelStatus.DELETED}"
+                    mat-stroked-button>
+              {{subject.status}}
+            </button>
+            <mat-menu #menu="matMenu">
+              <button (click)="changeStatus(subject, modelStatus.ACTIVE)"
+                      class="success-color"
+                      mat-menu-item>{{modelStatus.ACTIVE}}
+              </button>
+              <button (click)="changeStatus(subject, modelStatus.EXCLUDED)"
+                      class="accent-color"
+                      mat-menu-item>{{modelStatus.EXCLUDED}}
+              </button>
+              <button (click)="changeStatus(subject, modelStatus.DELETED)"
+                      class="warn-color"
+                      mat-menu-item>{{modelStatus.DELETED}}
+              </button>
+            </mat-menu>
+          </td>
+        </ng-container>
+
+        <tr *matHeaderRowDef="displayedColumns; sticky: true" mat-header-row></tr>
+        <tr *matRowDef="let subject; columns: displayedColumns;" mat-row></tr>
+      </table>
+    </div>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" pageSize="10"></mat-paginator>
+  </div>
+</div>
+
+

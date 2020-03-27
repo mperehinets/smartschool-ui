@@ -10,6 +10,8 @@ import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {TranslateModule} from '@ngx-translate/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {SubjectsComponent} from './component/subjects/subjects.component';
+import {SubjectComponent} from './component/subjects/subject/subject.component';
 
 const routes: Routes = [
   {
@@ -22,6 +24,9 @@ const routes: Routes = [
       },
       {
         path: 'users', component: UsersComponent
+      },
+      {
+        path: 'subjects', component: SubjectsComponent
       }
     ]
   },
@@ -29,7 +34,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AdminComponent, UsersComponent, UserComponent, ResetPasswordComponent, HomeComponent],
+  declarations: [AdminComponent, UsersComponent, UserComponent, ResetPasswordComponent, HomeComponent, SubjectsComponent, SubjectComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),

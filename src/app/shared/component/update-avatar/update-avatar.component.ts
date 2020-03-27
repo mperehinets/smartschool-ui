@@ -23,7 +23,6 @@ export class UpdateAvatarComponent implements OnInit {
               private dialogRef: MatDialogRef<UpdateAvatarComponent>,
               private notification: NotificationService) {
     this.form = new FormGroup({
-      id: new FormControl(''),
       newAvatarName: new FormControl('')
     });
   }
@@ -39,13 +38,12 @@ export class UpdateAvatarComponent implements OnInit {
 
   populateForm(user: User) {
     this.form.patchValue({
-      id: user.id,
       newAvatarName: user.avatarName
     });
   }
 
   onSubmit() {
-    this.userService.updateAvatar(this.form.value).subscribe(
+    this.userService.updateAvatarForCurrent(this.form.value.newAvatarName).subscribe(
       () => {
         this.dialogRef.close(this.form.value.newAvatarName);
         this.notification.showSuccessTranslateMsg('UPDATE-AVATAR.MESSAGE.SUCCESSFULLY-CHANGED');
