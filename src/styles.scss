@@ -88,6 +88,16 @@ mat-card {
   border-radius: 8px !important;
 }
 
+.field-connector {
+  display: flex;
+  justify-content: space-between;
+
+  mat-form-field {
+    width: 49%;
+  }
+}
+
+
 .data-container {
   width: 90%;
   margin: 20px auto;

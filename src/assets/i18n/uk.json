@@ -44,7 +44,8 @@
     "PASSWORD-CONFIRM": "Паролі не співпадають",
     "PASSWORD-CONFIRM-REQUIRED": "Підтвердження паролю є обов'язковий",
     "SUBJECT-NAME-REQUIRED": "Назва предмету є обов'язкова",
-    "SUBJECT-NAME-PATTERN": "Не коректна назва предмету"
+    "SUBJECT-NAME-PATTERN": "Не коректна назва предмету",
+    "EDUCATION-PATTERN": "Освіту введено не коректно"
   },
 
   "LOGIN": {
@@ -112,6 +113,7 @@
       "SUCCESSFULLY-CHANGED": "Пароль успішно змінено"
     }
   },
+
   "UPDATE-AVATAR": {
     "TITLE": "Оновлення аватара",
     "FIELD": {
@@ -121,6 +123,7 @@
       "SUCCESSFULLY-CHANGED": "Аватар успішно змінений"
     }
   },
+
   "SUBJECTS": {
     "TABLE-HEADER": {
       "NAME": "Назва",
@@ -134,6 +137,7 @@
       "EDIT": "Редагувати предмет"
     }
   },
+
   "SUBJECT": {
     "TITLE-CREATE": "Створення предмету",
     "TITLE-EDIT": "Редагування предмету",
@@ -142,5 +146,40 @@
     },
     "SUCCESSFULLY-CREATED": "Предмет успішно створено",
     "SUCCESSFULLY-EDITED": "Предмет успішно відредаговано"
+  },
+
+  "TEACHERS": {
+    "TABLE-HEADER": {
+      "FIRST-NAME": "Ім'я",
+      "SECOND-NAME": "Прізвище",
+      "EDUCATION": "Освіта",
+      "EMAIL": "Email",
+      "DATE-BIRTH": "Дата народження",
+      "STATUS": "Статус"
+    },
+    "MESSAGE": {
+      "STATUS-CHANGED": "Статус вчителя успішно змінено"
+    },
+    "TOOL-TIP": {
+      "CREATE": "Створити викладача",
+      "EDIT": "Редагувати викладача"
+    }
+  },
+
+  "TEACHER": {
+    "TITLE-CREATE": "Створення викладача",
+    "TITLE-EDIT": "Редагування викладача",
+    "FORM-TITLE": {
+      "FIRST-NAME": "Ім'я",
+      "SECOND-NAME": "Прізвище",
+      "EDUCATION": "Освіта",
+      "DATE-BIRTH": "Дата народження",
+      "AVATAR": "Аватар",
+      "EMAIL": "Email",
+      "PASSWORD": "Пароль",
+      "PASSWORD-CONFIRM": "Підтвердіть пароль"
+    },
+    "SUCCESSFULLY-CREATED": "Викладача успішно створено",
+    "SUCCESSFULLY-EDITED": "Викладача успішно відредаговано"
   }
 }

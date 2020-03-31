@@ -28,6 +28,10 @@ export class SubjectComponent implements OnInit {
     });
   }
 
+  isValueChange(): boolean {
+    return this.data?.name !== this.form.value.name;
+  }
+
   ngOnInit(): void {
     if (this.data) {
       this.populateForm(this.data);

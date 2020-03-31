@@ -40,16 +40,16 @@ export class SubjectsComponent implements OnInit {
 
   customFilterPredicateForSubjects() {
     return (data: Subject, filter: string): boolean => {
-      let rowDate = '';
+      let rowData = '';
       this.displayedColumns.forEach(column => {
         if (column === 'name' || column === 'status') {
-          rowDate = `${rowDate + data[column]} `;
+          rowData = `${rowData + data[column]} `;
         }
       });
-      rowDate = rowDate.trim().toLowerCase();
+      rowData = rowData.trim().toLowerCase();
       let result = true;
       filter.split('+').forEach(key => {
-        if (!rowDate.includes(key)) {
+        if (!rowData.includes(key)) {
           result = false;
           return;
         }

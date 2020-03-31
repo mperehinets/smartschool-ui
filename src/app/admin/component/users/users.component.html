@@ -102,7 +102,7 @@
 
         <!--  Role pupil column-->
         <ng-container matColumnDef="pupil">
-          <th *matHeaderCellDef mat-header-cell mat-sort-header>{{'USERS.TABLE-HEADER.PUPIL' | translate}}</th>
+          <th *matHeaderCellDef mat-header-cell>{{'USERS.TABLE-HEADER.PUPIL' | translate}}</th>
           <td *matCellDef="let user" mat-cell>
             <mat-checkbox [checked]="this.hasRole(user, 'ROLE_PUPIL')" disabled></mat-checkbox>
           </td>
@@ -110,7 +110,7 @@
 
         <!--  Role teacher column-->
         <ng-container matColumnDef="teacher">
-          <th *matHeaderCellDef mat-header-cell mat-sort-header>{{'USERS.TABLE-HEADER.TEACHER' | translate}}</th>
+          <th *matHeaderCellDef mat-header-cell>{{'USERS.TABLE-HEADER.TEACHER' | translate}}</th>
           <td *matCellDef="let user" mat-cell>
             <mat-checkbox [checked]="this.hasRole(user, 'ROLE_TEACHER')" disabled></mat-checkbox>
           </td>
@@ -118,7 +118,7 @@
 
         <!--  Role admin column-->
         <ng-container matColumnDef="admin">
-          <th *matHeaderCellDef mat-header-cell mat-sort-header>{{'USERS.TABLE-HEADER.ADMIN' | translate}}</th>
+          <th *matHeaderCellDef mat-header-cell>{{'USERS.TABLE-HEADER.ADMIN' | translate}}</th>
           <td *matCellDef="let user" mat-cell>
             <mat-checkbox (change)="onChangeAdmin($event, user)"
                           [checked]="this.hasRole(user, 'ROLE_ADMIN')"

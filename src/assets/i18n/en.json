@@ -44,7 +44,8 @@
     "PASSWORD-CONFIRM": "Password confirm does not match",
     "PASSWORD-CONFIRM-REQUIRED": "Password confirm is required",
     "SUBJECT-NAME-REQUIRED": "Name of subject is required",
-    "SUBJECT-NAME-PATTERN": "Invalid name of subject"
+    "SUBJECT-NAME-PATTERN": "Invalid name of subject",
+    "EDUCATION-PATTERN": "Education is invalid"
   },
 
   "LOGIN": {
@@ -111,6 +112,7 @@
       "SUCCESSFULLY-CHANGED": "Password successfully changed"
     }
   },
+
   "UPDATE-AVATAR": {
     "TITLE": "Update avatar",
     "FIELD": {
@@ -120,6 +122,7 @@
       "SUCCESSFULLY-CHANGED": "Avatar successfully changed"
     }
   },
+
   "SUBJECTS": {
     "TABLE-HEADER": {
       "NAME": "Name",
@@ -133,6 +136,7 @@
       "EDIT": "Edit subject"
     }
   },
+
   "SUBJECT": {
     "TITLE-CREATE": "Create subject",
     "TITLE-EDIT": "Edit subject",
@@ -141,5 +145,40 @@
     },
     "SUCCESSFULLY-CREATED": "Subject successfully created",
     "SUCCESSFULLY-EDITED": "Subject successfully edited"
+  },
+
+  "TEACHERS": {
+    "TABLE-HEADER": {
+      "FIRST-NAME": "First name",
+      "SECOND-NAME": "Second name",
+      "EDUCATION": "Education",
+      "EMAIL": "Email",
+      "DATE-BIRTH": "Date birth",
+      "STATUS": "Status"
+    },
+    "MESSAGE": {
+      "STATUS-CHANGED": "Status of teacher successfully changed"
+    },
+    "TOOL-TIP": {
+      "CREATE": "Create teacher",
+      "EDIT": "Edit teacher"
+    }
+  },
+
+  "TEACHER": {
+    "TITLE-CREATE": "Create teacher",
+    "TITLE-EDIT": "Edit teacher",
+    "FORM-TITLE": {
+      "FIRST-NAME": "First name",
+      "SECOND-NAME": "Second name",
+      "EDUCATION": "Education",
+      "DATE-BIRTH": "Date birth",
+      "AVATAR": "Avatar",
+      "EMAIL": "Email",
+      "PASSWORD": "Password",
+      "PASSWORD-CONFIRM": "Confirm password"
+    },
+    "SUCCESSFULLY-CREATED": "Teacher successfully created",
+    "SUCCESSFULLY-EDITED": "Teacher successfully edited"
   }
 }

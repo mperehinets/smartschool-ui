@@ -2,7 +2,7 @@ import {ModelStatus} from '../model/ModelStatus';
 import {Subject} from '../model/Subject';
 
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
 
 @Injectable({
@@ -23,6 +23,10 @@ export class SubjectService {
 
   findAll(): Observable<Subject[]> {
     return this.http.get<Subject[]>('/subjects');
+  }
+
+  findByStatus(status: ModelStatus): Observable<Subject[]> {
+    return this.http.get<Subject[]>('/subjects/', {params: new HttpParams().set('status', status)});
   }
 
   changeStatusById(body: { id: number, newStatus: ModelStatus }): Observable<void> {

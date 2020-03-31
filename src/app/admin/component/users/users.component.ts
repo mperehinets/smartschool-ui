@@ -60,10 +60,10 @@ export class UsersComponent implements OnInit {
       });
       let roleStr = '';
       data.roles.forEach(role => roleStr = `${roleStr + role.name.substr(5)} `);
-      const rowDate = (userStr + roleStr).trim().toLowerCase();
+      const rowData = (userStr + roleStr).trim().toLowerCase();
       let result = true;
       filter.split('+').forEach(key => {
-        if (!rowDate.includes(key)) {
+        if (!rowData.includes(key)) {
           result = false;
           return;
         }
@@ -79,10 +79,6 @@ export class UsersComponent implements OnInit {
   onClear() {
     this.searchKey = '';
     this.applyFilter();
-  }
-
-  hasRole(user: User, roleName: string): boolean {
-    return user.roles.some(item => item.name === roleName);
   }
 
   changeStatus(user: User, status: ModelStatus) {
@@ -135,5 +131,9 @@ export class UsersComponent implements OnInit {
 
   onResetPassword(user: User) {
     this.dialog.open(ResetPasswordComponent, {data: user});
+  }
+
+  hasRole(user: User, roleName: string): boolean {
+    return user.roles.some(item => item.name === roleName);
   }
 }
