@@ -12,6 +12,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import {MatSort} from '@angular/material/sort';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatDialog} from '@angular/material/dialog';
+import {TeachersSubjectsComponent} from './teachers-subjects/teachers-subjects.component';
 
 @Component({
   selector: 'app-teachers',
@@ -113,5 +114,11 @@ export class TeachersComponent implements OnInit {
           this.dataSource._updateChangeSubscription();
         }
       });
+  }
+
+  onEditSubjects(teacher: Teacher) {
+    this.dialog.open(TeachersSubjectsComponent, {
+      data: teacher
+    });
   }
 }

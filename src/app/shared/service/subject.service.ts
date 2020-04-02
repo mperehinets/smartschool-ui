@@ -29,6 +29,10 @@ export class SubjectService {
     return this.http.get<Subject[]>('/subjects/', {params: new HttpParams().set('status', status)});
   }
 
+  findByTeacherId(teacherId: number): Observable<Subject[]> {
+    return this.http.get<Subject[]>(`/subjects/by-teacher/${teacherId}`);
+  }
+
   changeStatusById(body: { id: number, newStatus: ModelStatus }): Observable<void> {
     return this.http.put<void>(`/subjects/change-status/${body.id}`, body);
   }

@@ -161,7 +161,8 @@
     },
     "TOOL-TIP": {
       "CREATE": "Create teacher",
-      "EDIT": "Edit teacher"
+      "EDIT": "Edit teacher",
+      "SUBJECT": "Subjects"
     }
   },
 
@@ -180,5 +181,16 @@
     },
     "SUCCESSFULLY-CREATED": "Teacher successfully created",
     "SUCCESSFULLY-EDITED": "Teacher successfully edited"
+  },
+
+  "TEACHERS-SUBJECTS": {
+    "TABLE-HEADER": {
+      "SUBJECT": "Subject",
+      "STATUS": "Status"
+    },
+    "MESSAGE": {
+      "GOT-SUBJECT": "Teacher successfully got new subject",
+      "LOST-SUBJECT": "Teacher successfully lost subject"
+    }
   }
 }

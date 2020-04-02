@@ -1,0 +1,12 @@
+.data-container {
+  width: 100% !important;
+
+  .table-container {
+    max-height: 400px !important;
+    overflow: auto;
+
+    table {
+      min-width: 320px !important;
+    }
+  }
+}

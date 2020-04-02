@@ -33,6 +33,13 @@
                     matTooltip="{{'TEACHERS.TOOL-TIP.EDIT' | translate}}">
               <mat-icon>edit</mat-icon>
             </button>
+            <button (click)="onEditSubjects(teacher)"
+                    [disabled]="teacher.id === currentUser.id"
+                    mat-button
+                    mat-icon-button
+                    matTooltip="{{'TEACHERS.TOOL-TIP.SUBJECT' | translate}}">
+              <mat-icon>class</mat-icon>
+            </button>
           </td>
         </ng-container>
 

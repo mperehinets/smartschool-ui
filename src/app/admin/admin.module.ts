@@ -14,6 +14,7 @@ import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {TranslateModule} from '@ngx-translate/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {TeachersSubjectsComponent} from './component/teachers/teachers-subjects/teachers-subjects.component';
 
 const routes: Routes = [
   {
@@ -48,7 +49,8 @@ const routes: Routes = [
     SubjectsComponent,
     SubjectComponent,
     TeachersComponent,
-    TeacherComponent
+    TeacherComponent,
+    TeachersSubjectsComponent
   ],
   imports: [
     CommonModule,

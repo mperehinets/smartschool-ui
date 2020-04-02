@@ -43,8 +43,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     }),
     ToastrModule.forRoot({
       timeOut: 3000,
-      positionClass: 'toast-top-right',
-      preventDuplicates: true
+      progressBar: true,
+      resetTimeoutOnDuplicate: true,
+      preventDuplicates: true,
+      positionClass: 'toast-bottom-left',
     }),
     BrowserAnimationsModule,
     LayoutModule,
