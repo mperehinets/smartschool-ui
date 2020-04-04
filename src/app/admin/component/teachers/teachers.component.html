@@ -29,6 +29,7 @@
             <button (click)="onEdit(teacher)"
                     [disabled]="teacher.id === currentUser.id"
                     mat-button
+                    color="accent"
                     mat-icon-button
                     matTooltip="{{'TEACHERS.TOOL-TIP.EDIT' | translate}}">
               <mat-icon>edit</mat-icon>
@@ -36,6 +37,7 @@
             <button (click)="onEditSubjects(teacher)"
                     [disabled]="teacher.id === currentUser.id"
                     mat-button
+                    color="success"
                     mat-icon-button
                     matTooltip="{{'TEACHERS.TOOL-TIP.SUBJECT' | translate}}">
               <mat-icon>class</mat-icon>

@@ -1,0 +1,54 @@
+@import "src/styles.scss";
+
+mat-form-field {
+  display: flex;
+  justify-content: center;
+}
+
+.classes {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  mat-card {
+    width: 320px;
+    margin: 3%;
+    @include mat-elevation(3);
+
+    @media (max-width: $break-XSmall) {
+      width: 80%;
+    }
+
+    mat-card-title {
+      margin-bottom: 5px;
+    }
+
+    mat-card-content {
+      text-align: center;
+
+      img {
+        height: 40px;
+        margin-bottom: 3px;
+      }
+    }
+  }
+}
+
+.create-btn {
+  position: fixed;
+  z-index: 9999;
+  right: 30px;
+  bottom: 30px;
+}
+
+mat-tab-group {
+  height: 100%;
+
+  ::ng-deep .mat-tab-body-wrapper {
+    height: 100%;
+  }
+}
+
+.no-classes {
+  margin-top: 3%;
+}

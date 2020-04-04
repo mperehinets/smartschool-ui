@@ -16,7 +16,7 @@ export class JwtInterceptor implements HttpInterceptor {
     const jwt = localStorage.getItem(AppConstants.JWT_STORAGE_KEY);
     return next.handle(req.clone({headers: req.headers.set('Authorization', `${jwt}`)})).pipe(
       catchError(err => {
-        if (err.status === 403) {
+        if (err.status === 401) {
           this.authService.signOut();
         }
         return throwError(err);

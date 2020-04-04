@@ -8,13 +8,15 @@ import {SubjectsComponent} from './component/subjects/subjects.component';
 import {SubjectComponent} from './component/subjects/subject/subject.component';
 import {TeachersComponent} from './component/teachers/teachers.component';
 import {TeacherComponent} from './component/teachers/teacher/teacher.component';
+import {TeachersSubjectsComponent} from './component/teachers/teachers-subjects/teachers-subjects.component';
+import {SchoolClassesComponent} from './component/school-classes/school-classes.component';
+import {SchoolClassComponent} from './component/school-classes/school-class/school-class.component';
 
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {TranslateModule} from '@ngx-translate/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {TeachersSubjectsComponent} from './component/teachers/teachers-subjects/teachers-subjects.component';
 
 const routes: Routes = [
   {
@@ -33,6 +35,9 @@ const routes: Routes = [
       },
       {
         path: 'subjects', component: SubjectsComponent
+      },
+      {
+        path: 'classes', component: SchoolClassesComponent
       }
     ]
   },
@@ -50,7 +55,9 @@ const routes: Routes = [
     SubjectComponent,
     TeachersComponent,
     TeacherComponent,
-    TeachersSubjectsComponent
+    TeachersSubjectsComponent,
+    SchoolClassesComponent,
+    SchoolClassComponent
   ],
   imports: [
     CommonModule,

@@ -45,7 +45,8 @@
     "PASSWORD-CONFIRM-REQUIRED": "Підтвердження паролю є обов'язковий",
     "SUBJECT-NAME-REQUIRED": "Назва предмету є обов'язкова",
     "SUBJECT-NAME-PATTERN": "Не коректна назва предмету",
-    "EDUCATION-PATTERN": "Освіту введено не коректно"
+    "EDUCATION-PATTERN": "Освіту введено не коректно",
+    "CLASS-TEACHER-REQUIRED": "Класний керівник є обов'язковим"
   },
 
   "LOGIN": {
@@ -193,5 +194,28 @@
       "GOT-SUBJECT": "Викладач успішно отримав новий предмет",
       "LOST-SUBJECT": "Викладач успішно втратив предмет"
     }
+  },
+
+  "SCHOOL-CLASSES": {
+    "CLASS": "Класи",
+    "CLASS-TEACHER": "Класний керівник",
+    "PUPILS": "Учні",
+    "NO-CLASSES": "Немає класів",
+    "TOOL-TIP": {
+      "CREATE": "Створити клас",
+      "EDIT": "Редагувати клас",
+      "DELETE": "Видалити клас"
+    },
+    "SUCCESSFULLY-DELETED": "Клас успішно видалений"
+  },
+
+  "SCHOOL-CLASS": {
+    "TITLE-CREATE": "Створення класу",
+    "TITLE-EDIT": "Редагування класу",
+    "FORM-TITLE": {
+      "CLASS-TEACHER": "Класний керівник"
+    },
+    "SUCCESSFULLY-CREATED": "Клас успішно створений",
+    "SUCCESSFULLY-EDITED": "Клас успішно відредагований"
   }
 }

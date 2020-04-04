@@ -15,6 +15,13 @@ $light-app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
 
 @include angular-material-theme($light-app-theme);
 
+.mat-success {
+  color: mat-color($app-green) !important;
+}
+.mat-success[disabled] {
+   color: rgba(0, 0, 0, 0.26) !important;
+ }
+
 mat-toolbar {
   background-color: mat-color($app-header-color) !important;
 }

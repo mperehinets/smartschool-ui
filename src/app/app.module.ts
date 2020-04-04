@@ -46,7 +46,7 @@ export function HttpLoaderFactory(http: HttpClient) {
       progressBar: true,
       resetTimeoutOnDuplicate: true,
       preventDuplicates: true,
-      positionClass: 'toast-bottom-left',
+      positionClass: 'toast-top-center',
     }),
     BrowserAnimationsModule,
     LayoutModule,

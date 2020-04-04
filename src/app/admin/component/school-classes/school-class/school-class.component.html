@@ -1,0 +1,42 @@
+<mat-toolbar class="dialog-header">
+  <h4 *ngIf="!isEditProcess">{{'SCHOOL-CLASS.TITLE-CREATE' | translate}}</h4>
+  <h4 *ngIf="isEditProcess">{{'SCHOOL-CLASS.TITLE-EDIT' | translate}}</h4>
+  <span class="space"></span>
+  <button mat-button mat-dialog-close mat-icon-button>
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-toolbar>
+<mat-dialog-content>
+  <form [formGroup]="form">
+
+    <!--      Id-->
+    <input formControlName="id" hidden>
+
+    <!--      Number-->
+    <input formControlName="number" hidden>
+
+    <!--    Class teacher-->
+    <mat-form-field appearance="outline">
+      <mat-label>{{'SCHOOL-CLASS.FORM-TITLE.CLASS-TEACHER' | translate}}</mat-label>
+      <mat-select formControlName="classTeacher" required>
+        <mat-option *ngFor="let teacher of freeTeachers" [value]="teacher">
+          {{teacher.firstName}} {{teacher.secondName}} ({{teacher.email}})
+        </mat-option>
+      </mat-select>
+      <mat-error
+        *ngIf="form.controls['classTeacher'].errors?.required">
+        {{'MODEL-ERROR.CLASS-TEACHER-REQUIRED' | translate}}
+      </mat-error>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button (click)="onSubmit()"
+          [disabled]="form.invalid"
+          color="primary"
+          mat-raised-button
+          type="submit">
+    {{'BTN.SUBMIT' | translate}}
+  </button>
+  <button color="warn" mat-dialog-close mat-raised-button>{{'BTN.CANCEL' | translate}}</button>
+</mat-dialog-actions>

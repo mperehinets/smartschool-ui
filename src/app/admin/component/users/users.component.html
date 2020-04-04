@@ -28,6 +28,7 @@
           <td *matCellDef="let user" mat-cell>
             <button (click)="onEdit(user)"
                     [disabled]="user.id === currentUser.id"
+                    color="accent"
                     mat-button
                     mat-icon-button
                     matTooltip="{{'USERS.TOOL-TIP.EDIT' | translate}}">
@@ -35,6 +36,7 @@
             </button>
             <button (click)="onResetPassword(user)"
                     [disabled]="user.id === currentUser.id"
+                    color="success"
                     mat-button
                     mat-icon-button
                     matTooltip="{{'USERS.TOOL-TIP.RESET-PASSWORD' | translate}}">

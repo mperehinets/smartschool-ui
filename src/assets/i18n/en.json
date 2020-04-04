@@ -45,7 +45,8 @@
     "PASSWORD-CONFIRM-REQUIRED": "Password confirm is required",
     "SUBJECT-NAME-REQUIRED": "Name of subject is required",
     "SUBJECT-NAME-PATTERN": "Invalid name of subject",
-    "EDUCATION-PATTERN": "Education is invalid"
+    "EDUCATION-PATTERN": "Education is invalid",
+    "CLASS-TEACHER-REQUIRED": "Class teacher is required"
   },
 
   "LOGIN": {
@@ -192,5 +193,28 @@
       "GOT-SUBJECT": "Teacher successfully got new subject",
       "LOST-SUBJECT": "Teacher successfully lost subject"
     }
+  },
+
+  "SCHOOL-CLASSES": {
+    "CLASS": "Classes",
+    "CLASS-TEACHER": "Class teacher",
+    "PUPILS": "Pupils",
+    "NO-CLASSES": "No one class",
+    "TOOL-TIP": {
+      "CREATE": "Create class",
+      "EDIT": "Edit class",
+      "DELETE": "Delete class"
+    },
+    "SUCCESSFULLY-DELETED": "Class successfully deleted"
+  },
+
+  "SCHOOL-CLASS": {
+    "TITLE-CREATE": "Create class",
+    "TITLE-EDIT": "Edit class",
+    "FORM-TITLE": {
+      "CLASS-TEACHER": "Class teacher"
+    },
+    "SUCCESSFULLY-CREATED": "Class successfully created",
+    "SUCCESSFULLY-EDITED": "Class successfully edited"
   }
 }

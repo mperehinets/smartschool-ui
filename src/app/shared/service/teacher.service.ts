@@ -27,4 +27,8 @@ export class TeacherService {
   getCount(): Observable<number> {
     return this.http.get<number>(`/teachers/count`);
   }
+
+  findFree(): Observable<Teacher[]> {
+    return this.http.get<Teacher[]>('/teachers/free');
+  }
 }
