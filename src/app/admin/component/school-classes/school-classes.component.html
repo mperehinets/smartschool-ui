@@ -7,7 +7,8 @@
 
             <mat-card-header>
               <mat-card-title>{{schoolClass.number}}-{{schoolClass.initial}}</mat-card-title>
-              <mat-card-subtitle>{{'SCHOOL-CLASSES.PUPILS' | translate}}: {{schoolClass.countPupils}}</mat-card-subtitle>
+              <mat-card-subtitle>{{'SCHOOL-CLASSES.PUPILS' | translate}}
+                : {{schoolClass.pupilsCount}}</mat-card-subtitle>
             </mat-card-header>
 
             <mat-card-content>
@@ -27,6 +28,7 @@
                 <mat-icon>edit</mat-icon>
               </button>
               <button (click)="onDelete(schoolClass)"
+                      [disabled]="schoolClass.pupilsCount !== 0"
                       color="warn"
                       mat-button
                       mat-icon-button
@@ -42,6 +44,7 @@
   </mat-tab>
 </mat-tab-group>
 <button (click)="onCreate()"
+        color="primary"
         class="create-btn"
         mat-raised-button
         matTooltip="{{'SCHOOL-CLASSES.TOOL-TIP.CREATE' | translate}}">

@@ -36,8 +36,7 @@ export class SchoolClassComponent implements OnInit {
     this.teacherService.findFree().subscribe(res => {
       this.freeTeachers = res;
       if (this.isEditProcess) {
-        const schoolClass = this.data as SchoolClass;
-        this.freeTeachers.push(schoolClass.classTeacher);
+        this.freeTeachers.push((this.data as SchoolClass).classTeacher);
       }
     });
     this.populateForm();
@@ -70,6 +69,7 @@ export class SchoolClassComponent implements OnInit {
     } else {
       this.schoolClassService.update(this.form.value).subscribe(
         res => {
+          res.pupilsCount = (this.data as SchoolClass).pupilsCount;
           this.dialogRef.close(res);
           this.form.reset();
           this.notification.showSuccessTranslateMsg('SCHOOL-CLASS.SUCCESSFULLY-EDITED');

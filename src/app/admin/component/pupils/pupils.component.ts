@@ -1,36 +1,36 @@
+import {Pupil} from '../../../shared/model/Pupil';
+import {customFilter} from '../../../shared/filter-predicat';
+import {Teacher} from '../../../shared/model/Teacher';
+import {PupilComponent} from './pupil/pupil.component';
+import {PupilService} from '../../../shared/service/pupil.service';
 import {ModelStatus} from '../../../shared/model/ModelStatus';
 import {UserPrinciple} from '../../../shared/model/UserPrinciple';
-import {Teacher} from '../../../shared/model/Teacher';
 import {UserService} from '../../../shared/service/user.service';
-import {TeacherComponent} from './teacher/teacher.component';
-import {TeacherService} from '../../../shared/service/teacher.service';
 import {NotificationService} from '../../../shared/service/notification.service';
 import {AuthService} from '../../../shared/service/auth.service';
 
 import {Component, OnInit, ViewChild} from '@angular/core';
+import {MatDialog} from '@angular/material/dialog';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatSort} from '@angular/material/sort';
 import {MatPaginator} from '@angular/material/paginator';
-import {MatDialog} from '@angular/material/dialog';
-import {TeachersSubjectsComponent} from './teachers-subjects/teachers-subjects.component';
-import {customFilter} from '../../../shared/filter-predicat';
 
 @Component({
-  selector: 'app-teachers',
-  templateUrl: './teachers.component.html',
-  styleUrls: ['./teachers.component.scss']
+  selector: 'app-pupils',
+  templateUrl: './pupils.component.html',
+  styleUrls: ['./pupils.component.scss']
 })
-export class TeachersComponent implements OnInit {
+export class PupilsComponent implements OnInit {
 
   modelStatus = ModelStatus;
   currentUser: UserPrinciple;
-  displayedColumns: string[] = ['actions', 'firstName', 'secondName', 'email', 'education', 'dateBirth', 'status'];
-  dataSource: MatTableDataSource<Teacher>;
+  displayedColumns: string[] = ['actions', 'firstName', 'secondName', 'email', 'schoolClass', 'dateBirth', 'status'];
+  dataSource: MatTableDataSource<Pupil>;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   searchKey = '';
 
-  constructor(private teacherService: TeacherService,
+  constructor(private pupilService: PupilService,
               private userService: UserService,
               private notification: NotificationService,
               private authService: AuthService,
@@ -39,7 +39,7 @@ export class TeachersComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser = this.authService.userPrinciple;
-    this.teacherService.findAll().subscribe(
+    this.pupilService.findAll().subscribe(
       res => {
         this.dataSource = new MatTableDataSource(res);
         this.dataSource.sort = this.sort;
@@ -62,14 +62,15 @@ export class TeachersComponent implements OnInit {
     this.userService.changeStatusById({id: teacher.id, newStatus: status}).subscribe(
       () => {
         teacher.status = status;
-        this.notification.showSuccessTranslateMsg('TEACHERS.MESSAGE.STATUS-CHANGED');
+        this.notification.showSuccessTranslateMsg('PUPILS.MESSAGE.STATUS-CHANGED');
       });
   }
 
-  onEdit(teacher: Teacher) {
-    const dialogRef = this.dialog.open(TeacherComponent,
+  onEdit(pupil: Pupil) {
+    pupil.schoolClass.classTeacher = null;
+    const dialogRef = this.dialog.open(PupilComponent,
       {
-        data: teacher
+        data: pupil
       });
     dialogRef.afterClosed().subscribe(
       res => {
@@ -82,7 +83,7 @@ export class TeachersComponent implements OnInit {
   }
 
   onCreate() {
-    const dialogRef = this.dialog.open(TeacherComponent);
+    const dialogRef = this.dialog.open(PupilComponent);
     dialogRef.afterClosed().subscribe(
       res => {
         if (res) {
@@ -90,11 +91,5 @@ export class TeachersComponent implements OnInit {
           this.dataSource._updateChangeSubscription();
         }
       });
-  }
-
-  onEditSubjects(teacher: Teacher) {
-    this.dialog.open(TeachersSubjectsComponent, {
-      data: teacher
-    });
   }
 }

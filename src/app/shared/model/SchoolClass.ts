@@ -5,5 +5,5 @@ export interface SchoolClass extends BaseModel {
   initial: string;
   number: number;
   classTeacher: Teacher;
-  countPupils: number;
+  pupilsCount: number;
 }

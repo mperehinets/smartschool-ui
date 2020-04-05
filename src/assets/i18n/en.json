@@ -46,7 +46,8 @@
     "SUBJECT-NAME-REQUIRED": "Name of subject is required",
     "SUBJECT-NAME-PATTERN": "Invalid name of subject",
     "EDUCATION-PATTERN": "Education is invalid",
-    "CLASS-TEACHER-REQUIRED": "Class teacher is required"
+    "CLASS-TEACHER-REQUIRED": "Class teacher is required",
+    "SCHOOL-CLASS-REQUIRED": "School class is required"
   },
 
   "LOGIN": {
@@ -216,5 +217,40 @@
     },
     "SUCCESSFULLY-CREATED": "Class successfully created",
     "SUCCESSFULLY-EDITED": "Class successfully edited"
+  },
+
+  "PUPILS": {
+    "TABLE-HEADER": {
+      "FIRST-NAME": "First name",
+      "SECOND-NAME": "Second name",
+      "SCHOOL-CLASS": "School class",
+      "EMAIL": "Email",
+      "DATE-BIRTH": "Date birth",
+      "STATUS": "Status"
+    },
+    "MESSAGE": {
+      "STATUS-CHANGED": "Status of pupil successfully changed"
+    },
+    "TOOL-TIP": {
+      "CREATE": "Create pupil",
+      "EDIT": "Edit pupil"
+    }
+  },
+
+  "PUPIL": {
+    "TITLE-CREATE": "Create pupil",
+    "TITLE-EDIT": "Edit pupil",
+    "FORM-TITLE": {
+      "FIRST-NAME": "First name",
+      "SECOND-NAME": "Second name",
+      "SCHOOL-CLASS": "School class",
+      "DATE-BIRTH": "Date birth",
+      "AVATAR": "Avatar",
+      "EMAIL": "Email",
+      "PASSWORD": "Password",
+      "PASSWORD-CONFIRM": "Confirm password"
+    },
+    "SUCCESSFULLY-CREATED": "Pupil successfully created",
+    "SUCCESSFULLY-EDITED": "Pupil successfully edited"
   }
 }

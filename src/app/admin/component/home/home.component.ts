@@ -1,9 +1,10 @@
 import {UserService} from '../../../shared/service/user.service';
 import {SubjectService} from '../../../shared/service/subject.service';
 import {TeacherService} from '../../../shared/service/teacher.service';
+import {SchoolClassService} from '../../../shared/service/school-class.service';
+import {PupilService} from '../../../shared/service/pupil.service';
 
 import {Component, OnInit} from '@angular/core';
-import {SchoolClassService} from '../../../shared/service/school-class.service';
 
 @Component({
   selector: 'app-home',
@@ -23,11 +24,13 @@ export class HomeComponent implements OnInit {
   constructor(private userService: UserService,
               private subjectService: SubjectService,
               private teacherService: TeacherService,
-              private schoolClassesService: SchoolClassService) {
+              private schoolClassesService: SchoolClassService,
+              private pupilService: PupilService) {
   }
 
   ngOnInit(): void {
     this.userService.getCount().subscribe(res => this.menuItems[0].count = res);
+    this.pupilService.getCount().subscribe(res => this.menuItems[1].count = res);
     this.teacherService.getCount().subscribe(res => this.menuItems[2].count = res);
     this.schoolClassesService.getCount().subscribe(res => this.menuItems[3].count = res);
     this.subjectService.getCount().subscribe(res => this.menuItems[4].count = res);

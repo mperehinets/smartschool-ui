@@ -12,6 +12,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import {MatSort} from '@angular/material/sort';
 import {MatDialog} from '@angular/material/dialog';
 import {MatPaginator} from '@angular/material/paginator';
+import {customFilterForUsers} from '../../../shared/filter-predicat';
 
 @Component({
   selector: 'app-users',
@@ -41,35 +42,9 @@ export class UsersComponent implements OnInit {
         this.dataSource = new MatTableDataSource(res);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
-        this.dataSource.filterPredicate = this.customFilterPredicateForUsers();
+        this.dataSource.filterPredicate = customFilterForUsers(this.displayedColumns);
       }
     );
-  }
-
-  customFilterPredicateForUsers() {
-    return (data: User, filter: string): boolean => {
-      let userStr = '';
-      this.displayedColumns.forEach(column => {
-        if (column === 'firstName'
-          || column === 'secondName'
-          || column === 'email'
-          || column === 'dateBirth'
-          || column === 'status') {
-          userStr = `${userStr + data[column]} `;
-        }
-      });
-      let roleStr = '';
-      data.roles.forEach(role => roleStr = `${roleStr + role.name.substr(5)} `);
-      const rowData = (userStr + roleStr).trim().toLowerCase();
-      let result = true;
-      filter.split('+').forEach(key => {
-        if (!rowData.includes(key)) {
-          result = false;
-          return;
-        }
-      });
-      return result;
-    };
   }
 
   applyFilter() {

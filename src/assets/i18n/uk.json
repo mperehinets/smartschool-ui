@@ -46,7 +46,8 @@
     "SUBJECT-NAME-REQUIRED": "Назва предмету є обов'язкова",
     "SUBJECT-NAME-PATTERN": "Не коректна назва предмету",
     "EDUCATION-PATTERN": "Освіту введено не коректно",
-    "CLASS-TEACHER-REQUIRED": "Класний керівник є обов'язковим"
+    "CLASS-TEACHER-REQUIRED": "Класний керівник є обов'язковим",
+    "SCHOOL-CLASS-REQUIRED": "Клас є обов'язковим"
   },
 
   "LOGIN": {
@@ -217,5 +218,40 @@
     },
     "SUCCESSFULLY-CREATED": "Клас успішно створений",
     "SUCCESSFULLY-EDITED": "Клас успішно відредагований"
+  },
+
+  "PUPILS": {
+    "TABLE-HEADER": {
+      "FIRST-NAME": "Ім'я",
+      "SECOND-NAME": "Прізвище",
+      "SCHOOL-CLASS": "Класс",
+      "EMAIL": "Email",
+      "DATE-BIRTH": "Дата народження",
+      "STATUS": "Статус"
+    },
+    "MESSAGE": {
+      "STATUS-CHANGED": "Статус учня успішно змінено"
+    },
+    "TOOL-TIP": {
+      "CREATE": "Створити учня",
+      "EDIT": "Редагувати учня"
+    }
+  },
+
+  "PUPIL": {
+    "TITLE-CREATE": "Створення учня",
+    "TITLE-EDIT": "Редагування учня",
+    "FORM-TITLE": {
+      "FIRST-NAME": "Ім'я",
+      "SECOND-NAME": "Прізвище",
+      "SCHOOL-CLASS": "Клас",
+      "DATE-BIRTH": "Дата народження",
+      "AVATAR": "Аватар",
+      "EMAIL": "Email",
+      "PASSWORD": "Пароль",
+      "PASSWORD-CONFIRM": "Підтвердіть пароль"
+    },
+    "SUCCESSFULLY-CREATED": "Учня успішно створено",
+    "SUCCESSFULLY-EDITED": "Учня успішно відредаговано"
   }
 }

@@ -11,6 +11,8 @@ import {TeacherComponent} from './component/teachers/teacher/teacher.component';
 import {TeachersSubjectsComponent} from './component/teachers/teachers-subjects/teachers-subjects.component';
 import {SchoolClassesComponent} from './component/school-classes/school-classes.component';
 import {SchoolClassComponent} from './component/school-classes/school-class/school-class.component';
+import {PupilsComponent} from './component/pupils/pupils.component';
+import {PupilComponent} from './component/pupils/pupil/pupil.component';
 
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
@@ -38,6 +40,9 @@ const routes: Routes = [
       },
       {
         path: 'classes', component: SchoolClassesComponent
+      },
+      {
+        path: 'pupils', component: PupilsComponent
       }
     ]
   },
@@ -57,7 +62,9 @@ const routes: Routes = [
     TeacherComponent,
     TeachersSubjectsComponent,
     SchoolClassesComponent,
-    SchoolClassComponent
+    SchoolClassComponent,
+    PupilsComponent,
+    PupilComponent
   ],
   imports: [
     CommonModule,

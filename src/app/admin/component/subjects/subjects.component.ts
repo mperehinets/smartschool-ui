@@ -9,6 +9,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatSort} from '@angular/material/sort';
 import {MatPaginator} from '@angular/material/paginator';
+import {customFilter} from '../../../shared/filter-predicat';
 
 @Component({
   selector: 'app-subjects',
@@ -34,7 +35,7 @@ export class SubjectsComponent implements OnInit {
       this.dataSource = new MatTableDataSource(res);
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
-      this.dataSource.filterPredicate = this.customFilterPredicateForSubjects();
+      this.dataSource.filterPredicate = customFilter(this.displayedColumns);
     });
   }
 

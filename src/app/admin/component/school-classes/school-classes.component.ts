@@ -46,6 +46,7 @@ export class SchoolClassesComponent implements OnInit {
     dialogRef.afterClosed().subscribe(
       res => {
         if (res) {
+          res.pupilsCount = 0;
           this.classes.push(res);
         }
       });
