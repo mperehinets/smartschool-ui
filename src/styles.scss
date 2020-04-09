@@ -107,10 +107,10 @@ mat-card {
   }
 
   .table-container {
-    max-height: 540px;
+    max-height: 550px;
     overflow: auto;
 
-    table {
+    table, mat-table {
       width: 100%;
       min-width: $break-Small;
     }

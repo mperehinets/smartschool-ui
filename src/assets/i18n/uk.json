@@ -1,16 +1,27 @@
 {
   "UNKNOWN-ERROR": "Щось пішло не так :(",
   "SEARCH": "Пошук",
+
   "GLOBAL-TOOLTIP": {
     "MULTI-FILTER": "Ви можете використовувати мульти-фільтер. Ex: value1+value2"
   },
+
+  "WEEK-DAY": {
+    "MONDAY": "Понеділок",
+    "TUESDAY": "Вівторок",
+    "WEDNESDAY": "Середа",
+    "THURSDAY": "Четвер",
+    "FRIDAY": "П'ятниця"
+  },
+
   "MENU-ITEM": {
     "HOME": "Головна",
     "USERS": "Користувачі",
     "PUPILS": "Учні",
     "TEACHERS": "Вчителі",
     "CLASSES": "Класи",
-    "SUBJECTS": "Предмети"
+    "SUBJECTS": "Предмети",
+    "TEMPLATE-SCHEDULES": "Шаблони розкладу"
   },
 
   "NAV-BAR": {
@@ -253,5 +264,34 @@
     },
     "SUCCESSFULLY-CREATED": "Учня успішно створено",
     "SUCCESSFULLY-EDITED": "Учня успішно відредаговано"
+  },
+
+  "TEMPLATES-SCHEDULE": {
+    "CLASS": "Клас",
+    "TABLE-HEADER": {
+      "ACTION": "Дія",
+      "LESSON-NUMBER": "Номер уроку",
+      "SUBJECT": "Предмет"
+    },
+    "TOOL-TIP": {
+      "CREATE": "Створити урок",
+      "EDIT": "Редагувати урок",
+      "DELETE": "Видалити урок",
+      "REORDER": "Переупорядкувати уроки",
+      "REORDER-CONFIRM": "Натисніть тут щоб зберегти зміни"
+    },
+    "SUCCESSFULLY-DELETED": "Урок успішно видалено",
+    "SUCCESSFULLY-REORDERED": "Порядок уроків успішно змінено",
+    "REORDERING-MODE": "Ви перейшли в режим переупорядкування розкладу"
+  },
+
+  "TEMPLATE-SCHEDULE": {
+    "TITLE-CREATE": "Створення уроку #",
+    "TITLE-EDIT": "Реадгування уроку #",
+    "FORM-TITLE": {
+      "SUBJECT": "Предмет"
+    },
+    "SUCCESSFULLY-CREATED": "Урок успішно створено",
+    "SUCCESSFULLY-EDITED": "Урок успішно оновлено"
   }
 }

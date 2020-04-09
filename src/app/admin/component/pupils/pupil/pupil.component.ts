@@ -83,7 +83,7 @@ export class PupilComponent implements OnInit {
       id: pupil.id,
       firstName: pupil.firstName,
       secondName: pupil.secondName,
-      schoolClass: pupil.schoolClass.id,
+      schoolClass: pupil.schoolClass,
       dateBirth: pupil.dateBirth,
       avatarName: pupil.avatarName,
       email: pupil.email,
@@ -92,8 +92,11 @@ export class PupilComponent implements OnInit {
     });
   }
 
+  compareById(a: SchoolClass, b: SchoolClass): boolean {
+    return a?.id === b?.id;
+  }
+
   onSubmit() {
-    this.form.value.schoolClass = this.schoolClasses.find(item => item.id === this.form.value.schoolClass);
     if (!this.data) {
       this.pupilService.create(this.form.value).subscribe(
         res => {

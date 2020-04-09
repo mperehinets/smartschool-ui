@@ -30,4 +30,14 @@ export class NotificationService {
   showErrorMsg(msg: string) {
     this.toastr.error(msg);
   }
+
+  showInfoTranslateMsg(msgKey: string) {
+    this.translate.get(msgKey).subscribe(
+      msg => this.toastr.info(msg)
+    );
+  }
+
+  showInfoMsg(msg: string) {
+    this.toastr.info(msg);
+  }
 }

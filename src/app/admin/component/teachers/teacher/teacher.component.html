@@ -9,10 +9,6 @@
 <mat-dialog-content>
   <form [formGroup]="form">
     <div [ngClass]="{'field-connector': !(isXSmall$ | async)}">
-
-      <!--      Id-->
-      <input formControlName="id" hidden>
-
       <!--    First name-->
       <mat-form-field appearance="outline">
         <mat-label>{{'TEACHER.FORM-TITLE.FIRST-NAME' | translate}}</mat-label>

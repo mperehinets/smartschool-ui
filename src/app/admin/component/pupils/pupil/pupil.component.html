@@ -9,10 +9,6 @@
 <mat-dialog-content>
   <form [formGroup]="form">
     <div [ngClass]="{'field-connector': !(isXSmall$ | async)}">
-
-      <!--      Id-->
-      <input formControlName="id" hidden>
-
       <!--    First name-->
       <mat-form-field appearance="outline">
         <mat-label>{{'PUPIL.FORM-TITLE.FIRST-NAME' | translate}}</mat-label>
@@ -87,8 +83,8 @@
     <!--    School class-->
     <mat-form-field appearance="outline">
       <mat-label>{{'PUPIL.FORM-TITLE.SCHOOL-CLASS' | translate}}</mat-label>
-      <mat-select formControlName="schoolClass" required>
-        <mat-option *ngFor="let schoolClass of schoolClasses" [value]="schoolClass.id">
+      <mat-select [compareWith]="compareById" formControlName="schoolClass" required>
+        <mat-option *ngFor="let schoolClass of schoolClasses" [value]="schoolClass">
           {{schoolClass.number}}-{{schoolClass.initial}}
           ({{schoolClass.classTeacher.firstName}} {{schoolClass.classTeacher.secondName}})
         </mat-option>

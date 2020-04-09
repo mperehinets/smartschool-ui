@@ -20,7 +20,7 @@
         <ng-container matColumnDef="actions">
           <th *matHeaderCellDef mat-header-cell>
             <button (click)="onCreate()"
-                    mat-raised-button
+                    mat-stroked-button
                     matTooltip="{{'TEACHERS.TOOL-TIP.CREATE' | translate}}">
               <mat-icon>add</mat-icon>
             </button>
@@ -37,7 +37,7 @@
             <button (click)="onEditSubjects(teacher)"
                     [disabled]="teacher.id === currentUser.id"
                     mat-button
-                    color="success"
+                    color="primary"
                     mat-icon-button
                     matTooltip="{{'TEACHERS.TOOL-TIP.SUBJECT' | translate}}">
               <mat-icon>class</mat-icon>

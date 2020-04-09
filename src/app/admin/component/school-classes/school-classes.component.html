@@ -1,25 +1,25 @@
-<mat-tab-group (selectedTabChange)="tabChanged($event)" animationDuration="150ms" mat-align-tabs="center">
+<mat-tab-group (selectedTabChange)="tabChanged($event)" mat-align-tabs="center">
   <mat-tab *ngFor="let classNumber of classNumbers" [label]="('SCHOOL-CLASSES.CLASS' | translate) + ' #' + classNumber">
-    <ng-template matTabContent>
-      <div class="classes">
-        <ng-container *ngIf="findByClassNumber(classNumber)?.length; else noClasses">
-          <mat-card *ngFor="let schoolClass of findByClassNumber(classNumber)">
 
-            <mat-card-header>
-              <mat-card-title>{{schoolClass.number}}-{{schoolClass.initial}}</mat-card-title>
-              <mat-card-subtitle>{{'SCHOOL-CLASSES.PUPILS' | translate}}
-                : {{schoolClass.pupilsCount}}</mat-card-subtitle>
-            </mat-card-header>
+    <div class="classes">
+      <ng-container *ngIf="findByClassNumber(classNumber)?.length; else noClasses">
+        <mat-card *ngFor="let schoolClass of findByClassNumber(classNumber)">
 
-            <mat-card-content>
-              <img [src]="this.avatarService.getUrlByAvatarName(schoolClass.classTeacher.avatarName)" alt="">
-              <div>
-                {{schoolClass.classTeacher.firstName}} {{schoolClass.classTeacher.secondName}}
-                <mat-card-subtitle>{{'SCHOOL-CLASSES.CLASS-TEACHER' | translate}}</mat-card-subtitle>
-              </div>
-            </mat-card-content>
+          <mat-card-header>
+            <mat-card-title>{{schoolClass.number}}-{{schoolClass.initial}}</mat-card-title>
+            <mat-card-subtitle>{{'SCHOOL-CLASSES.PUPILS' | translate}}
+              : {{schoolClass.pupilsCount}}</mat-card-subtitle>
+          </mat-card-header>
 
-            <mat-card-actions>
+          <mat-card-content>
+            <img [src]="this.avatarService.getUrlByAvatarName(schoolClass.classTeacher.avatarName)" alt="">
+            <div>
+              {{schoolClass.classTeacher.firstName}} {{schoolClass.classTeacher.secondName}}
+              <mat-card-subtitle>{{'SCHOOL-CLASSES.CLASS-TEACHER' | translate}}</mat-card-subtitle>
+            </div>
+          </mat-card-content>
+
+          <mat-card-actions>
               <button (click)="onEdit(schoolClass)"
                       color="accent"
                       mat-button
@@ -40,7 +40,7 @@
           </mat-card>
         </ng-container>
       </div>
-    </ng-template>
+
   </mat-tab>
 </mat-tab-group>
 <button (click)="onCreate()"

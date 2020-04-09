@@ -20,7 +20,7 @@
         <ng-container matColumnDef="actions">
           <th *matHeaderCellDef mat-header-cell>
             <button (click)="onCreate()"
-                    mat-raised-button
+                    mat-stroked-button
                     matTooltip="{{'USERS.TOOL-TIP.CREATE' | translate}}">
               <mat-icon>add</mat-icon>
             </button>
@@ -36,7 +36,7 @@
             </button>
             <button (click)="onResetPassword(user)"
                     [disabled]="user.id === currentUser.id"
-                    color="success"
+                    color="primary"
                     mat-button
                     mat-icon-button
                     matTooltip="{{'USERS.TOOL-TIP.RESET-PASSWORD' | translate}}">

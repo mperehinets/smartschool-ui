@@ -39,26 +39,6 @@ export class SubjectsComponent implements OnInit {
     });
   }
 
-  customFilterPredicateForSubjects() {
-    return (data: Subject, filter: string): boolean => {
-      let rowData = '';
-      this.displayedColumns.forEach(column => {
-        if (column === 'name' || column === 'status') {
-          rowData = `${rowData + data[column]} `;
-        }
-      });
-      rowData = rowData.trim().toLowerCase();
-      let result = true;
-      filter.split('+').forEach(key => {
-        if (!rowData.includes(key)) {
-          result = false;
-          return;
-        }
-      });
-      return result;
-    };
-  }
-
   applyFilter() {
     this.dataSource.filter = this.searchKey.trim().toLowerCase();
   }
@@ -89,7 +69,6 @@ export class SubjectsComponent implements OnInit {
           this.dataSource._updateChangeSubscription();
         }
       });
-
   }
 
   onCreate() {

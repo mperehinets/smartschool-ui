@@ -1,16 +1,27 @@
 {
   "UNKNOWN-ERROR": "Something went wrong :(",
   "SEARCH": "Search",
+
   "GLOBAL-TOOLTIP": {
     "MULTI-FILTER": "You can use multi-filter. Ex: value1+value2"
   },
+
+  "WEEK-DAY": {
+    "MONDAY": "Monday",
+    "TUESDAY": "Tuesday",
+    "WEDNESDAY": "Wednesday",
+    "THURSDAY": "Thursday",
+    "FRIDAY": "Friday"
+  },
+
   "MENU-ITEM": {
     "HOME": "Home",
     "USERS": "Users",
     "PUPILS": "Pupils",
     "TEACHERS": "Teachers",
     "CLASSES": "Classes",
-    "SUBJECTS": "Subjects"
+    "SUBJECTS": "Subjects",
+    "TEMPLATE-SCHEDULES": "Templates of schedule"
   },
 
   "NAV-BAR": {
@@ -252,5 +263,34 @@
     },
     "SUCCESSFULLY-CREATED": "Pupil successfully created",
     "SUCCESSFULLY-EDITED": "Pupil successfully edited"
+  },
+
+  "TEMPLATES-SCHEDULE": {
+    "CLASS": "Class",
+    "TABLE-HEADER": {
+      "ACTION": "Action",
+      "LESSON-NUMBER": "Lesson number",
+      "SUBJECT": "Subject"
+    },
+    "TOOL-TIP": {
+      "CREATE": "Create lesson",
+      "EDIT": "Edit lesson",
+      "DELETE": "Delete lesson",
+      "REORDER": "Reorder lessons",
+      "REORDER-CONFIRM": "Click here to save changes"
+    },
+    "SUCCESSFULLY-DELETED": "Lesson successfully deleted",
+    "SUCCESSFULLY-REORDERED": "Ordering of lessons successfully changed",
+    "REORDERING-MODE": "You have switched to schedule reordering mode"
+  },
+
+  "TEMPLATE-SCHEDULE": {
+    "TITLE-CREATE": "Create lesson #",
+    "TITLE-EDIT": "Edit lesson #",
+    "FORM-TITLE": {
+      "SUBJECT": "Subject"
+    },
+    "SUCCESSFULLY-CREATED": "Lesson successfully created",
+    "SUCCESSFULLY-EDITED": "Lesson successfully edited"
   }
 }

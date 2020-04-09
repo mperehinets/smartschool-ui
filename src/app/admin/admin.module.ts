@@ -13,12 +13,15 @@ import {SchoolClassesComponent} from './component/school-classes/school-classes.
 import {SchoolClassComponent} from './component/school-classes/school-class/school-class.component';
 import {PupilsComponent} from './component/pupils/pupils.component';
 import {PupilComponent} from './component/pupils/pupil/pupil.component';
+import {TemplatesScheduleComponent} from './component/templates-schedule/templates-schedule.component';
+import {TemplateScheduleComponent} from './component/templates-schedule/template-schedule/template-schedule.component';
 
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {TranslateModule} from '@ngx-translate/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 const routes: Routes = [
   {
@@ -43,6 +46,9 @@ const routes: Routes = [
       },
       {
         path: 'pupils', component: PupilsComponent
+      },
+      {
+        path: 'templates-schedule', component: TemplatesScheduleComponent
       }
     ]
   },
@@ -64,7 +70,9 @@ const routes: Routes = [
     SchoolClassesComponent,
     SchoolClassComponent,
     PupilsComponent,
-    PupilComponent
+    PupilComponent,
+    TemplatesScheduleComponent,
+    TemplateScheduleComponent
   ],
   imports: [
     CommonModule,
@@ -72,7 +80,8 @@ const routes: Routes = [
     TranslateModule,
     ReactiveFormsModule,
     AppMaterialModule,
-    FormsModule
+    FormsModule,
+    DragDropModule
   ]
 })
 export class AdminModule {
