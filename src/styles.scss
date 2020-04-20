@@ -28,7 +28,7 @@ mat-toolbar {
   margin: 0 auto;
 }
 
-mat-toolbar {
+mat-toolbar, .border-bottom {
   border-bottom: .0625rem solid #e0e0e0;
 }
 
@@ -97,7 +97,6 @@ mat-card {
   }
 }
 
-
 .data-container {
   width: 90%;
   margin: 20px auto;
@@ -117,3 +116,27 @@ mat-card {
   }
 }
 
+mat-card:focus {
+  outline: none;
+}
+
+.draggable {
+  cursor: move;
+}
+
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.cdk-drop-list-dragging .mat-row:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}

@@ -37,7 +37,6 @@ export class TemplatesScheduleComponent implements OnInit {
   }
 
   initializeDataSource() {
-    console.log(this.currentClassNumber);
     this.templateScheduleService.findByClassNumber(this.currentClassNumber).subscribe(res => {
       this.dataSource = res;
       this.initializeCurrentLessons();
@@ -46,7 +45,6 @@ export class TemplatesScheduleComponent implements OnInit {
 
   initializeCurrentLessons() {
     this.currentLessons = new MatTableDataSource(this.dataSource.filter(item => item.dayOfWeek === this.currentDayOfWeek));
-    console.log(this.dataSource.filter(item => item.dayOfWeek === this.currentDayOfWeek));
     for (let i = 1; i <= 10; i++) {
       if (!this.currentLessons.data.find(item => item.lessonNumber === i)) {
         this.currentLessons.data.push({
@@ -54,7 +52,7 @@ export class TemplatesScheduleComponent implements OnInit {
           classNumber: this.currentClassNumber,
           lessonNumber: i,
           dayOfWeek: this.currentDayOfWeek,
-          subject: null
+          teachersSubject: null
         });
       }
     }
@@ -84,7 +82,7 @@ export class TemplatesScheduleComponent implements OnInit {
   }
 
   onSubmitReorder() {
-    this.templateScheduleService.updateAll(this.currentLessons.data.filter(item => item.id !== null)).subscribe(res => {
+    this.templateScheduleService.updateAll(this.currentLessons.data.filter(item => item.id !== null)).subscribe(() => {
       this.initializeDataSource();
       this.isDrag = false;
       this.notification.showSuccessTranslateMsg('TEMPLATES-SCHEDULE.SUCCESSFULLY-REORDERED');

@@ -1,7 +1,7 @@
 <mat-toolbar class="dialog-header">
-  <h4>{{this.data.firstName}} {{this.data.secondName}}</h4>
+  <h4>{{data.firstName}} {{data.secondName}}</h4>
   <span class="space"></span>
-  <button mat-button mat-dialog-close mat-icon-button>
+  <button [mat-dialog-close]="this.countSubject" mat-button mat-dialog-close mat-icon-button>
     <mat-icon>close</mat-icon>
   </button>
 </mat-toolbar>
@@ -37,4 +37,8 @@
     </div>
   </div>
 </mat-dialog-content>
-
+<mat-dialog-actions>
+  <button [mat-dialog-close]="this.countSubject" color="primary" mat-raised-button>
+    OK
+  </button>
+</mat-dialog-actions>

@@ -20,7 +20,8 @@ export class TeachersSubjectsComponent implements OnInit {
   displayedColumns: string[] = ['name', 'status'];
   dataSource: MatTableDataSource<Subject>;
   @ViewChild(MatSort) sort: MatSort;
-  teachersSubject: Subject[];
+  teachersSubjects: Subject[];
+  countSubject: number;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: Teacher,
               private teachersSubjectService: TeachersSubjectService,
@@ -34,23 +35,30 @@ export class TeachersSubjectsComponent implements OnInit {
       this.dataSource.sort = this.sort;
     });
     this.subjectService.findByTeacherId(this.data.id).subscribe(res => {
-      this.teachersSubject = res;
+      this.teachersSubjects = res;
+      this.countSubject = res.length;
     });
   }
 
   hasSubject(subject: Subject): boolean {
-    return this.teachersSubject?.some(item => item.id === subject.id);
+    return this.teachersSubjects?.some(item => item.id === subject.id);
   }
 
   onChange(e, subject: Subject) {
     if (e.checked) {
       this.teachersSubjectService.create({teacher: this.data, subject}).subscribe(
-        () => this.notification.showSuccessTranslateMsg('TEACHERS-SUBJECTS.MESSAGE.GOT-SUBJECT'),
+        () => {
+          this.notification.showSuccessTranslateMsg('TEACHERS-SUBJECTS.MESSAGE.GOT-SUBJECT');
+          this.countSubject++;
+        },
         () => e.source.checked = !e.checked
       );
     } else {
       this.teachersSubjectService.delete(this.data.id, subject.id).subscribe(
-        () => this.notification.showSuccessTranslateMsg('TEACHERS-SUBJECTS.MESSAGE.LOST-SUBJECT'),
+        () => {
+          this.notification.showSuccessTranslateMsg('TEACHERS-SUBJECTS.MESSAGE.LOST-SUBJECT');
+          this.countSubject--;
+        },
         () => e.source.checked = !e.checked
       );
     }

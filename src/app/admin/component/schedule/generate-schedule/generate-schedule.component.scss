@@ -1,0 +1,48 @@
+@import "src/styles.scss";
+
+mat-card {
+  margin: 1% auto;
+  padding: 20px;
+  width: 40%;
+
+  @media (max-width: $break-Small) {
+    width: 60%;
+  }
+
+  @media (max-width: $break-XSmall) {
+    width: 80%;
+
+    mat-card-header .mat-card-title {
+      font-size: 16px;
+    }
+  }
+
+  mat-card-content {
+    margin-top: 20px;
+
+    mat-form-field {
+      display: block;
+    }
+  }
+
+  mat-card-actions {
+    text-align: end;
+    padding-top: 0;
+  }
+}
+
+.schedule-card {
+  width: 85%;
+
+  mat-table {
+    min-width: $break-Small;
+  }
+
+  .cancel-btn {
+    margin-left: 8px;
+  }
+}
+
+mat-tab-group {
+  min-height: 500px;
+}

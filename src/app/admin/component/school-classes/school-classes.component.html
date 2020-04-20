@@ -7,8 +7,7 @@
 
           <mat-card-header>
             <mat-card-title>{{schoolClass.number}}-{{schoolClass.initial}}</mat-card-title>
-            <mat-card-subtitle>{{'SCHOOL-CLASSES.PUPILS' | translate}}
-              : {{schoolClass.pupilsCount}}</mat-card-subtitle>
+            <mat-card-subtitle>{{'SCHOOL-CLASSES.PUPILS' | translate}}: {{schoolClass.pupilsCount}}</mat-card-subtitle>
           </mat-card-header>
 
           <mat-card-content>
@@ -20,22 +19,34 @@
           </mat-card-content>
 
           <mat-card-actions>
-              <button (click)="onEdit(schoolClass)"
-                      color="accent"
-                      mat-button
-                      mat-icon-button
-                      matTooltip="{{'SCHOOL-CLASSES.TOOL-TIP.EDIT' | translate}}">
-                <mat-icon>edit</mat-icon>
+            <button (click)="onEdit(schoolClass)"
+                    color="accent"
+                    mat-button
+                    mat-icon-button
+                    matTooltip="{{'SCHOOL-CLASSES.TOOL-TIP.EDIT' | translate}}">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button (click)="onDelete(schoolClass)"
+                    [disabled]="schoolClass.pupilsCount !== 0"
+                    color="warn"
+                    mat-button
+                    mat-icon-button
+                    matTooltip="{{'SCHOOL-CLASSES.TOOL-TIP.DELETE' | translate}}">
+              <mat-icon>delete</mat-icon>
+            </button>
+            <button [matMenuTriggerFor]="scheduleAction"
+                    color="primary"
+                    mat-button
+                    mat-icon-button>
+              <mat-icon>event</mat-icon>
+            </button>
+            <mat-menu #scheduleAction="matMenu">
+              <button (click)="onGenerateSchedule(schoolClass)" mat-menu-item>
+                {{'SCHOOL-CLASSES.GENERATE' | translate}}
               </button>
-              <button (click)="onDelete(schoolClass)"
-                      [disabled]="schoolClass.pupilsCount !== 0"
-                      color="warn"
-                      mat-button
-                      mat-icon-button
-                      matTooltip="{{'SCHOOL-CLASSES.TOOL-TIP.DELETE' | translate}}">
-                <mat-icon>delete</mat-icon>
-              </button>
-            </mat-card-actions>
+              <button mat-menu-item>{{'SCHOOL-CLASSES.REVIEW' | translate}}</button>
+            </mat-menu>
+          </mat-card-actions>
 
           </mat-card>
         </ng-container>

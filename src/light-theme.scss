@@ -1,4 +1,5 @@
 @import '~@angular/material/theming';
+@import '~saturn-datepicker/theming';
 
 @include mat-core();
 
@@ -14,6 +15,8 @@ $app-table-row-hover-color: mat-palette($mat-blue, 50);
 $light-app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
 
 @include angular-material-theme($light-app-theme);
+
+@include sat-datepicker-theme($light-app-theme);
 
 .mat-success {
   color: mat-color($app-green) !important;

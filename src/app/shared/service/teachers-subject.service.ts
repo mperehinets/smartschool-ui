@@ -21,4 +21,8 @@ export class TeachersSubjectService {
   delete(teacherId: number, subjectId: number): Observable<TeachersSubject> {
     return this.http.delete<TeachersSubject>(`/teachers-subjects/${teacherId}/delete-subject/${subjectId}`);
   }
+
+  findByTeacherIdAndSubjectId(teacherId: number, subjectId: number): Observable<TeachersSubject> {
+    return this.http.get<TeachersSubject>(`/teachers-subjects/by-teacher-and-subject/${teacherId}/${subjectId}`);
+  }
 }

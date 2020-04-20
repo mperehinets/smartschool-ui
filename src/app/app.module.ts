@@ -18,6 +18,8 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {ToastrModule} from 'ngx-toastr';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MAT_DIALOG_DEFAULT_OPTIONS, MatDialogConfig} from '@angular/material/dialog';
+import {MAT_DATE_LOCALE} from 'saturn-datepicker';
+
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -59,8 +61,14 @@ export function HttpLoaderFactory(http: HttpClient) {
     {provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true},
     {
       provide: MAT_DIALOG_DEFAULT_OPTIONS,
-      useValue: {...new MatDialogConfig(), maxWidth: '100vm', maxHeight: '100vm', panelClass: 'responsive-dialog'} as MatDialogConfig
-    }
+      useValue: {
+        ...new MatDialogConfig(),
+        maxWidth: '100vm',
+        maxHeight: '100vm',
+        panelClass: 'responsive-dialog'
+      } as MatDialogConfig
+    },
+    {provide: MAT_DATE_LOCALE, useValue: localStorage.getItem('lang')},
   ],
   bootstrap: [AppComponent]
 })

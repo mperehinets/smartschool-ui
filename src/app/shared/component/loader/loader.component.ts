@@ -16,7 +16,7 @@ export class LoaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.isLoading = this.loaderService.isLoading.pipe(
+    this.isLoading = this.loaderService.isLoading$.pipe(
       delay(0)
     );
   }

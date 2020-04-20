@@ -28,8 +28,4 @@
     cursor: pointer;
     @include mat-elevation(10);
   }
-
-  mat-card:focus {
-    outline: none;
-  }
 }

@@ -21,7 +21,8 @@
     "TEACHERS": "Teachers",
     "CLASSES": "Classes",
     "SUBJECTS": "Subjects",
-    "TEMPLATE-SCHEDULES": "Templates of schedule"
+    "TEMPLATE-SCHEDULES": "Templates of schedule",
+    "SCHEDULE": "Schedule"
   },
 
   "NAV-BAR": {
@@ -58,7 +59,10 @@
     "SUBJECT-NAME-PATTERN": "Invalid name of subject",
     "EDUCATION-PATTERN": "Education is invalid",
     "CLASS-TEACHER-REQUIRED": "Class teacher is required",
-    "SCHOOL-CLASS-REQUIRED": "School class is required"
+    "SCHOOL-CLASS-REQUIRED": "School class is required",
+    "SUBJECT-REQUIRED": "Subject is required",
+    "DATE-RANGE-REQUIRED": "Date range is required",
+    "TEACHER-REQUIRED": "Teacher is required"
   },
 
   "LOGIN": {
@@ -166,6 +170,7 @@
       "SECOND-NAME": "Second name",
       "EDUCATION": "Education",
       "EMAIL": "Email",
+      "SUBJECTS-COUNT": "Count of subjects",
       "DATE-BIRTH": "Date birth",
       "STATUS": "Status"
     },
@@ -215,9 +220,14 @@
     "TOOL-TIP": {
       "CREATE": "Create class",
       "EDIT": "Edit class",
-      "DELETE": "Delete class"
+      "DELETE": "Delete class",
+      "SCHEDULE": "Schedule"
     },
-    "SUCCESSFULLY-DELETED": "Class successfully deleted"
+    "GENERATE-SCHEDULE": "Generate schedule",
+    "UPDATE-SCHEDULE": "Update schedule",
+    "SUCCESSFULLY-DELETED": "Class successfully deleted",
+    "GENERATE": "Generate schedule",
+    "REVIEW": "Review schedule"
   },
 
   "SCHOOL-CLASS": {
@@ -270,7 +280,8 @@
     "TABLE-HEADER": {
       "ACTION": "Action",
       "LESSON-NUMBER": "Lesson number",
-      "SUBJECT": "Subject"
+      "SUBJECT": "Subject",
+      "TEACHER": "Teacher"
     },
     "TOOL-TIP": {
       "CREATE": "Create lesson",
@@ -292,5 +303,36 @@
     },
     "SUCCESSFULLY-CREATED": "Lesson successfully created",
     "SUCCESSFULLY-EDITED": "Lesson successfully edited"
+  },
+
+  "SCHEDULE": {
+    "GENERATE": "Generate schedule",
+    "STEP-1": "Specify generation range",
+    "STEP-2": "Choose teachers",
+    "STEP-3": "Edit schedule",
+    "STEP-4": "Confirm",
+    "FIELD-TITLE": {
+      "DATE-RANGE": "Date range"
+    },
+    "TABLE-HEADER": {
+      "ACTION": "Action",
+      "LESSON-NUMBER": "Lesson number",
+      "SUBJECT": "Subject",
+      "TEACHER": "Teacher"
+    },
+    "TITLE-CREATE": "Create lesson #",
+    "TITLE-EDIT": "Edit lesson #",
+    "FORM-TITLE": {
+      "SUBJECT": "Subject",
+      "TEACHER": "Teacher"
+    },
+    "TOOL-TIP": {
+      "CREATE": "Create lesson",
+      "EDIT": "Edit lesson",
+      "DELETE": "Delete lesson",
+      "REORDER": "Reorder lessons",
+      "REORDER-CONFIRM": "Click here to save changes"
+    },
+    "SUCCESSFULLY-GENERATED": "Schedule successfully generated"
   }
 }

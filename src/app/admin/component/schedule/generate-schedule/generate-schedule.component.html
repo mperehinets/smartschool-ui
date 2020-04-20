@@ -1,0 +1,218 @@
+<mat-toolbar class="dialog-header">
+  <h4>{{'SCHEDULE.GENERATE' | translate}} ({{currentSchoolClass.number}}-{{currentSchoolClass.initial}})</h4>
+  <span class="space"></span>
+  <button mat-button mat-dialog-close mat-icon-button>
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-toolbar>
+
+<mat-horizontal-stepper (selectionChange)="onSelectStep($event)" linear>
+
+  // Step 1
+  <mat-step [stepControl]="dateRangeForm">
+    <ng-template matStepLabel>{{'SCHEDULE.STEP-1' | translate}}</ng-template>
+    <mat-card class="mat-elevation-z8">
+      <mat-card-header class="border-bottom">
+        <mat-card-title>{{'SCHEDULE.STEP-1' | translate}}
+        </mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content>
+        <form [formGroup]="dateRangeForm">
+          <mat-form-field appearance="outline">
+            <mat-label>{{'SCHEDULE.FIELD-TITLE.DATE-RANGE' | translate}}</mat-label>
+            <input
+              [matDatepickerFilter]="dateFilter"
+              [max]="maxDate"
+              [min]="minDate"
+              [satDatepicker]="picker"
+              formControlName="dateRange"
+              matInput
+              required>
+            <sat-datepicker #picker [rangeMode]="true"></sat-datepicker>
+            <sat-datepicker-toggle [for]="picker" matSuffix></sat-datepicker-toggle>
+            <mat-error
+              *ngIf="dateRangeForm.controls['dateRange'].errors?.required">
+              {{'MODEL-ERROR.DATE-RANGE-REQUIRED' | translate}}
+            </mat-error>
+          </mat-form-field>
+        </form>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <button color="primary"
+                mat-button
+                mat-icon-button
+                matStepperNext>
+          <mat-icon>arrow_forward</mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </mat-step>
+
+  // Step 2
+  <mat-step [stepControl]="teachersSubjectForm">
+    <ng-template matStepLabel>{{'SCHEDULE.STEP-2' | translate}}</ng-template>
+    <mat-card class="mat-elevation-z8">
+      <mat-card-header class="border-bottom">
+        <mat-card-title>{{'SCHEDULE.STEP-2' | translate}}</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content>
+        <form [formGroup]="teachersSubjectForm">
+          <mat-form-field *ngFor="let subject of subjects" appearance="outline">
+            <mat-label>{{subject.name}}</mat-label>
+            <mat-select [formControlName]="subject.id" required>
+              <mat-option *ngFor="let teacher of subject.teachers" [value]="teacher">
+                {{teacher.firstName}} {{teacher.secondName}} ({{teacher.email}})
+              </mat-option>
+            </mat-select>
+            <mat-error
+              *ngIf="teachersSubjectForm.controls[subject.id].errors?.required">
+              {{'MODEL-ERROR.TEACHER-REQUIRED' | translate}}
+            </mat-error>
+          </mat-form-field>
+        </form>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <button color="warn"
+                mat-button
+                mat-icon-button
+                matStepperPrevious>
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+        <button color="primary"
+                mat-button
+                mat-icon-button
+                matStepperNext>
+          <mat-icon>arrow_forward</mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </mat-step>
+
+  // Step 3
+  <mat-step>
+    <ng-template matStepLabel>{{'SCHEDULE.STEP-3' | translate}}</ng-template>
+    <mat-card class="mat-elevation-z8 schedule-card">
+      <mat-card-header>
+        <mat-card-title>{{'SCHEDULE.STEP-3' | translate}}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-tab-group (selectedTabChange)="tabDayChanged($event)" mat-align-tabs="center">
+          <mat-tab *ngFor="let day of daysOfWeek" [disabled]="isDrag" [label]="('WEEK-DAY.' + day | translate)">
+            <mat-table (cdkDropListDropped)="drop($event)"
+                       [dataSource]="currentLessons"
+                       cdkDropList>
+
+              <!--  Action column-->
+              <ng-container matColumnDef="actions">
+                <mat-header-cell *matHeaderCellDef>
+                  <button (click)="onReorder()" *ngIf="!isDrag"
+                          mat-stroked-button
+                          matTooltip="{{'SCHEDULE.TOOL-TIP.REORDER' | translate}}">
+                    <mat-icon>reorder</mat-icon>
+                  </button>
+                  <ng-container *ngIf="isDrag" class="qw">
+                    <button (click)="onSubmitReorder()"
+                            color="primary"
+                            mat-stroked-button>
+                      {{'BTN.SUBMIT' | translate}}
+                    </button>
+                    <button (click)="onCancelReorder()"
+                            class="cancel-btn"
+                            color="warn"
+                            mat-stroked-button>{{'BTN.CANCEL' | translate}}</button>
+                  </ng-container>
+                </mat-header-cell>
+                <mat-cell *matCellDef="let templateSchedule">
+                  <ng-container *ngIf="templateSchedule.teachersSubject !== null">
+                    <button (click)="onEdit(templateSchedule)"
+                            [disabled]="isDrag"
+                            color="accent"
+                            mat-button
+                            mat-icon-button
+                            matTooltip="{{'SCHEDULE.TOOL-TIP.EDIT' | translate}}">
+                      <mat-icon>edit</mat-icon>
+                    </button>
+                    <button (click)="onDelete(templateSchedule)"
+                            [disabled]="isDrag"
+                            color="warn"
+                            mat-button
+                            mat-icon-button
+                            matTooltip="{{'SCHEDULE.TOOL-TIP.DELETE' | translate}}">
+                      <mat-icon>delete</mat-icon>
+                    </button>
+                  </ng-container>
+                  <button (click)="onEdit(templateSchedule)"
+                          *ngIf="templateSchedule.teachersSubject === null"
+                          [disabled]="isDrag"
+                          color="primary"
+                          mat-button
+                          mat-icon-button
+                          matTooltip="{{'SCHEDULE.TOOL-TIP.CREATE' | translate}}">
+                    <mat-icon>add</mat-icon>
+                  </button>
+                </mat-cell>
+              </ng-container>
+
+              <!-- Lesson number column-->
+              <ng-container matColumnDef="lessonNumber">
+                <mat-header-cell *matHeaderCellDef>
+                  {{'SCHEDULE.TABLE-HEADER.LESSON-NUMBER' | translate}}
+                </mat-header-cell>
+                <mat-cell *matCellDef="let templateSchedule">{{templateSchedule.lessonNumber}}</mat-cell>
+              </ng-container>
+
+              <!-- Subject column-->
+              <ng-container matColumnDef="subject">
+                <mat-header-cell *matHeaderCellDef>
+                  {{'SCHEDULE.TABLE-HEADER.SUBJECT' | translate}}
+                </mat-header-cell>
+                <mat-cell *matCellDef="let templateSchedule">
+                  {{templateSchedule.teachersSubject?.subject.name}}
+                </mat-cell>
+              </ng-container>
+
+              <!-- Teacher column-->
+              <ng-container matColumnDef="teacher">
+                <mat-header-cell *matHeaderCellDef>
+                  {{'SCHEDULE.TABLE-HEADER.TEACHER' | translate}}
+                </mat-header-cell>
+                <mat-cell *matCellDef="let templateSchedule">
+                  {{templateSchedule.teachersSubject?.teacher?.firstName}}
+                  {{templateSchedule.teachersSubject?.teacher?.secondName}}
+                </mat-cell>
+              </ng-container>
+
+              <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+              <mat-row *matRowDef="let templateSchedule; columns: displayedColumns;"
+                       [cdkDragData]="templateSchedule"
+                       [cdkDragDisabled]="!isDrag || templateSchedule.teachersSubject === null"
+                       [ngClass]="{'draggable': isDrag && templateSchedule.teachersSubject !== null}"
+                       cdkDrag>
+              </mat-row>
+            </mat-table>
+          </mat-tab>
+        </mat-tab-group>
+      </mat-card-content>
+      <mat-card-actions>
+        <button color="warn"
+                mat-button
+                mat-icon-button
+                matStepperPrevious>
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+        <button (click)="onGenerate()"
+                color="primary"
+                mat-button
+                mat-icon-button>
+          <mat-icon>done</mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </mat-step>
+</mat-horizontal-stepper>
+
+

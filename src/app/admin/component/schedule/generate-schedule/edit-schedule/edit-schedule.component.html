@@ -1,0 +1,53 @@
+<mat-toolbar class="dialog-header">
+  <h4 *ngIf="!data.teachersSubject">{{'SCHEDULE.TITLE-CREATE' | translate}}{{data.lessonNumber}}</h4>
+  <h4 *ngIf="data.teachersSubject">{{'SCHEDULE.TITLE-EDIT' | translate}}{{data.lessonNumber}}</h4>
+  <span class="space"></span>
+  <button mat-button mat-dialog-close mat-icon-button>
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-toolbar>
+<mat-dialog-content>
+
+  <form [formGroup]="form">
+    <!--  Subject-->
+    <mat-form-field appearance="outline">
+      <mat-label>{{'SCHEDULE.FORM-TITLE.SUBJECT' | translate}}</mat-label>
+      <mat-select (selectionChange)="onChangeSubject()"
+                  [compareWith]="compareById"
+                  formControlName="subject"
+                  required>
+        <mat-option *ngFor="let subject of subjects" [value]="subject">
+          {{subject.name}}
+        </mat-option>
+      </mat-select>
+      <mat-error
+        *ngIf="form.controls['subject'].errors?.required">
+        {{'MODEL-ERROR.SUBJECT-REQUIRED' | translate}}
+      </mat-error>
+    </mat-form-field>
+
+    <!--  Teacher-->
+    <mat-form-field appearance="outline">
+      <mat-label>{{'SCHEDULE.FORM-TITLE.TEACHER' | translate}}</mat-label>
+      <mat-select [compareWith]="compareById" formControlName="teacher" required>
+        <mat-option *ngFor="let teacher of teachers" [value]="teacher">
+          {{teacher.firstName}} {{teacher.secondName}}
+        </mat-option>
+      </mat-select>
+      <mat-error
+        *ngIf="form.controls['teacher'].errors?.required">
+        {{'MODEL-ERROR.TEACHER-REQUIRED' | translate}}
+      </mat-error>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button (click)="onSubmit()"
+          [disabled]="form.invalid"
+          color="primary"
+          mat-raised-button
+          type="submit">
+    {{'BTN.SUBMIT' | translate}}
+  </button>
+  <button color="warn" mat-dialog-close mat-raised-button>{{'BTN.CANCEL' | translate}}</button>
+</mat-dialog-actions>

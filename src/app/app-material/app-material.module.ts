@@ -18,6 +18,10 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatBadgeModule} from '@angular/material/badge';
+import {MatStepperModule} from '@angular/material/stepper';
+import {SatDatepickerModule, SatNativeDateModule} from 'saturn-datepicker';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 
 @NgModule({
@@ -42,7 +46,12 @@ import {MatTabsModule} from '@angular/material/tabs';
     MatTooltipModule,
     MatProgressBarModule,
     MatTabsModule,
-    MatListModule
+    MatBadgeModule,
+    MatListModule,
+    MatStepperModule,
+    SatDatepickerModule,
+    SatNativeDateModule,
+    MatGridListModule
   ]
 })
 export class AppMaterialModule {

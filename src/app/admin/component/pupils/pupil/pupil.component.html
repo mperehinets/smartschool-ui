@@ -63,8 +63,8 @@
           *ngIf="form.controls['dateBirth'].errors?.required">
           {{'MODEL-ERROR.DATE-BIRTH-REQUIRED' | translate}}
         </mat-error>
-        <mat-datepicker-toggle [for]="dateBirthPicker" matSuffix></mat-datepicker-toggle>
-        <mat-datepicker #dateBirthPicker></mat-datepicker>
+        <sat-datepicker-toggle [for]="dateBirthPicker" matSuffix></sat-datepicker-toggle>
+        <sat-datepicker #dateBirthPicker></sat-datepicker>
       </mat-form-field>
 
       <!--    Avatar-->

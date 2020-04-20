@@ -4,7 +4,7 @@
            [label]="('TEMPLATES-SCHEDULE.CLASS' | translate) + ' #' + classNumber">
     <ng-template matTabContent>
 
-      <mat-tab-group (selectedTabChange)="tabDayChanged($event)" mat-align-tabs="center">
+      <mat-tab-group (selectedTabChange)="tabDayChanged($event)" color="accent" mat-align-tabs="center">
         <mat-tab *ngFor="let day of daysOfWeek" [disabled]="isDrag" [label]="('WEEK-DAY.' + day | translate)">
 
           <div class="data-container">
@@ -79,15 +79,15 @@
                       {{'TEMPLATES-SCHEDULE.TABLE-HEADER.SUBJECT' | translate}}
                     </mat-header-cell>
                     <mat-cell *matCellDef="let templateSchedule">
-                      {{templateSchedule.subject?.name}}
+                      {{templateSchedule.teachersSubject?.subject.name}}
                     </mat-cell>
                   </ng-container>
 
                   <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
                   <mat-row *matRowDef="let templateSchedule; columns: displayedColumns;"
                            [cdkDragData]="templateSchedule"
-                           [cdkDragDisabled]="!isDrag || templateSchedule.subject === null"
-                           [ngClass]="{'draggable': isDrag && templateSchedule.subject !== null}"
+                           [cdkDragDisabled]="!isDrag || templateSchedule.teachersSubject?.subject === null"
+                           [ngClass]="{'draggable': isDrag && templateSchedule.teachersSubject?.subject !== null}"
                            cdkDrag>
                   </mat-row>
                 </mat-table>

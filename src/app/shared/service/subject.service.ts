@@ -33,6 +33,10 @@ export class SubjectService {
     return this.http.get<Subject[]>(`/subjects/by-teacher/${teacherId}`);
   }
 
+  findByClassNumber(classNumber: number): Observable<Subject[]> {
+    return this.http.get<Subject[]>(`/subjects/by-class-number/${classNumber}`);
+  }
+
   changeStatusById(body: { id: number, newStatus: ModelStatus }): Observable<void> {
     return this.http.put<void>(`/subjects/change-status/${body.id}`, body);
   }

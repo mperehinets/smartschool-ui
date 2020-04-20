@@ -21,7 +21,8 @@
     "TEACHERS": "Вчителі",
     "CLASSES": "Класи",
     "SUBJECTS": "Предмети",
-    "TEMPLATE-SCHEDULES": "Шаблони розкладу"
+    "TEMPLATE-SCHEDULES": "Шаблони розкладу",
+    "SCHEDULE": "Розклад"
   },
 
   "NAV-BAR": {
@@ -58,7 +59,10 @@
     "SUBJECT-NAME-PATTERN": "Не коректна назва предмету",
     "EDUCATION-PATTERN": "Освіту введено не коректно",
     "CLASS-TEACHER-REQUIRED": "Класний керівник є обов'язковим",
-    "SCHOOL-CLASS-REQUIRED": "Клас є обов'язковим"
+    "SCHOOL-CLASS-REQUIRED": "Клас є обов'язковим",
+    "SUBJECT-REQUIRED": "Предмет є обов'язковим",
+    "DATE-RANGE-REQUIRED": "Проміжок дати є обов'язковим",
+    "TEACHER-REQUIRED": "Вчитель є обов'язковим"
   },
 
   "LOGIN": {
@@ -167,6 +171,7 @@
       "SECOND-NAME": "Прізвище",
       "EDUCATION": "Освіта",
       "EMAIL": "Email",
+      "SUBJECTS-COUNT": "Кількість предметів",
       "DATE-BIRTH": "Дата народження",
       "STATUS": "Статус"
     },
@@ -216,9 +221,14 @@
     "TOOL-TIP": {
       "CREATE": "Створити клас",
       "EDIT": "Редагувати клас",
-      "DELETE": "Видалити клас"
+      "DELETE": "Видалити клас",
+      "SCHEDULE": "Розклад"
     },
-    "SUCCESSFULLY-DELETED": "Клас успішно видалений"
+    "GENERATE-SCHEDULE": "Згенерувати розклад",
+    "UPDATE-SCHEDULE": "Оновити розклад",
+    "SUCCESSFULLY-DELETED": "Клас успішно видалений",
+    "GENERATE": "Згенерувати розклад",
+    "REVIEW": "Переглянути розклад"
   },
 
   "SCHOOL-CLASS": {
@@ -271,7 +281,8 @@
     "TABLE-HEADER": {
       "ACTION": "Дія",
       "LESSON-NUMBER": "Номер уроку",
-      "SUBJECT": "Предмет"
+      "SUBJECT": "Предмет",
+      "TEACHER": "Викладач"
     },
     "TOOL-TIP": {
       "CREATE": "Створити урок",
@@ -293,5 +304,36 @@
     },
     "SUCCESSFULLY-CREATED": "Урок успішно створено",
     "SUCCESSFULLY-EDITED": "Урок успішно оновлено"
+  },
+
+  "SCHEDULE": {
+    "GENERATE": "Генерування розкладу",
+    "STEP-1": "Вкажіть проміжок генерації",
+    "STEP-2": "Виберіть вчителів",
+    "STEP-3": "Відредагуйте розклад",
+    "STEP-4": "Підтвердіть",
+    "FIELD-TITLE": {
+      "DATE-RANGE": "Проміжок дати"
+    },
+    "TABLE-HEADER": {
+      "ACTION": "Дія",
+      "LESSON-NUMBER": "Номер уроку",
+      "SUBJECT": "Предмет",
+      "TEACHER": "Викладач"
+    },
+    "TITLE-CREATE": "Створення уроку #",
+    "TITLE-EDIT": "Реадгування уроку #",
+    "FORM-TITLE": {
+      "SUBJECT": "Предмет",
+      "TEACHER": "Викладач"
+    },
+    "TOOL-TIP": {
+      "CREATE": "Створити урок",
+      "EDIT": "Редагувати урок",
+      "DELETE": "Видалити урок",
+      "REORDER": "Переупорядкувати уроки",
+      "REORDER-CONFIRM": "Натисніть тут щоб зберегти зміни"
+    },
+    "SUCCESSFULLY-GENERATED": "Розклад успішно згенеровано"
   }
 }

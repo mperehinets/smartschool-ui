@@ -24,6 +24,10 @@ export class TeacherService {
     return this.http.get<Teacher[]>('/teachers');
   }
 
+  findBySubjectId(subjectId: number): Observable<Teacher[]> {
+    return this.http.get<Teacher[]>(`/teachers/by-subject/${subjectId}`);
+  }
+
   getCount(): Observable<number> {
     return this.http.get<number>(`/teachers/count`);
   }

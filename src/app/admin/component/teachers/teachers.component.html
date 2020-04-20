@@ -72,6 +72,13 @@
           </td>
         </ng-container>
 
+        <!--  Subjects count column-->
+        <ng-container matColumnDef="subjectsCount">
+          <th *matHeaderCellDef mat-header-cell
+              mat-sort-header>{{'TEACHERS.TABLE-HEADER.SUBJECTS-COUNT' | translate}}</th>
+          <td *matCellDef="let teacher" mat-cell>{{teacher.subjectsCount}}</td>
+        </ng-container>
+
         <!--  Date birth column-->
         <ng-container matColumnDef="dateBirth">
           <th *matHeaderCellDef mat-header-cell mat-sort-header>{{'TEACHERS.TABLE-HEADER.DATE-BIRTH' | translate}}</th>

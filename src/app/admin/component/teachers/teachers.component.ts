@@ -24,7 +24,7 @@ export class TeachersComponent implements OnInit {
 
   modelStatus = ModelStatus;
   currentUser: UserPrinciple;
-  displayedColumns: string[] = ['actions', 'firstName', 'secondName', 'email', 'education', 'dateBirth', 'status'];
+  displayedColumns: string[] = ['actions', 'firstName', 'secondName', 'email', 'education', 'subjectsCount', 'dateBirth', 'status'];
   dataSource: MatTableDataSource<Teacher>;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -74,6 +74,7 @@ export class TeachersComponent implements OnInit {
     dialogRef.afterClosed().subscribe(
       res => {
         if (res) {
+          res.subjectsCount = teacher.subjectsCount;
           const foundIndex = this.dataSource.data.findIndex(item => item.id === res.id);
           this.dataSource.data[foundIndex] = res;
           this.dataSource._updateChangeSubscription();
@@ -86,6 +87,7 @@ export class TeachersComponent implements OnInit {
     dialogRef.afterClosed().subscribe(
       res => {
         if (res) {
+          res.subjectsCount = 0;
           this.dataSource.data.push(res);
           this.dataSource._updateChangeSubscription();
         }
@@ -93,8 +95,12 @@ export class TeachersComponent implements OnInit {
   }
 
   onEditSubjects(teacher: Teacher) {
-    this.dialog.open(TeachersSubjectsComponent, {
-      data: teacher
+    const dialogRef = this.dialog.open(TeachersSubjectsComponent, {
+      data: teacher,
+      disableClose: true
+    });
+    dialogRef.afterClosed().subscribe(res => {
+      teacher.subjectsCount = res;
     });
   }
 }

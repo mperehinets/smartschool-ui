@@ -69,7 +69,6 @@ export class SchoolClassComponent implements OnInit {
     } else {
       this.schoolClassService.update(this.form.value).subscribe(
         res => {
-          res.pupilsCount = (this.data as SchoolClass).pupilsCount;
           this.dialogRef.close(res);
           this.form.reset();
           this.notification.showSuccessTranslateMsg('SCHOOL-CLASS.SUCCESSFULLY-EDITED');

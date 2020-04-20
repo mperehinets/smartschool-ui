@@ -15,6 +15,7 @@ import {PupilsComponent} from './component/pupils/pupils.component';
 import {PupilComponent} from './component/pupils/pupil/pupil.component';
 import {TemplatesScheduleComponent} from './component/templates-schedule/templates-schedule.component';
 import {TemplateScheduleComponent} from './component/templates-schedule/template-schedule/template-schedule.component';
+import {GenerateScheduleComponent} from './component/schedule/generate-schedule/generate-schedule.component';
 
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
@@ -22,6 +23,8 @@ import {RouterModule, Routes} from '@angular/router';
 import {TranslateModule} from '@ngx-translate/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {DragDropModule} from '@angular/cdk/drag-drop';
+import {EditScheduleComponent} from './component/schedule/generate-schedule/edit-schedule/edit-schedule.component';
+
 
 const routes: Routes = [
   {
@@ -49,10 +52,9 @@ const routes: Routes = [
       },
       {
         path: 'templates-schedule', component: TemplatesScheduleComponent
-      }
+      },
     ]
-  },
-
+  }
 ];
 
 @NgModule({
@@ -72,7 +74,9 @@ const routes: Routes = [
     PupilsComponent,
     PupilComponent,
     TemplatesScheduleComponent,
-    TemplateScheduleComponent
+    TemplateScheduleComponent,
+    GenerateScheduleComponent,
+    EditScheduleComponent,
   ],
   imports: [
     CommonModule,
@@ -81,7 +85,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     AppMaterialModule,
     FormsModule,
-    DragDropModule
+    DragDropModule,
   ]
 })
 export class AdminModule {

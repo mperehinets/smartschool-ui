@@ -25,10 +25,6 @@ export class TemplateScheduleComponent implements OnInit {
               private dialogRef: MatDialogRef<TemplateScheduleComponent>,
               private notification: NotificationService) {
     this.form = new FormGroup({
-      id: new FormControl(''),
-      classNumber: new FormControl(''),
-      lessonNumber: new FormControl(''),
-      dayOfWeek: new FormControl(''),
       subject: new FormControl('')
     });
   }
@@ -42,11 +38,7 @@ export class TemplateScheduleComponent implements OnInit {
 
   populateForm() {
     this.form.patchValue({
-      id: this.data.id,
-      classNumber: this.data.classNumber,
-      lessonNumber: this.data.lessonNumber,
-      dayOfWeek: this.data.dayOfWeek,
-      subject: this.data.subject
+      subject: this.data.teachersSubject?.subject
     });
   }
 
@@ -55,8 +47,9 @@ export class TemplateScheduleComponent implements OnInit {
   }
 
   onSubmit() {
+    this.data.teachersSubject.subject = this.form.value.subject;
     if (!this.data.id) {
-      this.templateScheduleService.create(this.form.value).subscribe(
+      this.templateScheduleService.create(this.data).subscribe(
         res => {
           this.dialogRef.close(res);
           this.form.reset();
@@ -64,7 +57,7 @@ export class TemplateScheduleComponent implements OnInit {
         }
       );
     } else {
-      this.templateScheduleService.update(this.form.value).subscribe(
+      this.templateScheduleService.update(this.data).subscribe(
         res => {
           this.dialogRef.close(res);
           this.form.reset();

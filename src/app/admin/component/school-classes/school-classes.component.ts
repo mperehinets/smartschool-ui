@@ -7,6 +7,7 @@ import {AvatarService} from '../../../shared/service/avatar.service';
 import {Component, OnInit} from '@angular/core';
 import {MatTabChangeEvent} from '@angular/material/tabs';
 import {MatDialog} from '@angular/material/dialog';
+import {GenerateScheduleComponent} from '../schedule/generate-schedule/generate-schedule.component';
 
 @Component({
   selector: 'app-school-classes',
@@ -59,6 +60,7 @@ export class SchoolClassesComponent implements OnInit {
     dialogRef.afterClosed().subscribe(
       res => {
         if (res) {
+          res.pupilsCount = schoolClass.pupilsCount;
           const foundIndex = this.classes.findIndex(item => item.id === res.id);
           this.classes[foundIndex] = res;
         }
@@ -69,6 +71,17 @@ export class SchoolClassesComponent implements OnInit {
     this.schoolClassService.deleteById(schoolClass.id).subscribe(() => {
       this.classes = this.classes.filter(item => item.id !== schoolClass.id);
       this.notification.showSuccessTranslateMsg('SCHOOL-CLASSES.SUCCESSFULLY-DELETED');
+    });
+  }
+
+  onGenerateSchedule(schoolClass: SchoolClass) {
+    this.dialog.open(GenerateScheduleComponent, {
+      maxWidth: '100vm',
+      maxHeight: '100vm',
+      width: '100%',
+      height: '100%',
+      panelClass: '',
+      data: schoolClass
     });
   }
 }
