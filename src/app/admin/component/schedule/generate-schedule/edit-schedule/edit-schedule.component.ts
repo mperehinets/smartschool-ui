@@ -1,14 +1,14 @@
 import {TeachersSubjectService} from '../../../../../shared/service/teachers-subject.service';
-
-import {Component, Inject, OnInit} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {Subject} from '../../../../../shared/model/Subject';
 import {Teacher} from '../../../../../shared/model/Teacher';
 import {TemplateSchedule} from '../../../../../shared/model/TemplateSchedule';
 import {SubjectService} from '../../../../../shared/service/subject.service';
 import {BaseModel} from '../../../../../shared/model/BaseModel';
 import {TeacherService} from '../../../../../shared/service/teacher.service';
+
+import {Component, Inject, OnInit} from '@angular/core';
+import {FormControl, FormGroup} from '@angular/forms';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-edit-schedule',

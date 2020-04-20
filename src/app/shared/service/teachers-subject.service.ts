@@ -25,4 +25,8 @@ export class TeachersSubjectService {
   findByTeacherIdAndSubjectId(teacherId: number, subjectId: number): Observable<TeachersSubject> {
     return this.http.get<TeachersSubject>(`/teachers-subjects/by-teacher-and-subject/${teacherId}/${subjectId}`);
   }
+
+  countByTeacherId(teacherId: number): Observable<number> {
+    return this.http.get<number>(`/teachers-subjects/count-by-teacher/${teacherId}`);
+  }
 }

@@ -21,7 +21,6 @@ export class TeachersSubjectsComponent implements OnInit {
   dataSource: MatTableDataSource<Subject>;
   @ViewChild(MatSort) sort: MatSort;
   teachersSubjects: Subject[];
-  countSubject: number;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: Teacher,
               private teachersSubjectService: TeachersSubjectService,
@@ -36,7 +35,6 @@ export class TeachersSubjectsComponent implements OnInit {
     });
     this.subjectService.findByTeacherId(this.data.id).subscribe(res => {
       this.teachersSubjects = res;
-      this.countSubject = res.length;
     });
   }
 
@@ -49,7 +47,6 @@ export class TeachersSubjectsComponent implements OnInit {
       this.teachersSubjectService.create({teacher: this.data, subject}).subscribe(
         () => {
           this.notification.showSuccessTranslateMsg('TEACHERS-SUBJECTS.MESSAGE.GOT-SUBJECT');
-          this.countSubject++;
         },
         () => e.source.checked = !e.checked
       );
@@ -57,7 +54,6 @@ export class TeachersSubjectsComponent implements OnInit {
       this.teachersSubjectService.delete(this.data.id, subject.id).subscribe(
         () => {
           this.notification.showSuccessTranslateMsg('TEACHERS-SUBJECTS.MESSAGE.LOST-SUBJECT');
-          this.countSubject--;
         },
         () => e.source.checked = !e.checked
       );

@@ -6,6 +6,7 @@ import {TeacherComponent} from './teacher/teacher.component';
 import {TeacherService} from '../../../shared/service/teacher.service';
 import {NotificationService} from '../../../shared/service/notification.service';
 import {AuthService} from '../../../shared/service/auth.service';
+import {customFilter} from '../../../shared/filter-predicat';
 
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
@@ -13,7 +14,7 @@ import {MatSort} from '@angular/material/sort';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatDialog} from '@angular/material/dialog';
 import {TeachersSubjectsComponent} from './teachers-subjects/teachers-subjects.component';
-import {customFilter} from '../../../shared/filter-predicat';
+import {TeachersSubjectService} from '../../../shared/service/teachers-subject.service';
 
 @Component({
   selector: 'app-teachers',
@@ -34,6 +35,7 @@ export class TeachersComponent implements OnInit {
               private userService: UserService,
               private notification: NotificationService,
               private authService: AuthService,
+              private teachersSubjectService: TeachersSubjectService,
               private dialog: MatDialog) {
   }
 
@@ -96,11 +98,12 @@ export class TeachersComponent implements OnInit {
 
   onEditSubjects(teacher: Teacher) {
     const dialogRef = this.dialog.open(TeachersSubjectsComponent, {
-      data: teacher,
-      disableClose: true
+      data: teacher
     });
-    dialogRef.afterClosed().subscribe(res => {
-      teacher.subjectsCount = res;
+    dialogRef.afterClosed().subscribe(() => {
+      this.teachersSubjectService.countByTeacherId(teacher.id).subscribe(res => {
+        teacher.subjectsCount = res;
+      });
     });
   }
 }

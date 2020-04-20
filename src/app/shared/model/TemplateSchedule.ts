@@ -7,4 +7,5 @@ export interface TemplateSchedule extends BaseModel {
   dayOfWeek: string;
   lessonNumber: number;
   teachersSubject: TeachersSubject;
+  isValid?: boolean;
 }

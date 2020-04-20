@@ -154,7 +154,10 @@ export class GenerateScheduleComponent implements OnInit {
     const prevIndex = this.currentLessons.data
       .findIndex(item => item.dayOfWeek === event.item.data.dayOfWeek && item.lessonNumber === event.item.data.lessonNumber);
     moveItemInArray(this.currentLessons.data, prevIndex, event.currentIndex);
-    this.currentLessons.data.forEach((item, i) => item.lessonNumber = i + 1);
+    this.currentLessons.data.forEach((item, i) => {
+      item.lessonNumber = i + 1;
+      item.isValid = true;
+    });
     this.currentLessons._updateChangeSubscription();
   }
 
@@ -166,6 +169,7 @@ export class GenerateScheduleComponent implements OnInit {
     dialogRef.afterClosed().subscribe(
       res => {
         if (res) {
+          res.isValid = true;
           if (templateSchedule.teachersSubject) {
             const foundIndex = this.result
               .findIndex(item => item.dayOfWeek === res.dayOfWeek && item.lessonNumber === res.lessonNumber);
@@ -190,10 +194,20 @@ export class GenerateScheduleComponent implements OnInit {
       endDate: new Date(moment(this.dateRange.endDate).format('YYYY-MM-DD')),
       schoolClass: this.currentSchoolClass,
       templatesSchedule: this.result
-    }).subscribe(() => {
-      this.notification.showSuccessTranslateMsg('SCHEDULE.SUCCESSFULLY-GENERATED');
-      this.dialogRef.close();
-    });
+    }).subscribe(
+      () => {
+        this.notification.showSuccessTranslateMsg('SCHEDULE.SUCCESSFULLY-GENERATED');
+        this.dialogRef.close();
+      },
+      error => {
+        this.result.forEach(template => {
+          if ((error.error.payload as Array<TemplateSchedule>)
+            .find(invalidTemplate => invalidTemplate.dayOfWeek === template.dayOfWeek
+              && invalidTemplate.lessonNumber === template.lessonNumber)) {
+            template.isValid = false;
+          }
+        });
+      });
   }
 }
 
