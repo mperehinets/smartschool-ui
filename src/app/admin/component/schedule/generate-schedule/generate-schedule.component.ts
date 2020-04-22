@@ -9,6 +9,7 @@ import {NotificationService} from '../../../../shared/service/notification.servi
 import {EditScheduleComponent} from './edit-schedule/edit-schedule.component';
 import {TeachersSubjectService} from '../../../../shared/service/teachers-subject.service';
 import {ScheduleService} from '../../../../shared/service/schedule.service';
+import {ScheduleGeneratorService} from '../../../../shared/service/schedule-generator.service';
 
 import {Component, Inject, OnInit, ViewChild} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
@@ -20,7 +21,6 @@ import {SatDatepicker} from 'saturn-datepicker';
 import {Observable} from 'rxjs';
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {map, shareReplay} from 'rxjs/operators';
-import * as moment from 'moment';
 
 @Component({
   selector: 'app-generate-schedule',
@@ -62,9 +62,16 @@ export class GenerateScheduleComponent implements OnInit {
               private scheduleService: ScheduleService,
               private breakpointObserver: BreakpointObserver,
               private teachersSubjectService: TeachersSubjectService,
+              private scheduleGeneratorService: ScheduleGeneratorService,
               private dialogRef: MatDialogRef<GenerateScheduleComponent>) {
-    this.scheduleService.findMinGenerationDateByClassId(this.currentSchoolClass.id).subscribe(res => {
-      this.minDate = new Date(res);
+    this.scheduleService.findLastByClassId(this.currentSchoolClass.id).subscribe(res => {
+      const currentDate = new Date();
+      if (res == null || res.date < currentDate) {
+        this.minDate = currentDate;
+      } else {
+        this.minDate = new Date(res.date);
+        this.minDate.setDate(this.minDate.getDate() + 1);
+      }
       this.minDate.setDate(this.minDate.getDate());
       this.maxDate = new Date(this.minDate.getFullYear() + 1, this.minDate.getMonth(), this.minDate.getDate());
     });
@@ -91,13 +98,7 @@ export class GenerateScheduleComponent implements OnInit {
     if (e.selectedIndex === 1) {
       this.initializeTeachersSubjectForm();
     } else if (e.selectedIndex === 2) {
-      this.result.forEach(schedule => {
-        this.teachersSubjectService.findByTeacherIdAndSubjectId(
-          this.teachersSubjectForm.controls[schedule.teachersSubject.subject.id].value.id,
-          schedule.teachersSubject.subject.id).subscribe(res => {
-          schedule.teachersSubject = res;
-        });
-      });
+      this.initializeResult();
       this.initializeCurrentLessons();
     }
   }
@@ -112,6 +113,21 @@ export class GenerateScheduleComponent implements OnInit {
         this.teachersSubjectForm.addControl(`${subject.id}`, new FormControl(''));
       }
     }
+  }
+
+  initializeResult() {
+    this.result.forEach(template => {
+      this.teachersSubjectService.findByTeacherIdAndSubjectId(
+        this.teachersSubjectForm.controls[template.teachersSubject.subject.id].value.id, template.teachersSubject.subject.id).subscribe(
+        teachersSubject => {
+          template.teachersSubject = teachersSubject;
+
+          this.scheduleGeneratorService.canTeacherHolLesson(template, this.dateRange.beginDate, this.dateRange.endDate).subscribe(
+            isValid => template.isValid = isValid
+          );
+
+        });
+    });
   }
 
   initializeCurrentLessons() {
@@ -141,6 +157,24 @@ export class GenerateScheduleComponent implements OnInit {
     this.notification.showInfoTranslateMsg('TEMPLATES-SCHEDULE.REORDERING-MODE');
   }
 
+  drop(event: CdkDragDrop<TemplateSchedule[]>) {
+    const prevIndex = this.currentLessons.data
+      .findIndex(item => item.dayOfWeek === event.item.data.dayOfWeek && item.lessonNumber === event.item.data.lessonNumber);
+    moveItemInArray(this.currentLessons.data, prevIndex, event.currentIndex);
+    this.currentLessons.data.forEach((template, i) => {
+      const newLessonNumber = i + 1;
+      if (template.lessonNumber !== newLessonNumber) {
+        template.lessonNumber = newLessonNumber;
+        if (template.teachersSubject) {
+          this.scheduleGeneratorService.canTeacherHolLesson(template, this.dateRange.beginDate, this.dateRange.endDate).subscribe(
+            isValid => template.isValid = isValid
+          );
+        }
+      }
+    });
+    this.currentLessons._updateChangeSubscription();
+  }
+
   onCancelReorder() {
     this.isDrag = false;
     this.currentLessons.data = this.savedLessons;
@@ -150,32 +184,23 @@ export class GenerateScheduleComponent implements OnInit {
     this.isDrag = false;
   }
 
-  drop(event: CdkDragDrop<TemplateSchedule[]>) {
-    const prevIndex = this.currentLessons.data
-      .findIndex(item => item.dayOfWeek === event.item.data.dayOfWeek && item.lessonNumber === event.item.data.lessonNumber);
-    moveItemInArray(this.currentLessons.data, prevIndex, event.currentIndex);
-    this.currentLessons.data.forEach((item, i) => {
-      item.lessonNumber = i + 1;
-      item.isValid = true;
-    });
-    this.currentLessons._updateChangeSubscription();
-  }
-
   onEdit(templateSchedule: TemplateSchedule) {
     const dialogRef = this.dialog.open(EditScheduleComponent,
       {
         data: JSON.parse(JSON.stringify(templateSchedule))
       });
     dialogRef.afterClosed().subscribe(
-      res => {
-        if (res) {
-          res.isValid = true;
+      template => {
+        if (template) {
+          this.scheduleGeneratorService.canTeacherHolLesson(template, this.dateRange.beginDate, this.dateRange.endDate).subscribe(
+            isValid => template.isValid = isValid
+          );
           if (templateSchedule.teachersSubject) {
             const foundIndex = this.result
-              .findIndex(item => item.dayOfWeek === res.dayOfWeek && item.lessonNumber === res.lessonNumber);
-            this.result[foundIndex] = res;
+              .findIndex(item => item.dayOfWeek === template.dayOfWeek && item.lessonNumber === template.lessonNumber);
+            this.result[foundIndex] = template;
           } else {
-            this.result.push(res);
+            this.result.push(template);
           }
           this.initializeCurrentLessons();
         }
@@ -189,25 +214,15 @@ export class GenerateScheduleComponent implements OnInit {
   }
 
   onGenerate() {
-    this.scheduleService.generateSchedule({
-      startDate: new Date(moment(this.dateRange.beginDate).format('YYYY-MM-DD')),
-      endDate: new Date(moment(this.dateRange.endDate).format('YYYY-MM-DD')),
+    this.scheduleGeneratorService.generateSchedule({
+      startDate: this.dateRange.beginDate,
+      endDate: this.dateRange.endDate,
       schoolClass: this.currentSchoolClass,
       templatesSchedule: this.result
-    }).subscribe(
-      () => {
-        this.notification.showSuccessTranslateMsg('SCHEDULE.SUCCESSFULLY-GENERATED');
-        this.dialogRef.close();
-      },
-      error => {
-        this.result.forEach(template => {
-          if ((error.error.payload as Array<TemplateSchedule>)
-            .find(invalidTemplate => invalidTemplate.dayOfWeek === template.dayOfWeek
-              && invalidTemplate.lessonNumber === template.lessonNumber)) {
-            template.isValid = false;
-          }
-        });
-      });
+    }).subscribe(() => {
+      this.notification.showSuccessTranslateMsg('SCHEDULE.SUCCESSFULLY-GENERATED');
+      this.dialogRef.close(this.dateRange.endDate);
+    });
   }
 }
 

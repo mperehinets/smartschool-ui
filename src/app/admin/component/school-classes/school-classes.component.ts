@@ -3,11 +3,12 @@ import {NotificationService} from '../../../shared/service/notification.service'
 import {SchoolClassService} from '../../../shared/service/school-class.service';
 import {SchoolClass} from '../../../shared/model/SchoolClass';
 import {AvatarService} from '../../../shared/service/avatar.service';
+import {GenerateScheduleComponent} from '../schedule/generate-schedule/generate-schedule.component';
 
 import {Component, OnInit} from '@angular/core';
 import {MatTabChangeEvent} from '@angular/material/tabs';
 import {MatDialog} from '@angular/material/dialog';
-import {GenerateScheduleComponent} from '../schedule/generate-schedule/generate-schedule.component';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-school-classes',
@@ -38,6 +39,10 @@ export class SchoolClassesComponent implements OnInit {
 
   tabChanged(e: MatTabChangeEvent) {
     this.currentClassNumber = e.index + 1;
+  }
+
+  countByClassNumber(classNumber: number): number {
+    return this.classes?.filter(item => item.number === classNumber).length;
   }
 
   onCreate() {
@@ -75,7 +80,7 @@ export class SchoolClassesComponent implements OnInit {
   }
 
   onGenerateSchedule(schoolClass: SchoolClass) {
-    this.dialog.open(GenerateScheduleComponent, {
+    const dialogRef = this.dialog.open(GenerateScheduleComponent, {
       maxWidth: '100vm',
       maxHeight: '100vm',
       width: '100%',
@@ -83,5 +88,11 @@ export class SchoolClassesComponent implements OnInit {
       panelClass: '',
       data: schoolClass
     });
+    dialogRef.afterClosed().subscribe(
+      res => {
+        if (res) {
+          schoolClass.lastScheduleDate = moment(res).format('YYYY-MM-DD');
+        }
+      });
   }
 }

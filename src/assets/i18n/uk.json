@@ -228,7 +228,8 @@
     "UPDATE-SCHEDULE": "Оновити розклад",
     "SUCCESSFULLY-DELETED": "Клас успішно видалений",
     "GENERATE": "Згенерувати розклад",
-    "REVIEW": "Переглянути розклад"
+    "REVIEW": "Переглянути розклад",
+    "GENERATED-BEFORE": "Розклад згенеровано до"
   },
 
   "SCHOOL-CLASS": {

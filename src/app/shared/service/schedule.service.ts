@@ -1,5 +1,4 @@
-import {SchoolClass} from '../model/SchoolClass';
-import {TemplateSchedule} from '../model/TemplateSchedule';
+import {Schedule} from '../model/Schedule';
 
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
@@ -13,16 +12,7 @@ export class ScheduleService {
   constructor(private http: HttpClient) {
   }
 
-  generateSchedule(generateSchedule: {
-    startDate: Date,
-    endDate: Date,
-    schoolClass: SchoolClass,
-    templatesSchedule: TemplateSchedule[]
-  }): Observable<void> {
-    return this.http.post<void>('/schedules/generate-schedule', generateSchedule);
-  }
-
-  findMinGenerationDateByClassId(classId: number): Observable<Date> {
-    return this.http.get<Date>(`/schedules/min-generation-date-by-class/${classId}`);
+  findLastByClassId(classId: number): Observable<Schedule> {
+    return this.http.get<Schedule>(`/schedules/last-by-class/${classId}`);
   }
 }

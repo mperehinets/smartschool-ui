@@ -6,4 +6,5 @@ export interface SchoolClass extends BaseModel {
   number: number;
   classTeacher: Teacher;
   pupilsCount: number;
+  lastScheduleDate: string;
 }

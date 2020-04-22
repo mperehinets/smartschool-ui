@@ -33,6 +33,18 @@
   }
 }
 
+.mat-menu-item {
+  font-size: 17px;
+
+  mat-icon {
+    color: black !important;
+  }
+}
+
+mat-toolbar mat-card-subtitle {
+  margin-bottom: 0;
+}
+
 .create-btn {
   position: fixed;
   z-index: 9999;

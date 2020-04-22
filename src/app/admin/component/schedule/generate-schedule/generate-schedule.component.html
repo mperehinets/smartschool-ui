@@ -9,7 +9,7 @@
 <mat-horizontal-stepper (selectionChange)="onSelectStep($event)" linear>
 
   // Step 1
-  <mat-step [stepControl]="dateRangeForm">
+  <mat-step [stepControl]="dateRangeForm" editable="false">
     <ng-template matStepLabel>{{'SCHEDULE.STEP-1' | translate}}</ng-template>
     <mat-card class="mat-elevation-z8">
       <mat-card-header class="border-bottom">
@@ -51,7 +51,7 @@
   </mat-step>
 
   // Step 2
-  <mat-step [stepControl]="teachersSubjectForm">
+  <mat-step [stepControl]="teachersSubjectForm" editable="false">
     <ng-template matStepLabel>{{'SCHEDULE.STEP-2' | translate}}</ng-template>
     <mat-card class="mat-elevation-z8">
       <mat-card-header class="border-bottom">
@@ -76,12 +76,6 @@
       </mat-card-content>
 
       <mat-card-actions>
-        <button color="warn"
-                mat-button
-                mat-icon-button
-                matStepperPrevious>
-          <mat-icon>arrow_back</mat-icon>
-        </button>
         <button color="primary"
                 mat-button
                 mat-icon-button
@@ -189,10 +183,11 @@
               <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
               <mat-row *matRowDef="let templateSchedule; columns: displayedColumns;"
                        [cdkDragData]="templateSchedule"
-                       [cdkDragDisabled]="!isDrag || templateSchedule.teachersSubject === null"
+                       [cdkDragDisabled]="!isDrag || !templateSchedule.teachersSubject"
                        [ngClass]="{
-                                   'draggable': isDrag && templateSchedule.teachersSubject !== null,
-                                   'invalid-template': !isDrag && templateSchedule.isValid === false
+                                   'draggable': isDrag && templateSchedule.teachersSubject,
+                                   'warn-row-mark': templateSchedule.isValid === false,
+                                   'accent-row-mark': isDrag && templateSchedule.isValid !== null && templateSchedule.isValid === true
                                   }"
                        cdkDrag>
               </mat-row>
@@ -201,13 +196,8 @@
         </mat-tab-group>
       </mat-card-content>
       <mat-card-actions>
-        <button color="warn"
-                mat-button
-                mat-icon-button
-                matStepperPrevious>
-          <mat-icon>arrow_back</mat-icon>
-        </button>
         <button (click)="onGenerate()"
+                [disabled]="isDrag"
                 color="primary"
                 mat-button
                 mat-icon-button>

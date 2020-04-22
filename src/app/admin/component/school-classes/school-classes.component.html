@@ -41,10 +41,20 @@
               <mat-icon>event</mat-icon>
             </button>
             <mat-menu #scheduleAction="matMenu">
+              <mat-toolbar>
+                <mat-card-subtitle>{{'SCHOOL-CLASSES.GENERATED-BEFORE' | translate}}:
+                  <span *ngIf="schoolClass.lastScheduleDate">{{schoolClass.lastScheduleDate}}</span>
+                  <span *ngIf="!schoolClass.lastScheduleDate">no</span>
+                </mat-card-subtitle>
+              </mat-toolbar>
               <button (click)="onGenerateSchedule(schoolClass)" mat-menu-item>
+                <mat-icon>library_add</mat-icon>
                 {{'SCHOOL-CLASSES.GENERATE' | translate}}
               </button>
-              <button mat-menu-item>{{'SCHOOL-CLASSES.REVIEW' | translate}}</button>
+              <button mat-menu-item>
+                <mat-icon>rate_review</mat-icon>
+                {{'SCHOOL-CLASSES.REVIEW' | translate}}
+              </button>
             </mat-menu>
           </mat-card-actions>
 
@@ -55,6 +65,7 @@
   </mat-tab>
 </mat-tab-group>
 <button (click)="onCreate()"
+        [disabled]="countByClassNumber(currentClassNumber) === 6"
         color="primary"
         class="create-btn"
         mat-raised-button

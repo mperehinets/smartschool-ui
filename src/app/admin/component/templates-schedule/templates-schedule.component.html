@@ -86,8 +86,8 @@
                   <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
                   <mat-row *matRowDef="let templateSchedule; columns: displayedColumns;"
                            [cdkDragData]="templateSchedule"
-                           [cdkDragDisabled]="!isDrag || templateSchedule.teachersSubject?.subject === null"
-                           [ngClass]="{'draggable': isDrag && templateSchedule.teachersSubject?.subject !== null}"
+                           [cdkDragDisabled]="!isDrag || !templateSchedule.teachersSubject?.subject"
+                           [ngClass]="{'draggable accent-row-mark': isDrag && templateSchedule.teachersSubject?.subject}"
                            cdkDrag>
                   </mat-row>
                 </mat-table>
