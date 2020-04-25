@@ -6,21 +6,22 @@ import {SubjectService} from '../../../../shared/service/subject.service';
 import {Subject} from '../../../../shared/model/Subject';
 import {TeacherService} from '../../../../shared/service/teacher.service';
 import {NotificationService} from '../../../../shared/service/notification.service';
-import {EditScheduleComponent} from './edit-schedule/edit-schedule.component';
+import {EditScheduleComponent} from '../edit-schedule/edit-schedule.component';
 import {TeachersSubjectService} from '../../../../shared/service/teachers-subject.service';
 import {ScheduleService} from '../../../../shared/service/schedule.service';
 import {ScheduleGeneratorService} from '../../../../shared/service/schedule-generator.service';
 
-import {Component, Inject, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatTabChangeEvent} from '@angular/material/tabs';
 import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
-import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
+import {MatDialog} from '@angular/material/dialog';
 import {SatDatepicker} from 'saturn-datepicker';
 import {Observable} from 'rxjs';
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {map, shareReplay} from 'rxjs/operators';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-generate-schedule',
@@ -28,6 +29,8 @@ import {map, shareReplay} from 'rxjs/operators';
   styleUrls: ['./generate-schedule.component.scss'],
 })
 export class GenerateScheduleComponent implements OnInit {
+
+  currentSchoolClass: SchoolClass;
 
   isXSmall$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.XSmall)
     .pipe(
@@ -52,19 +55,19 @@ export class GenerateScheduleComponent implements OnInit {
 
   result: TemplateSchedule[];
 
-  constructor(@Inject(MAT_DIALOG_DATA) public currentSchoolClass: SchoolClass,
-              private schoolClassService: SchoolClassService,
+  constructor(private schoolClassService: SchoolClassService,
               private templateScheduleService: TemplateScheduleService,
               private subjectService: SubjectService,
               private teachersService: TeacherService,
               private notification: NotificationService,
+              private router: Router,
               private dialog: MatDialog,
               private scheduleService: ScheduleService,
               private breakpointObserver: BreakpointObserver,
               private teachersSubjectService: TeachersSubjectService,
               private scheduleGeneratorService: ScheduleGeneratorService,
-              private dialogRef: MatDialogRef<GenerateScheduleComponent>) {
-    this.scheduleService.findLastByClassId(this.currentSchoolClass.id).subscribe(res => {
+              private route: ActivatedRoute) {
+    this.scheduleService.findLastByClassId(+this.route.snapshot.paramMap.get('classId')).subscribe(res => {
       const currentDate = new Date();
       if (res == null || res.date < currentDate) {
         this.minDate = currentDate;
@@ -84,8 +87,11 @@ export class GenerateScheduleComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.templateScheduleService.findByClassNumber(this.currentSchoolClass.number).subscribe(templatesSchedule => {
-      this.result = templatesSchedule;
+    this.schoolClassService.findById(+this.route.snapshot.paramMap.get('classId')).subscribe(res => {
+      this.currentSchoolClass = res;
+      this.templateScheduleService.findByClassNumber(this.currentSchoolClass.number).subscribe(templatesSchedule => {
+        this.result = templatesSchedule;
+      });
     });
   }
 
@@ -121,11 +127,9 @@ export class GenerateScheduleComponent implements OnInit {
         this.teachersSubjectForm.controls[template.teachersSubject.subject.id].value.id, template.teachersSubject.subject.id).subscribe(
         teachersSubject => {
           template.teachersSubject = teachersSubject;
-
-          this.scheduleGeneratorService.canTeacherHolLesson(template, this.dateRange.beginDate, this.dateRange.endDate).subscribe(
+          this.scheduleGeneratorService.canTeacherHoldLesson(template, this.dateRange.beginDate, this.dateRange.endDate).subscribe(
             isValid => template.isValid = isValid
           );
-
         });
     });
   }
@@ -163,13 +167,11 @@ export class GenerateScheduleComponent implements OnInit {
     moveItemInArray(this.currentLessons.data, prevIndex, event.currentIndex);
     this.currentLessons.data.forEach((template, i) => {
       const newLessonNumber = i + 1;
-      if (template.lessonNumber !== newLessonNumber) {
+      if (template.lessonNumber !== newLessonNumber && template.teachersSubject) {
         template.lessonNumber = newLessonNumber;
-        if (template.teachersSubject) {
-          this.scheduleGeneratorService.canTeacherHolLesson(template, this.dateRange.beginDate, this.dateRange.endDate).subscribe(
-            isValid => template.isValid = isValid
-          );
-        }
+        this.scheduleGeneratorService.canTeacherHoldLesson(template, this.dateRange.beginDate, this.dateRange.endDate).subscribe(
+          isValid => template.isValid = isValid
+        );
       }
     });
     this.currentLessons._updateChangeSubscription();
@@ -192,7 +194,7 @@ export class GenerateScheduleComponent implements OnInit {
     dialogRef.afterClosed().subscribe(
       template => {
         if (template) {
-          this.scheduleGeneratorService.canTeacherHolLesson(template, this.dateRange.beginDate, this.dateRange.endDate).subscribe(
+          this.scheduleGeneratorService.canTeacherHoldLesson(template, this.dateRange.beginDate, this.dateRange.endDate).subscribe(
             isValid => template.isValid = isValid
           );
           if (templateSchedule.teachersSubject) {
@@ -221,7 +223,7 @@ export class GenerateScheduleComponent implements OnInit {
       templatesSchedule: this.result
     }).subscribe(() => {
       this.notification.showSuccessTranslateMsg('SCHEDULE.SUCCESSFULLY-GENERATED');
-      this.dialogRef.close(this.dateRange.endDate);
+      this.router.navigate(['admin/classes']);
     });
   }
 }

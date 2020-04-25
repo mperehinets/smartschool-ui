@@ -7,8 +7,11 @@ export function customFilter(displayedColumns: string[]) {
   return (data: Pupil | Teacher | Subject, filter: string): boolean => {
     let rowData = '';
     displayedColumns.forEach(column => {
-      if (column !== 'actions') {
+      if (column !== 'actions' && column !== 'schoolClass') {
         rowData = `${rowData + data[column]} `;
+      }
+      if (column === 'schoolClass') {
+        rowData = rowData + `${data[column].number}-${data[column].initial} `;
       }
     });
     rowData = rowData.trim().toLowerCase();

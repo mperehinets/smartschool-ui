@@ -22,7 +22,7 @@
     "CLASSES": "Класи",
     "SUBJECTS": "Предмети",
     "TEMPLATE-SCHEDULES": "Шаблони розкладу",
-    "SCHEDULE": "Розклад"
+    "SCHEDULES": "Розклади"
   },
 
   "NAV-BAR": {
@@ -224,8 +224,6 @@
       "DELETE": "Видалити клас",
       "SCHEDULE": "Розклад"
     },
-    "GENERATE-SCHEDULE": "Згенерувати розклад",
-    "UPDATE-SCHEDULE": "Оновити розклад",
     "SUCCESSFULLY-DELETED": "Клас успішно видалений",
     "GENERATE": "Згенерувати розклад",
     "REVIEW": "Переглянути розклад",
@@ -308,13 +306,16 @@
   },
 
   "SCHEDULE": {
+    "TITLE": "Розклад",
     "GENERATE": "Генерування розкладу",
+    "GENERATED-BEFORE": "Розклад згенеровано до",
     "STEP-1": "Вкажіть проміжок генерації",
     "STEP-2": "Виберіть вчителів",
     "STEP-3": "Відредагуйте розклад",
     "STEP-4": "Підтвердіть",
     "FIELD-TITLE": {
-      "DATE-RANGE": "Проміжок дати"
+      "DATE-RANGE": "Проміжок дати",
+      "DATE": "Дата"
     },
     "TABLE-HEADER": {
       "ACTION": "Дія",
@@ -333,8 +334,15 @@
       "EDIT": "Редагувати урок",
       "DELETE": "Видалити урок",
       "REORDER": "Переупорядкувати уроки",
-      "REORDER-CONFIRM": "Натисніть тут щоб зберегти зміни"
+      "REORDER-CONFIRM": "Натисніть тут щоб зберегти зміни",
+      "GENERATE": "Згенерувати розклад",
+      "VIEW": "Переглянути розклад"
     },
-    "SUCCESSFULLY-GENERATED": "Розклад успішно згенеровано"
+    "SUCCESSFULLY-GENERATED": "Розклад успішно згенеровано",
+    "SUCCESSFULLY-DELETED": "Урок успішно видалено",
+    "SUCCESSFULLY-CREATED": "Урок успішно створено",
+    "SUCCESSFULLY-EDITED": "Урок успішно оновлено",
+    "SUCCESSFULLY-REORDERED": "Порядок уроків успішно змінено",
+    "NO-LESSONS": "Немає уроків"
   }
 }

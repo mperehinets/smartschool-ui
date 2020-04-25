@@ -47,7 +47,7 @@ export class TemplateScheduleComponent implements OnInit {
   }
 
   onSubmit() {
-    this.data.teachersSubject.subject = this.form.value.subject;
+    this.data.teachersSubject = {subject: this.form.value.subject, id: null, teacher: null, status: null};
     if (!this.data.id) {
       this.templateScheduleService.create(this.data).subscribe(
         res => {

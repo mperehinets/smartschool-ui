@@ -1,0 +1,15 @@
+.date-navigator {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  padding-bottom: 10px;
+
+  mat-form-field {
+    width: 85%;
+    margin: 0 auto -1.25em auto;
+  }
+}
+
+.cancel-btn {
+  margin-left: 8px;
+}

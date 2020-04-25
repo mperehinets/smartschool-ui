@@ -16,6 +16,9 @@ import {PupilComponent} from './component/pupils/pupil/pupil.component';
 import {TemplatesScheduleComponent} from './component/templates-schedule/templates-schedule.component';
 import {TemplateScheduleComponent} from './component/templates-schedule/template-schedule/template-schedule.component';
 import {GenerateScheduleComponent} from './component/schedule/generate-schedule/generate-schedule.component';
+import {ViewScheduleComponent} from './component/schedule/view-schedule/view-schedule.component';
+import {EditScheduleComponent} from './component/schedule/edit-schedule/edit-schedule.component';
+
 
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
@@ -23,7 +26,6 @@ import {RouterModule, Routes} from '@angular/router';
 import {TranslateModule} from '@ngx-translate/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {DragDropModule} from '@angular/cdk/drag-drop';
-import {EditScheduleComponent} from './component/schedule/generate-schedule/edit-schedule/edit-schedule.component';
 
 
 const routes: Routes = [
@@ -53,6 +55,12 @@ const routes: Routes = [
       {
         path: 'templates-schedule', component: TemplatesScheduleComponent
       },
+      {
+        path: 'classes/generate-schedule/:classId', component: GenerateScheduleComponent
+      },
+      {
+        path: 'classes/view-schedule/:classId', component: ViewScheduleComponent
+      }
     ]
   }
 ];
@@ -77,6 +85,7 @@ const routes: Routes = [
     TemplateScheduleComponent,
     GenerateScheduleComponent,
     EditScheduleComponent,
+    ViewScheduleComponent
   ],
   imports: [
     CommonModule,

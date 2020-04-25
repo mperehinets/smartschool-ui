@@ -7,4 +7,9 @@ export interface Schedule extends BaseModel {
   lessonNumber: number;
   schoolClass: SchoolClass;
   teachersSubject: TeachersSubject;
+  isValid?: boolean;
+}
+
+export function isSchedule(arg: any) {
+  return arg.schoolClass !== undefined;
 }

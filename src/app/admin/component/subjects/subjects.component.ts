@@ -3,13 +3,13 @@ import {SubjectComponent} from './subject/subject.component';
 import {NotificationService} from '../../../shared/service/notification.service';
 import {SubjectService} from '../../../shared/service/subject.service';
 import {ModelStatus} from '../../../shared/model/ModelStatus';
+import {customFilter} from '../../../shared/filter-predicat';
 
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatSort} from '@angular/material/sort';
 import {MatPaginator} from '@angular/material/paginator';
-import {customFilter} from '../../../shared/filter-predicat';
 
 @Component({
   selector: 'app-subjects',

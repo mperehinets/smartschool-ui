@@ -47,15 +47,16 @@
                   <span *ngIf="!schoolClass.lastScheduleDate">no</span>
                 </mat-card-subtitle>
               </mat-toolbar>
-              <button (click)="onGenerateSchedule(schoolClass)" mat-menu-item>
+              <button mat-menu-item routerLink="generate-schedule/{{schoolClass.id}}">
                 <mat-icon>library_add</mat-icon>
                 {{'SCHOOL-CLASSES.GENERATE' | translate}}
               </button>
-              <button mat-menu-item>
+              <button mat-menu-item routerLink="view-schedule/{{schoolClass.id}}">
                 <mat-icon>rate_review</mat-icon>
                 {{'SCHOOL-CLASSES.REVIEW' | translate}}
               </button>
             </mat-menu>
+
           </mat-card-actions>
 
           </mat-card>

@@ -28,10 +28,6 @@ export class SubjectComponent implements OnInit {
     });
   }
 
-  isValueChange(): boolean {
-    return this.data?.name !== this.form.value.name;
-  }
-
   ngOnInit(): void {
     if (this.data) {
       this.populateForm(this.data);
@@ -54,7 +50,7 @@ export class SubjectComponent implements OnInit {
           this.notification.showSuccessTranslateMsg('SUBJECT.SUCCESSFULLY-CREATED');
         }
       );
-    } else {
+    } else if (this.data?.name !== this.form.value.name) {
       this.subjectService.update(this.form.value).subscribe(
         res => {
           this.dialogRef.close(res);
@@ -62,6 +58,8 @@ export class SubjectComponent implements OnInit {
           this.notification.showSuccessTranslateMsg('SUBJECT.SUCCESSFULLY-EDITED');
         }
       );
+    } else {
+      this.dialogRef.close();
     }
   }
 

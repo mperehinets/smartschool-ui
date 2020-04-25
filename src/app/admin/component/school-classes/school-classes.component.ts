@@ -3,12 +3,10 @@ import {NotificationService} from '../../../shared/service/notification.service'
 import {SchoolClassService} from '../../../shared/service/school-class.service';
 import {SchoolClass} from '../../../shared/model/SchoolClass';
 import {AvatarService} from '../../../shared/service/avatar.service';
-import {GenerateScheduleComponent} from '../schedule/generate-schedule/generate-schedule.component';
 
 import {Component, OnInit} from '@angular/core';
 import {MatTabChangeEvent} from '@angular/material/tabs';
 import {MatDialog} from '@angular/material/dialog';
-import * as moment from 'moment';
 
 @Component({
   selector: 'app-school-classes',
@@ -77,22 +75,5 @@ export class SchoolClassesComponent implements OnInit {
       this.classes = this.classes.filter(item => item.id !== schoolClass.id);
       this.notification.showSuccessTranslateMsg('SCHOOL-CLASSES.SUCCESSFULLY-DELETED');
     });
-  }
-
-  onGenerateSchedule(schoolClass: SchoolClass) {
-    const dialogRef = this.dialog.open(GenerateScheduleComponent, {
-      maxWidth: '100vm',
-      maxHeight: '100vm',
-      width: '100%',
-      height: '100%',
-      panelClass: '',
-      data: schoolClass
-    });
-    dialogRef.afterClosed().subscribe(
-      res => {
-        if (res) {
-          schoolClass.lastScheduleDate = moment(res).format('YYYY-MM-DD');
-        }
-      });
   }
 }

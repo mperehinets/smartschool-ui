@@ -25,7 +25,7 @@ export class ScheduleGeneratorService {
     return this.http.post<void>('/schedule-generator', generateSchedule);
   }
 
-  canTeacherHolLesson(templateSchedule: TemplateSchedule, startDate: Date, endDate: Date): Observable<boolean> {
+  canTeacherHoldLesson(templateSchedule: TemplateSchedule, startDate: Date, endDate: Date): Observable<boolean> {
     let params = new HttpParams();
     params = params.append('startDate', moment(startDate).format('YYYY-MM-DD'));
     params = params.append('endDate', moment(endDate).format('YYYY-MM-DD'));

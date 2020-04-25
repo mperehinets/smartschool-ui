@@ -30,7 +30,7 @@
 </mat-dialog-content>
 <mat-dialog-actions>
   <button (click)="onSubmit()"
-          [disabled]="form.invalid || !isValueChange()"
+          [disabled]="form.invalid"
           color="primary"
           mat-raised-button
           type="submit">

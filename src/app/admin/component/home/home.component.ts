@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
     {name: 'MENU-ITEM.TEACHERS', rout: '/admin/teachers', icon: 'teachers.png', count: 0},
     {name: 'MENU-ITEM.CLASSES', rout: '/admin/classes', icon: 'classes.png', count: 0},
     {name: 'MENU-ITEM.SUBJECTS', rout: '/admin/subjects', icon: 'subjects.png', count: 0},
-    {name: 'MENU-ITEM.TEMPLATE-SCHEDULES', rout: '/admin/templates-schedule', icon: 'schedules-templates.png', count: 0}
+    {name: 'MENU-ITEM.TEMPLATE-SCHEDULES', rout: '/admin/templates-schedule', icon: 'templates-schedule.png', count: 0}
   ];
 
   constructor(private userService: UserService,

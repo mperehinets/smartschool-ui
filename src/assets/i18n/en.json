@@ -22,7 +22,7 @@
     "CLASSES": "Classes",
     "SUBJECTS": "Subjects",
     "TEMPLATE-SCHEDULES": "Templates of schedule",
-    "SCHEDULE": "Schedule"
+    "SCHEDULES": "Schedules"
   },
 
   "NAV-BAR": {
@@ -223,8 +223,6 @@
       "DELETE": "Delete class",
       "SCHEDULE": "Schedule"
     },
-    "GENERATE-SCHEDULE": "Generate schedule",
-    "UPDATE-SCHEDULE": "Update schedule",
     "SUCCESSFULLY-DELETED": "Class successfully deleted",
     "GENERATE": "Generate schedule",
     "REVIEW": "Review schedule",
@@ -307,13 +305,14 @@
   },
 
   "SCHEDULE": {
-    "GENERATE": "Generate schedule",
+    "TITLE": "Schedule",
     "STEP-1": "Specify generation range",
     "STEP-2": "Choose teachers",
     "STEP-3": "Edit schedule",
     "STEP-4": "Confirm",
     "FIELD-TITLE": {
-      "DATE-RANGE": "Date range"
+      "DATE-RANGE": "Date range",
+      "DATE": "Date"
     },
     "TABLE-HEADER": {
       "ACTION": "Action",
@@ -332,8 +331,15 @@
       "EDIT": "Edit lesson",
       "DELETE": "Delete lesson",
       "REORDER": "Reorder lessons",
-      "REORDER-CONFIRM": "Click here to save changes"
+      "REORDER-CONFIRM": "Click here to save changes",
+      "GENERATE": "Generate schedule",
+      "VIEW": "View schedule"
     },
-    "SUCCESSFULLY-GENERATED": "Schedule successfully generated"
+    "SUCCESSFULLY-GENERATED": "Schedule successfully generated",
+    "SUCCESSFULLY-DELETED": "Lesson successfully deleted",
+    "SUCCESSFULLY-CREATED": "Lesson successfully created",
+    "SUCCESSFULLY-EDITED": "Lesson successfully edited",
+    "SUCCESSFULLY-REORDERED": "Ordering of lessons successfully changed",
+    "NO-LESSONS": "There are no lessons"
   }
 }
