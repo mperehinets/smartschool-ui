@@ -36,7 +36,6 @@
             </button>
             <button (click)="onResetPassword(user)"
                     [disabled]="user.id === currentUser.id"
-                    color="primary"
                     mat-button
                     mat-icon-button
                     matTooltip="{{'USERS.TOOL-TIP.RESET-PASSWORD' | translate}}">

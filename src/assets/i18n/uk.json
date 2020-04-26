@@ -22,7 +22,9 @@
     "CLASSES": "Класи",
     "SUBJECTS": "Предмети",
     "TEMPLATE-SCHEDULES": "Шаблони розкладу",
-    "SCHEDULES": "Розклади"
+    "SCHEDULES": "Розклади",
+    "SCHEDULE-GENERATOR": "Генератор розкладу",
+    "SCHEDULE-VIEW": "Пергляд розкладу"
   },
 
   "NAV-BAR": {

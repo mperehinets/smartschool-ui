@@ -27,40 +27,47 @@ import {TranslateModule} from '@ngx-translate/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 
-
 const routes: Routes = [
   {
     path: '', component: AdminComponent, children: [
       {
-        path: 'home', component: HomeComponent
-      },
-      {
         path: '', redirectTo: 'home', pathMatch: 'full'
       },
       {
-        path: 'users', component: UsersComponent
+        path: 'home', data: {breadcrumb: 'MENU-ITEM.HOME'}, children: [
+          {
+            path: '', component: HomeComponent, data: {breadcrumb: null}
+          },
+          {
+            path: 'users', component: UsersComponent, data: {breadcrumb: 'MENU-ITEM.USERS'}
+          },
+          {
+            path: 'teachers', component: TeachersComponent, data: {breadcrumb: 'MENU-ITEM.TEACHERS'}
+          },
+          {
+            path: 'subjects', component: SubjectsComponent, data: {breadcrumb: 'MENU-ITEM.SUBJECTS'}
+          },
+          {
+            path: 'classes', data: {breadcrumb: 'MENU-ITEM.CLASSES'}, children: [
+              {
+                path: '', component: SchoolClassesComponent, data: {breadcrumb: null}
+              },
+              {
+                path: 'generate-schedule/:classId', component: GenerateScheduleComponent, data: {breadcrumb: 'MENU-ITEM.SCHEDULE-GENERATOR'}
+              },
+              {
+                path: 'view-schedule/:classId', component: ViewScheduleComponent, data: {breadcrumb: 'MENU-ITEM.SCHEDULE-VIEW'}
+              }
+            ]
+          },
+          {
+            path: 'pupils', component: PupilsComponent, data: {breadcrumb: 'MENU-ITEM.PUPILS'}
+          },
+          {
+            path: 'templates-schedule', component: TemplatesScheduleComponent, data: {breadcrumb: 'MENU-ITEM.TEMPLATE-SCHEDULES'}
+          }
+        ]
       },
-      {
-        path: 'teachers', component: TeachersComponent
-      },
-      {
-        path: 'subjects', component: SubjectsComponent
-      },
-      {
-        path: 'classes', component: SchoolClassesComponent
-      },
-      {
-        path: 'pupils', component: PupilsComponent
-      },
-      {
-        path: 'templates-schedule', component: TemplatesScheduleComponent
-      },
-      {
-        path: 'classes/generate-schedule/:classId', component: GenerateScheduleComponent
-      },
-      {
-        path: 'classes/view-schedule/:classId', component: ViewScheduleComponent
-      }
     ]
   }
 ];

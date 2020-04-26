@@ -22,7 +22,8 @@
     "CLASSES": "Classes",
     "SUBJECTS": "Subjects",
     "TEMPLATE-SCHEDULES": "Templates of schedule",
-    "SCHEDULES": "Schedules"
+    "SCHEDULE-GENERATOR": "Schedule generator",
+    "SCHEDULE-VIEW": "Schedule view"
   },
 
   "NAV-BAR": {

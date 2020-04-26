@@ -98,8 +98,8 @@ mat-card {
 }
 
 .data-container {
-  width: 90%;
-  margin: 20px auto;
+  width: 86%;
+  margin: 10px auto;
 
   .search {
     width: 100%;
@@ -147,4 +147,8 @@ mat-card:focus {
 
 mat-footer-row mat-footer-cell {
   justify-content: center;
+}
+
+.toast-top-center {
+  top: 5px;
 }

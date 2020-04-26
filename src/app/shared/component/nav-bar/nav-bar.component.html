@@ -15,38 +15,16 @@
         <mat-icon>close</mat-icon>
       </button>
       <img
+        (click)="sidenav.toggle()"
         alt="Smartschool"
         class="logo"
+        routerLink="/admin/home"
         src="/assets/img/logo.png">
     </mat-toolbar>
     <mat-nav-list (click)="sidenav.toggle()">
-      <a mat-list-item routerLink="admin/home" routerLinkActive="active-rout">
-        <mat-icon>home</mat-icon>
-        <span>{{'MENU-ITEM.HOME' | translate}}</span>
-      </a>
-      <a mat-list-item routerLink="admin/users" routerLinkActive="active-rout">
-        <mat-icon>group</mat-icon>
-        <span>{{'MENU-ITEM.USERS' | translate}}</span>
-      </a>
-      <a mat-list-item routerLink="admin/pupils" routerLinkActive="active-rout">
-        <mat-icon>school</mat-icon>
-        <span>{{'MENU-ITEM.PUPILS' | translate}}</span>
-      </a>
-      <a mat-list-item routerLink="admin/teachers" routerLinkActive="active-rout">
-        <mat-icon>contact_mail</mat-icon>
-        <span>{{'MENU-ITEM.TEACHERS' | translate}}</span>
-      </a>
-      <a mat-list-item routerLink="admin/classes" routerLinkActive="active-rout">
-        <mat-icon>group_work</mat-icon>
-        <span>{{'MENU-ITEM.CLASSES' | translate}}</span>
-      </a>
-      <a mat-list-item routerLink="admin/subjects" routerLinkActive="active-rout">
-        <mat-icon>class</mat-icon>
-        <span>{{'MENU-ITEM.SUBJECTS' | translate}}</span>
-      </a>
-      <a mat-list-item routerLink="admin/templates-schedule" routerLinkActive="active-rout">
-        <mat-icon>calendar_today</mat-icon>
-        <span>{{'MENU-ITEM.TEMPLATE-SCHEDULES' | translate}}</span>
+      <a *ngFor="let item of adminMenuItems" [routerLink]="item.url" mat-list-item routerLinkActive="active-rout">
+        <mat-icon>{{item.icon}}</mat-icon>
+        <span>{{item.label | translate}}</span>
       </a>
     </mat-nav-list>
   </mat-sidenav>
@@ -66,7 +44,6 @@
            alt="Smartschool"
            class="logo"
            routerLink="/admin/home"
-           routerLinkActive=""
            src="/assets/img/logo.png">
 
       <span class="space"></span>

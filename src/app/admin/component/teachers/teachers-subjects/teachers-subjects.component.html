@@ -7,21 +7,17 @@
 </mat-toolbar>
 <mat-dialog-content>
   <div class="data-container">
-    <div class="mat-elevation-z8">
+    <div>
       <div class="table-container">
         <table [dataSource]="dataSource" mat-table matSort>
 
           <!-- Name column-->
           <ng-container matColumnDef="name">
-            <th *matHeaderCellDef mat-header-cell
-                mat-sort-header>{{'TEACHERS-SUBJECTS.TABLE-HEADER.SUBJECT' | translate}}</th>
             <td *matCellDef="let subject" mat-cell>{{subject.name}}</td>
           </ng-container>
 
           <!--  Status column-->
           <ng-container matColumnDef="status">
-            <th *matHeaderCellDef
-                mat-header-cell>{{'TEACHERS-SUBJECTS.TABLE-HEADER.STATUS' | translate}}</th>
             <td *matCellDef="let subject" mat-cell>
               <mat-checkbox
                 (change)="onChange($event, subject)"
@@ -30,15 +26,9 @@
             </td>
           </ng-container>
 
-          <tr *matHeaderRowDef="displayedColumns; sticky: true" mat-header-row></tr>
           <tr *matRowDef="let subject; columns: displayedColumns;" mat-row></tr>
         </table>
       </div>
     </div>
   </div>
 </mat-dialog-content>
-<mat-dialog-actions>
-  <button color="primary" mat-dialog-close mat-raised-button>
-    OK
-  </button>
-</mat-dialog-actions>

@@ -7,6 +7,7 @@ import {AppMaterialModule} from './app-material/app-material.module';
 import {UpdateAvatarComponent} from './shared/component/update-avatar/update-avatar.component';
 import {LoaderComponent} from './shared/component/loader/loader.component';
 import {LoaderInterceptor} from './shared/interceptor/LoaderInterceptor';
+import {BreadcrumbsComponent} from './shared/component/breadcrumbs/breadcrumbs.component';
 
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
@@ -30,7 +31,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppComponent,
     NavBarComponent,
     UpdateAvatarComponent,
-    LoaderComponent
+    LoaderComponent,
+    BreadcrumbsComponent
   ],
   imports: [
     BrowserModule,

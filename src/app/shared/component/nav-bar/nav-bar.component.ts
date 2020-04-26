@@ -30,6 +30,15 @@ export class NavBarComponent implements OnInit {
       shareReplay()
     );
 
+  adminMenuItems = [
+    {icon: 'group', url: 'admin/home/users', label: 'MENU-ITEM.USERS'},
+    {icon: 'school', url: 'admin/home/pupils', label: 'MENU-ITEM.PUPILS'},
+    {icon: 'contact_mail', url: 'admin/home/teachers', label: 'MENU-ITEM.TEACHERS'},
+    {icon: 'group_work', url: 'admin/home/classes', label: 'MENU-ITEM.CLASSES'},
+    {icon: 'class', url: 'admin/home/subjects', label: 'MENU-ITEM.SUBJECTS'},
+    {icon: 'calendar_today', url: 'admin/home/templates-schedule', label: 'MENU-ITEM.TEMPLATE-SCHEDULES'},
+  ];
+
   constructor(public authService: AuthService,
               private avatarService: AvatarService,
               private breakpointObserver: BreakpointObserver,
