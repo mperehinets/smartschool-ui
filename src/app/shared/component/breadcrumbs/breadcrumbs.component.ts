@@ -1,6 +1,7 @@
+import {Breadcrumb} from '../../model/Breadcrumb';
+
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
-import {Breadcrumb} from '../../model/Breadcrumb';
 import {filter} from 'rxjs/operators';
 import {TranslateService} from '@ngx-translate/core';
 

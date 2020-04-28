@@ -1,11 +1,24 @@
 {
   "UNKNOWN-ERROR": "Something went wrong :(",
   "SEARCH": "Search",
-
-  "GLOBAL-TOOLTIP": {
-    "MULTI-FILTER": "You can use multi-filter. Ex: value1+value2"
+  "CONFIRM": {
+    "YES": "Yes",
+    "NO": "No",
+    "TITLE": {
+      "DELETE-CLASS": "Delete class",
+      "MOVE-ON": "Move on to next school year"
+    },
+    "MESSAGE": {
+      "DELETE-CLASS": "Are you sure you want to delete this class?",
+      "MOVE-ON": "Are you sure you want to move on to next school year?",
+      "MOVE-ON-IGNORE-SCHEDULE": "You have unfinished lessons. You can ignore unfinished lessons and undo them. Are you sure you want to do this?"
+    }
   },
-
+  "TRANSITION-SUCCESSFULLY-COMPLETED": "Transition to next school year successfully completed",
+  "GLOBAL-TOOLTIP": {
+    "MULTI-FILTER": "You can use multi-filter. Ex: value1+value2",
+    "MOVE-ON": "Move on to next school year"
+  },
   "WEEK-DAY": {
     "MONDAY": "Monday",
     "TUESDAY": "Tuesday",

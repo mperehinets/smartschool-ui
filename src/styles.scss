@@ -70,6 +70,18 @@ mat-form-field mat-icon {
   }
 }
 
+.confirm-dialog {
+  width: 35%;
+
+  @media (max-width: $break-Small) {
+    width: 50%;
+  }
+
+  @media (max-width: $break-XSmall) {
+    width: 80%;
+  }
+}
+
 .space {
   margin: 0 auto;
 }
@@ -98,7 +110,7 @@ mat-card {
 }
 
 .data-container {
-  width: 86%;
+  width: 95%;
   margin: 10px auto;
 
   .search {
@@ -106,12 +118,12 @@ mat-card {
   }
 
   .table-container {
-    max-height: 570px;
+    max-height: 560px;
     overflow: auto;
 
     table, mat-table {
       width: 100%;
-      min-width: $break-Small;
+      min-width: 1100px;
     }
   }
 }

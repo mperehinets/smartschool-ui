@@ -34,40 +34,36 @@ const routes: Routes = [
         path: '', redirectTo: 'home', pathMatch: 'full'
       },
       {
-        path: 'home', data: {breadcrumb: 'MENU-ITEM.HOME'}, children: [
+        path: 'home', data: {breadcrumb: 'MENU-ITEM.HOME'}, component: HomeComponent
+      },
+      {
+        path: 'users', component: UsersComponent, data: {breadcrumb: 'MENU-ITEM.USERS'}
+      },
+      {
+        path: 'teachers', component: TeachersComponent, data: {breadcrumb: 'MENU-ITEM.TEACHERS'}
+      },
+      {
+        path: 'subjects', component: SubjectsComponent, data: {breadcrumb: 'MENU-ITEM.SUBJECTS'}
+      },
+      {
+        path: 'classes', data: {breadcrumb: 'MENU-ITEM.CLASSES'}, children: [
           {
-            path: '', component: HomeComponent, data: {breadcrumb: null}
+            path: '', component: SchoolClassesComponent, data: {breadcrumb: null}
           },
           {
-            path: 'users', component: UsersComponent, data: {breadcrumb: 'MENU-ITEM.USERS'}
+            path: 'generate-schedule/:classId', component: GenerateScheduleComponent, data: {breadcrumb: 'MENU-ITEM.SCHEDULE-GENERATOR'}
           },
           {
-            path: 'teachers', component: TeachersComponent, data: {breadcrumb: 'MENU-ITEM.TEACHERS'}
-          },
-          {
-            path: 'subjects', component: SubjectsComponent, data: {breadcrumb: 'MENU-ITEM.SUBJECTS'}
-          },
-          {
-            path: 'classes', data: {breadcrumb: 'MENU-ITEM.CLASSES'}, children: [
-              {
-                path: '', component: SchoolClassesComponent, data: {breadcrumb: null}
-              },
-              {
-                path: 'generate-schedule/:classId', component: GenerateScheduleComponent, data: {breadcrumb: 'MENU-ITEM.SCHEDULE-GENERATOR'}
-              },
-              {
-                path: 'view-schedule/:classId', component: ViewScheduleComponent, data: {breadcrumb: 'MENU-ITEM.SCHEDULE-VIEW'}
-              }
-            ]
-          },
-          {
-            path: 'pupils', component: PupilsComponent, data: {breadcrumb: 'MENU-ITEM.PUPILS'}
-          },
-          {
-            path: 'templates-schedule', component: TemplatesScheduleComponent, data: {breadcrumb: 'MENU-ITEM.TEMPLATE-SCHEDULES'}
+            path: 'view-schedule/:classId', component: ViewScheduleComponent, data: {breadcrumb: 'MENU-ITEM.SCHEDULE-VIEW'}
           }
         ]
       },
+      {
+        path: 'pupils', component: PupilsComponent, data: {breadcrumb: 'MENU-ITEM.PUPILS'}
+      },
+      {
+        path: 'templates-schedule', component: TemplatesScheduleComponent, data: {breadcrumb: 'MENU-ITEM.TEMPLATE-SCHEDULES'}
+      }
     ]
   }
 ];

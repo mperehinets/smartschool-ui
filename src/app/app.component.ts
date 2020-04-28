@@ -2,6 +2,8 @@ import {AppConstants} from './shared/app-constants';
 
 import {Component, OnInit} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
+import {Observable} from 'rxjs';
+import {AuthService} from './shared/service/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +12,10 @@ import {TranslateService} from '@ngx-translate/core';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private translate: TranslateService) {
+  isLoggedIn$: Observable<boolean> = this.authService.isLoginSubject;
+
+  constructor(private translate: TranslateService,
+              private authService: AuthService) {
   }
 
   ngOnInit(): void {

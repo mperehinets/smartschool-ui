@@ -1,12 +1,18 @@
 <ol class="breadcrumb border-bottom">
-  <li *ngFor="let breadcrumb of breadcrumbs; let i = index"
-      [class.active]="i===breadcrumbs.length-1"
-      class="breadcrumb-item">
-    <a *ngIf="i!==breadcrumbs.length-1" [routerLink]="breadcrumb.url">
-      {{ breadcrumb?.label | translate}}
-    </a>
-    <span *ngIf="i===breadcrumbs.length-1">{{ breadcrumb.label }}</span>
-  </li>
+  <ng-container *ngIf="breadcrumbs; else home">
+    <li *ngFor="let breadcrumb of breadcrumbs; let i = index"
+        [class.active]="i===breadcrumbs.length-1"
+        class="breadcrumb-item">
+      <a *ngIf="i!==breadcrumbs.length-1" [routerLink]="breadcrumb.url">
+        {{ breadcrumb?.label | translate}}
+      </a>
+      <span *ngIf="i===breadcrumbs.length-1">{{ breadcrumb.label }}</span>
+    </li>
+  </ng-container>
 </ol>
-
+<ng-template #home>
+  <li class="breadcrumb-item active">
+    <span>{{'MENU-ITEM.HOME' | translate}}</span>
+  </li>
+</ng-template>
 

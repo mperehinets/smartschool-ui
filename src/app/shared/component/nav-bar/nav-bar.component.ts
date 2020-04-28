@@ -3,6 +3,9 @@ import {AvatarService} from '../../service/avatar.service';
 import {AppConstants} from '../../app-constants';
 import {UpdateAvatarComponent} from '../update-avatar/update-avatar.component';
 import {User} from '../../model/User';
+import {SchoolClassService} from '../../service/school-class.service';
+import {ConfirmService} from '../../service/confirm.service';
+import {NotificationService} from '../../service/notification.service';
 
 import {Component, OnInit} from '@angular/core';
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
@@ -31,18 +34,22 @@ export class NavBarComponent implements OnInit {
     );
 
   adminMenuItems = [
-    {icon: 'group', url: 'admin/home/users', label: 'MENU-ITEM.USERS'},
-    {icon: 'school', url: 'admin/home/pupils', label: 'MENU-ITEM.PUPILS'},
-    {icon: 'contact_mail', url: 'admin/home/teachers', label: 'MENU-ITEM.TEACHERS'},
-    {icon: 'group_work', url: 'admin/home/classes', label: 'MENU-ITEM.CLASSES'},
-    {icon: 'class', url: 'admin/home/subjects', label: 'MENU-ITEM.SUBJECTS'},
-    {icon: 'calendar_today', url: 'admin/home/templates-schedule', label: 'MENU-ITEM.TEMPLATE-SCHEDULES'},
+    {icon: 'home', url: '/admin/home', label: 'MENU-ITEM.HOME'},
+    {icon: 'group', url: '/admin/users', label: 'MENU-ITEM.USERS'},
+    {icon: 'school', url: '/admin/pupils', label: 'MENU-ITEM.PUPILS'},
+    {icon: 'contact_mail', url: '/admin/teachers', label: 'MENU-ITEM.TEACHERS'},
+    {icon: 'group_work', url: '/admin/classes', label: 'MENU-ITEM.CLASSES'},
+    {icon: 'class', url: '/admin/subjects', label: 'MENU-ITEM.SUBJECTS'},
+    {icon: 'calendar_today', url: '/admin/templates-schedule', label: 'MENU-ITEM.TEMPLATE-SCHEDULES'}
   ];
 
   constructor(public authService: AuthService,
               private avatarService: AvatarService,
+              private notification: NotificationService,
+              private schoolClassService: SchoolClassService,
               private breakpointObserver: BreakpointObserver,
               private translateService: TranslateService,
+              private confirmService: ConfirmService,
               private router: Router,
               private dialog: MatDialog) {
   }
@@ -77,6 +84,27 @@ export class NavBarComponent implements OnInit {
       if (res) {
         this.currentAvatar = this.avatarService.getUrlByAvatarName(res);
         this.currentUser.avatarName = res;
+      }
+    });
+  }
+
+  onMoveOnToNextSchoolYEar() {
+    this.confirmService.confirm('CONFIRM.TITLE.MOVE-ON', 'CONFIRM.MESSAGE.MOVE-ON', true)
+      .afterClosed().subscribe(resFirstConformDialog => {
+      if (resFirstConformDialog) {
+        this.schoolClassService.moveOnToNewSchoolYear(false).subscribe(
+          () => this.notification.showSuccessTranslateMsg('TRANSITION-SUCCESSFULLY-COMPLETED'),
+          () => {
+            this.confirmService.confirm('CONFIRM.TITLE.MOVE-ON', 'CONFIRM.MESSAGE.MOVE-ON-IGNORE-SCHEDULE', true)
+              .afterClosed().subscribe(resSecondConformDialog => {
+              if (resSecondConformDialog) {
+                this.schoolClassService.moveOnToNewSchoolYear(true).subscribe(
+                  () => this.notification.showSuccessTranslateMsg('TRANSITION-SUCCESSFULLY-COMPLETED')
+                );
+              }
+            });
+          }
+        );
       }
     });
   }

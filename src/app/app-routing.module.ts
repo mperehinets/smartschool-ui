@@ -8,7 +8,10 @@ import {RouterModule, Routes} from '@angular/router';
 
 
 const routes: Routes = [
-  {path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule), canLoad: [AdminGuard]},
+  {
+    path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),
+    canLoad: [AdminGuard]
+  },
   {path: 'teacher', loadChildren: () => import('./teacher/teacher.module').then(m => m.TeacherModule), canLoad: [TeacherGuard]},
   {path: 'pupil', loadChildren: () => import('./pupil/pupil.module').then(m => m.PupilModule), canLoad: [PupilGuard]},
   {path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)},

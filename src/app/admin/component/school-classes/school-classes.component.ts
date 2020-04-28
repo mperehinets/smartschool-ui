@@ -7,6 +7,7 @@ import {AvatarService} from '../../../shared/service/avatar.service';
 import {Component, OnInit} from '@angular/core';
 import {MatTabChangeEvent} from '@angular/material/tabs';
 import {MatDialog} from '@angular/material/dialog';
+import {ConfirmService} from '../../../shared/service/confirm.service';
 
 @Component({
   selector: 'app-school-classes',
@@ -22,7 +23,8 @@ export class SchoolClassesComponent implements OnInit {
   constructor(public avatarService: AvatarService,
               private schoolClassService: SchoolClassService,
               private dialog: MatDialog,
-              private notification: NotificationService) {
+              private notification: NotificationService,
+              private confirmService: ConfirmService) {
   }
 
   ngOnInit(): void {
@@ -71,9 +73,14 @@ export class SchoolClassesComponent implements OnInit {
   }
 
   onDelete(schoolClass: SchoolClass) {
-    this.schoolClassService.deleteById(schoolClass.id).subscribe(() => {
-      this.classes = this.classes.filter(item => item.id !== schoolClass.id);
-      this.notification.showSuccessTranslateMsg('SCHOOL-CLASSES.SUCCESSFULLY-DELETED');
+    this.confirmService.confirm('CONFIRM.TITLE.DELETE-CLASS', 'CONFIRM.MESSAGE.DELETE-CLASS', true)
+      .afterClosed().subscribe(res => {
+      if (res) {
+        this.schoolClassService.deleteById(schoolClass.id).subscribe(() => {
+          this.classes = this.classes.filter(item => item.id !== schoolClass.id);
+          this.notification.showSuccessTranslateMsg('SCHOOL-CLASSES.SUCCESSFULLY-DELETED');
+        });
+      }
     });
   }
 }

@@ -144,6 +144,7 @@
   </form>
 </mat-dialog-content>
 <mat-dialog-actions>
+  <button color="warn" mat-dialog-close mat-raised-button>{{'BTN.CANCEL' | translate}}</button>
   <button (click)="onSubmit()"
           [disabled]="form.invalid"
           color="primary"
@@ -151,5 +152,4 @@
           type="submit">
     {{'BTN.SUBMIT' | translate}}
   </button>
-  <button color="warn" mat-dialog-close mat-raised-button>{{'BTN.CANCEL' | translate}}</button>
 </mat-dialog-actions>

@@ -20,6 +20,7 @@ import {ToastrModule} from 'ngx-toastr';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MAT_DIALOG_DEFAULT_OPTIONS, MatDialogConfig} from '@angular/material/dialog';
 import {MAT_DATE_LOCALE} from 'saturn-datepicker';
+import {ConfirmDialogComponent} from './shared/component/confirm-dialog/confirm-dialog.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -32,7 +33,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     NavBarComponent,
     UpdateAvatarComponent,
     LoaderComponent,
-    BreadcrumbsComponent
+    BreadcrumbsComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,

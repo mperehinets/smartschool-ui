@@ -1,6 +1,7 @@
+import {SchoolClass} from '../model/SchoolClass';
+
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {SchoolClass} from '../model/SchoolClass';
 import {Observable} from 'rxjs';
 
 @Injectable({
@@ -37,5 +38,9 @@ export class SchoolClassService {
 
   getCount(): Observable<number> {
     return this.http.get<number>(`/school-classes/count`);
+  }
+
+  moveOnToNewSchoolYear(ignoreSchedule: boolean): Observable<void> {
+    return this.http.put<void>(`/school-classes/move-on-to-new-school-year/${ignoreSchedule}`, null);
   }
 }

@@ -1,6 +1,6 @@
 <app-loader></app-loader>
 <app-nav-bar>
-  <app-breadcrumbs></app-breadcrumbs>
+  <app-breadcrumbs *ngIf="isLoggedIn$ | async"></app-breadcrumbs>
   <router-outlet></router-outlet>
 </app-nav-bar>
 

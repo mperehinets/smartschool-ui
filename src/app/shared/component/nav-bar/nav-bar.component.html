@@ -48,6 +48,16 @@
 
       <span class="space"></span>
 
+      <button (click)="onMoveOnToNextSchoolYEar()"
+              *ngIf="(isLoggedIn$ | async) && authService.userPrinciple.roles.includes('ROLE_ADMIN')"
+              class="language-btn"
+              color="primary"
+              mat-button
+              mat-icon-button
+              matTooltip="{{'GLOBAL-TOOLTIP.MOVE-ON' | translate}}">
+        <mat-icon>arrow_forward</mat-icon>
+      </button>
+
       <button [matMenuTriggerFor]="langMenu" class="language-btn" mat-button mat-icon-button>
         <img [alt]="currentLang"
              [src]="'assets/img/' + currentLang + '.png'"
