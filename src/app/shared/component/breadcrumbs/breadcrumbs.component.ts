@@ -2,7 +2,7 @@ import {Breadcrumb} from '../../model/Breadcrumb';
 
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
-import {filter} from 'rxjs/operators';
+import {filter, timeout} from 'rxjs/operators';
 import {TranslateService} from '@ngx-translate/core';
 
 @Component({
@@ -27,6 +27,7 @@ export class BreadcrumbsComponent implements OnInit {
   }
 
   private createBreadcrumbs(route: ActivatedRoute, url: string = '', breadcrumbs: Breadcrumb[] = []): Breadcrumb[] {
+    timeout(0);
     const children: ActivatedRoute[] = route.children;
 
     if (children.length === 0) {

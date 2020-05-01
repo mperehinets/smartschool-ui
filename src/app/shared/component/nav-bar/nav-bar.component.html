@@ -21,7 +21,8 @@
         routerLink="/admin/home"
         src="/assets/img/logo.png">
     </mat-toolbar>
-    <mat-nav-list (click)="sidenav.toggle()">
+    <mat-nav-list (click)="sidenav.toggle()"
+                  *ngIf="(isLoggedIn$ | async) && authService.userPrinciple.roles.includes('ROLE_ADMIN')">
       <a *ngFor="let item of adminMenuItems" [routerLink]="item.url" mat-list-item routerLinkActive="active-rout">
         <mat-icon>{{item.icon}}</mat-icon>
         <span>{{item.label | translate}}</span>
@@ -46,7 +47,9 @@
            routerLink="/admin/home"
            src="/assets/img/logo.png">
 
-      <span class="space"></span>
+      <app-breadcrumbs *ngIf="(isLoggedIn$ | async) && !(isXSmall$ | async)" class="space"></app-breadcrumbs>
+
+      <span *ngIf="(isXSmall$ | async) || !(isLoggedIn$ | async)" class="space"></span>
 
       <button (click)="onMoveOnToNextSchoolYEar()"
               *ngIf="(isLoggedIn$ | async) && authService.userPrinciple.roles.includes('ROLE_ADMIN')"
@@ -101,6 +104,7 @@
               <p>{{this.currentUser?.email}}</p>
             </div>
             <button class="btn"
+                    (click)="onForgotPassword()"
                     color="primary"
                     mat-raised-button>
               {{'NAV-BAR.EDIT-PROFILE' | translate}}

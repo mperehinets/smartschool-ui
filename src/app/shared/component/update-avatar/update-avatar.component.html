@@ -21,11 +21,11 @@
   </form>
 </mat-dialog-content>
 <mat-dialog-actions>
+  <button color="warn" mat-dialog-close mat-raised-button>{{'BTN.CANCEL' | translate}}</button>
   <button (click)="onSubmit()"
           color="primary"
           mat-raised-button
           type="submit">
     {{'BTN.SUBMIT' | translate}}
   </button>
-  <button color="warn" mat-dialog-close mat-raised-button>{{'BTN.CANCEL' | translate}}</button>
 </mat-dialog-actions>

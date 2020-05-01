@@ -29,10 +29,6 @@ export class UserService {
     return this.http.put<void>('/users/current/update-avatar', newAvatarName);
   }
 
-  resetPassword(body: { id: number, newPassword: string }): Observable<void> {
-    return this.http.put<void>(`/users/reset-password/${body.id}`, body);
-  }
-
   changeStatusById(body: { id: number, newStatus: ModelStatus }): Observable<void> {
     return this.http.put<void>(`/users/change-status/${body.id}`, body);
   }

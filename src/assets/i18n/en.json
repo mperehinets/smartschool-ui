@@ -76,7 +76,8 @@
     "SCHOOL-CLASS-REQUIRED": "School class is required",
     "SUBJECT-REQUIRED": "Subject is required",
     "DATE-RANGE-REQUIRED": "Date range is required",
-    "TEACHER-REQUIRED": "Teacher is required"
+    "TEACHER-REQUIRED": "Teacher is required",
+    "TOKEN-REQUIRED": "Reset token is required"
   },
 
   "LOGIN": {
@@ -91,7 +92,8 @@
       "PASSWORD-REQUIRED": "Password is required",
       "PASSWORD-MIN-LENGTH": "Password must be longer than 8 characters"
     },
-    "SUCCESS-LOGIN": "Sign in successfully completed"
+    "SUCCESS-LOGIN": "Sign in successfully completed",
+    "WITHOUT-ROLES": "You do not have any permissions"
   },
 
   "USERS": {
@@ -137,11 +139,14 @@
     "TITLE": "Reset password",
     "FIELD": {
       "PASSWORD": "New password",
-      "PASSWORD-CONFIRM": "Confirm new password"
+      "PASSWORD-CONFIRM": "Confirm new password",
+      "RESET-TOKEN": "Reset token"
     },
     "MESSAGE": {
-      "SUCCESSFULLY-CHANGED": "Password successfully changed"
-    }
+      "SUCCESSFULLY-CHANGED": "Password successfully changed",
+      "SUCCESSFULLY-SENT": "Reset toke was successfully sent to email address"
+    },
+    "CONFIRM-EMAIL": "Confirm email"
   },
 
   "UPDATE-AVATAR": {

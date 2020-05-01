@@ -52,14 +52,6 @@ mat-toolbar mat-card-subtitle {
   bottom: 30px;
 }
 
-mat-tab-group {
-  height: 95%;
-
-  ::ng-deep .mat-tab-body-wrapper {
-    height: 95%;
-  }
-}
-
 .no-classes {
   margin-top: 3%;
 }

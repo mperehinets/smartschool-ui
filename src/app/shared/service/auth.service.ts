@@ -38,12 +38,20 @@ export class AuthService {
   signIn(authenticationBody: { email: string, password: string }): void {
     this.http.post<{ token: string }>('/auth/login', authenticationBody).subscribe(
       res => {
-        localStorage.setItem(AppConstants.JWT_STORAGE_KEY, res.token);
-        this.isLoginSubject.next(true);
-        if (this.userPrinciple.roles.includes('ROLE_ADMIN')) {
-          this.router.navigate(['/admin']);
+        if (jwt_decode(res.token).roles.length === 0) {
+          this.notification.showErrorTranslateMsg('LOGIN.WITHOUT-ROLES');
+        } else {
+          localStorage.setItem(AppConstants.JWT_STORAGE_KEY, res.token);
+          this.isLoginSubject.next(true);
+          if (this.userPrinciple.roles.includes('ROLE_ADMIN')) {
+            this.router.navigate(['/admin']);
+          } else if (this.userPrinciple.roles.includes('ROLE_TEACHER')) {
+            this.router.navigate(['/teacher']);
+          } else if (this.userPrinciple.roles.includes('ROLE_PUPIL')) {
+            this.router.navigate(['/pupil']);
+          }
+          this.notification.showSuccessTranslateMsg('LOGIN.SUCCESS-LOGIN');
         }
-        this.notification.showSuccessTranslateMsg('LOGIN.SUCCESS-LOGIN');
       }
     );
   }

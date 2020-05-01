@@ -21,6 +21,8 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {MAT_DIALOG_DEFAULT_OPTIONS, MatDialogConfig} from '@angular/material/dialog';
 import {MAT_DATE_LOCALE} from 'saturn-datepicker';
 import {ConfirmDialogComponent} from './shared/component/confirm-dialog/confirm-dialog.component';
+import {ForgotPasswordComponent} from './shared/component/forgot-password/forgot-password.component';
+import {ResetPasswordWithCheckingComponent} from './shared/component/reset-password-with-checking/reset-password-with-checking.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -34,7 +36,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     UpdateAvatarComponent,
     LoaderComponent,
     BreadcrumbsComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    ForgotPasswordComponent,
+    ResetPasswordWithCheckingComponent
   ],
   imports: [
     BrowserModule,

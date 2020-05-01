@@ -14,6 +14,7 @@ import {map, shareReplay} from 'rxjs/operators';
 import {TranslateService} from '@ngx-translate/core';
 import {Router} from '@angular/router';
 import {MatDialog} from '@angular/material/dialog';
+import {ForgotPasswordComponent} from '../forgot-password/forgot-password.component';
 
 @Component({
   selector: 'app-nav-bar',
@@ -86,6 +87,10 @@ export class NavBarComponent implements OnInit {
         this.currentUser.avatarName = res;
       }
     });
+  }
+
+  onForgotPassword() {
+    this.dialog.open(ForgotPasswordComponent, {data: this.currentUser.email});
   }
 
   onMoveOnToNextSchoolYEar() {

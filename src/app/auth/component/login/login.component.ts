@@ -1,5 +1,6 @@
 import {AuthService} from '../../../shared/service/auth.service';
 import {NotificationService} from '../../../shared/service/notification.service';
+import {ForgotPasswordComponent} from '../../../shared/component/forgot-password/forgot-password.component';
 
 import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
@@ -7,6 +8,7 @@ import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {map, shareReplay} from 'rxjs/operators';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-login',
@@ -32,7 +34,8 @@ export class LoginComponent implements OnInit {
               private router: Router,
               private authService: AuthService,
               private notification: NotificationService,
-              private formBuilder: FormBuilder
+              private formBuilder: FormBuilder,
+              private dialog: MatDialog
   ) {
   }
 
@@ -45,5 +48,9 @@ export class LoginComponent implements OnInit {
 
   signIn(): void {
     this.authService.signIn(this.form.value);
+  }
+
+  onForgotPassword() {
+    this.dialog.open(ForgotPasswordComponent);
   }
 }

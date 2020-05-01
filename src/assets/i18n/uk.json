@@ -6,7 +6,7 @@
     "NO": "Ні",
     "TITLE": {
       "DELETE-CLASS": "Видалити класу",
-      "MOVE-ON": "Перейти до наступного навчального року"
+      "MOVE-ON": "Перехід до наступного навчального року"
     },
     "MESSAGE": {
       "DELETE-CLASS": "Ви впевнені що хочете видалити цей клас?",
@@ -77,7 +77,8 @@
     "SCHOOL-CLASS-REQUIRED": "Клас є обов'язковим",
     "SUBJECT-REQUIRED": "Предмет є обов'язковим",
     "DATE-RANGE-REQUIRED": "Проміжок дати є обов'язковим",
-    "TEACHER-REQUIRED": "Вчитель є обов'язковим"
+    "TEACHER-REQUIRED": "Вчитель є обов'язковим",
+    "TOKEN-REQUIRED": "Маркер скидання є обов'язковим"
   },
 
   "LOGIN": {
@@ -92,7 +93,8 @@
       "PASSWORD-REQUIRED": "Пароль є обов'язковий",
       "PASSWORD-MIN-LENGTH": "Пароль повинен перевищувати 8 символів"
     },
-    "SUCCESS-LOGIN": "Вхід успішно виконано"
+    "SUCCESS-LOGIN": "Вхід успішно виконано",
+    "WITHOUT-ROLES": "Ви не маєте жодних дозволів"
   },
 
 
@@ -137,13 +139,16 @@
 
   "RESET-PASSWORD": {
     "TITLE": "Скидання пароля",
-    "FIELD":{
+    "FIELD": {
       "PASSWORD": "Новий пароль",
-      "PASSWORD-CONFIRM": "Підтвердіть новий пароль"
+      "PASSWORD-CONFIRM": "Підтвердіть новий пароль",
+      "RESET-TOKEN": "Маркер скидання"
     },
     "MESSAGE": {
-      "SUCCESSFULLY-CHANGED": "Пароль успішно змінено"
-    }
+      "SUCCESSFULLY-CHANGED": "Пароль успішно змінено",
+      "SUCCESSFULLY-SENT": "Токен скидання успішно надісланий на електронну пошту"
+    },
+    "CONFIRM-EMAIL": "Підтвердження email"
   },
 
   "UPDATE-AVATAR": {
