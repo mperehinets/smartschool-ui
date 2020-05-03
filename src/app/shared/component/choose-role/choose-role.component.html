@@ -1,0 +1,12 @@
+<mat-toolbar class="dialog-header">
+  <h4>{{'CHOOSE-ROLE.TITLE' | translate}}</h4>
+  <span class="space"></span>
+</mat-toolbar>
+<mat-dialog-content>
+  <button (click)="setCurrentRole(role)"
+          *ngFor="let role of data"
+          mat-dialog-close
+          mat-raised-button>
+    {{'CHOOSE-ROLE.' + role | translate}}
+  </button>
+</mat-dialog-content>

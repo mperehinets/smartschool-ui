@@ -18,11 +18,11 @@
         (click)="sidenav.toggle()"
         alt="Smartschool"
         class="logo"
-        routerLink="/admin/home"
+        [routerLink]="authService.homeLink"
         src="/assets/img/logo.png">
     </mat-toolbar>
     <mat-nav-list (click)="sidenav.toggle()"
-                  *ngIf="(isLoggedIn$ | async) && authService.userPrinciple.roles.includes('ROLE_ADMIN')">
+                  *ngIf="(isLoggedIn$ | async) && authService.currentRole === 'ROLE_ADMIN'">
       <a *ngFor="let item of adminMenuItems" [routerLink]="item.url" mat-list-item routerLinkActive="active-rout">
         <mat-icon>{{item.icon}}</mat-icon>
         <span>{{item.label | translate}}</span>
@@ -44,7 +44,7 @@
       <img *ngIf="!(isXSmall$ | async)"
            alt="Smartschool"
            class="logo"
-           routerLink="/admin/home"
+           [routerLink]="authService.homeLink"
            src="/assets/img/logo.png">
 
       <app-breadcrumbs *ngIf="(isLoggedIn$ | async) && !(isXSmall$ | async)" class="space"></app-breadcrumbs>
@@ -52,7 +52,7 @@
       <span *ngIf="(isXSmall$ | async) || !(isLoggedIn$ | async)" class="space"></span>
 
       <button (click)="onMoveOnToNextSchoolYEar()"
-              *ngIf="(isLoggedIn$ | async) && authService.userPrinciple.roles.includes('ROLE_ADMIN')"
+              *ngIf="(isLoggedIn$ | async) && authService.currentRole === 'ROLE_ADMIN'"
               class="language-btn"
               color="primary"
               mat-button
@@ -103,16 +103,23 @@
               {{this.currentUser?.firstName}} {{this.currentUser?.secondName}}
               <p>{{this.currentUser?.email}}</p>
             </div>
+            <button (click)="onChangeModule()"
+                    *ngIf="authService.userPrinciple.roles.length > 1"
+                    class="btn"
+                    color="accent"
+                    mat-stroked-button>
+              {{'NAV-BAR.CHANGE-MODULE' | translate}}
+            </button>
             <button class="btn"
                     (click)="onForgotPassword()"
                     color="primary"
-                    mat-raised-button>
+                    mat-stroked-button>
               {{'NAV-BAR.EDIT-PROFILE' | translate}}
             </button>
             <button (click)="signOut()"
                     class="btn"
                     color="warn"
-                    mat-raised-button>
+                    mat-stroked-button>
               {{'NAV-BAR.SIGN-OUT' | translate}}
             </button>
           </div>

@@ -23,6 +23,7 @@ import {MAT_DATE_LOCALE} from 'saturn-datepicker';
 import {ConfirmDialogComponent} from './shared/component/confirm-dialog/confirm-dialog.component';
 import {ForgotPasswordComponent} from './shared/component/forgot-password/forgot-password.component';
 import {ResetPasswordWithCheckingComponent} from './shared/component/reset-password-with-checking/reset-password-with-checking.component';
+import {ChooseRoleComponent} from './shared/component/choose-role/choose-role.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -38,7 +39,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     BreadcrumbsComponent,
     ConfirmDialogComponent,
     ForgotPasswordComponent,
-    ResetPasswordWithCheckingComponent
+    ResetPasswordWithCheckingComponent,
+    ChooseRoleComponent
   ],
   imports: [
     BrowserModule,

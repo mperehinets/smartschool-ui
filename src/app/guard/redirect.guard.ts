@@ -15,11 +15,13 @@ export class RedirectGuard implements CanActivate {
   }
 
   canActivate(): boolean {
-    if (this.authService.userPrinciple.roles.includes('ROLE_ADMIN')) {
+    if (this.authService.userPrinciple.roles.length > 1) {
+      this.authService.openChooseRoleDialog();
+    } else if (this.authService.currentRole === 'ROLE_ADMIN') {
       this.router.navigate(['admin/home']);
-    } else if (this.authService.userPrinciple.roles.includes('ROLE_TEACHER')) {
+    } else if (this.authService.currentRole === 'ROLE_TEACHER') {
       this.router.navigate(['teacher']);
-    } else if (this.authService.userPrinciple.roles.includes('ROLE_PUPIL')) {
+    } else if (this.authService.currentRole === 'ROLE_PUPIL') {
       this.router.navigate(['pupil']);
     } else {
       this.router.navigate(['auth/login']);

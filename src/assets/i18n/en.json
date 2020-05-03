@@ -45,6 +45,7 @@
     "ABOUT-US": "About us",
     "SIGN-IN": "Sign in",
     "SIGN-OUT": "Sign out",
+    "CHANGE-MODULE": "Change module",
     "EDIT-PROFILE": "Update password"
   },
 
@@ -360,5 +361,11 @@
     "SUCCESSFULLY-EDITED": "Lesson successfully edited",
     "SUCCESSFULLY-REORDERED": "Ordering of lessons successfully changed",
     "NO-LESSONS": "There are no lessons"
+  },
+  "CHOOSE-ROLE": {
+    "TITLE": "Continue as ...",
+    "ROLE_ADMIN": "Admin",
+    "ROLE_TEACHER": "Teacher",
+    "ROLE_PUPIL": "Pupil"
   }
 }

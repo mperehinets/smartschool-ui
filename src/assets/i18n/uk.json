@@ -46,6 +46,7 @@
     "ABOUT-US": "Про нас",
     "SIGN-IN": "Увійти",
     "SIGN-OUT": "Вийти",
+    "CHANGE-MODULE": "Змінити модуль",
     "EDIT-PROFILE": "Оновити пароль"
   },
 
@@ -364,5 +365,11 @@
     "SUCCESSFULLY-EDITED": "Урок успішно оновлено",
     "SUCCESSFULLY-REORDERED": "Порядок уроків успішно змінено",
     "NO-LESSONS": "Немає уроків"
+  },
+  "CHOOSE-ROLE": {
+    "TITLE": "Продовжити як ...",
+    "ROLE_ADMIN": "Адміністратор",
+    "ROLE_TEACHER": "Викладач",
+    "ROLE_PUPIL": "Учень"
   }
 }

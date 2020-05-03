@@ -93,6 +93,10 @@ export class NavBarComponent implements OnInit {
     this.dialog.open(ForgotPasswordComponent, {data: this.currentUser.email});
   }
 
+  onChangeModule() {
+    this.authService.openChooseRoleDialog();
+  }
+
   onMoveOnToNextSchoolYEar() {
     this.confirmService.confirm('CONFIRM.TITLE.MOVE-ON', 'CONFIRM.MESSAGE.MOVE-ON', true)
       .afterClosed().subscribe(resFirstConformDialog => {
