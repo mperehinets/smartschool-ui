@@ -42,6 +42,14 @@
           <td *matCellDef="let subject" mat-cell>{{subject.name}}</td>
         </ng-container>
 
+        <!-- ClassNumberRange column-->
+        <ng-container matColumnDef="classNumberRange">
+          <th *matHeaderCellDef mat-header-cell
+              mat-sort-header>{{'SUBJECTS.TABLE-HEADER.CLASS-NUMBER-RANGE' | translate}}</th>
+          <td *matCellDef="let subject" mat-cell>{{subject.startClassInterval}}
+            - {{subject.endClassInterval}}</td>
+        </ng-container>
+
         <!--  Status column-->
         <ng-container matColumnDef="status">
           <th *matHeaderCellDef mat-header-cell mat-sort-header>{{'SUBJECTS.TABLE-HEADER.STATUS' | translate}}</th>

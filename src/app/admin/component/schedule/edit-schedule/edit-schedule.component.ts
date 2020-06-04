@@ -38,7 +38,13 @@ export class EditScheduleComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.subjectService.findAll().subscribe(subjects => {
+    let classNumber: number;
+    if (isSchedule(this.data)) {
+      classNumber = (this.data as Schedule).schoolClass.number;
+    } else {
+      classNumber = (this.data as TemplateSchedule).classNumber;
+    }
+    this.subjectService.findByClassNumber(classNumber).subscribe(subjects => {
       this.subjects = subjects;
       if (this.data.teachersSubject !== null) {
         this.teacherService.findBySubjectId(this.data.teachersSubject.subject.id).subscribe(teachers => {

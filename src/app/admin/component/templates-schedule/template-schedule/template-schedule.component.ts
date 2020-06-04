@@ -1,6 +1,5 @@
 import {Subject} from '../../../../shared/model/Subject';
 import {SubjectService} from '../../../../shared/service/subject.service';
-import {ModelStatus} from '../../../../shared/model/ModelStatus';
 import {NotificationService} from '../../../../shared/service/notification.service';
 import {TemplateSchedule} from '../../../../shared/model/TemplateSchedule';
 import {TemplateScheduleService} from '../../../../shared/service/template-schedule.service';
@@ -30,7 +29,7 @@ export class TemplateScheduleComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.subjectService.findByStatus(ModelStatus.ACTIVE).subscribe(res => {
+    this.subjectService.findByClassNumber(this.data.classNumber).subscribe(res => {
       this.subjects = res;
       this.populateForm();
     });

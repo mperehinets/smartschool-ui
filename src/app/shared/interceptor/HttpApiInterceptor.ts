@@ -5,6 +5,7 @@ import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/com
 import {Observable, throwError} from 'rxjs';
 import {Injectable} from '@angular/core';
 import {catchError} from 'rxjs/operators';
+import {environment} from '../../../environments/environment.prod';
 
 @Injectable()
 export class HttpApiInterceptor implements HttpInterceptor {
@@ -15,7 +16,7 @@ export class HttpApiInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const lang = localStorage.getItem(AppConstants.LANGUAGE_STORAGE_KEY);
     let apiReq;
-    req.url.includes('assets/i18n') ? apiReq = req : apiReq = req.clone({url: AppConstants.BASE_URL + req.url + '?lang=' + lang});
+    req.url.includes('assets/i18n') ? apiReq = req : apiReq = req.clone({url: environment.apiUrl + req.url + '?lang=' + lang});
     return next.handle(apiReq).pipe(
       catchError(err => {
         if (err.error?.errors) {

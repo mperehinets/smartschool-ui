@@ -26,6 +26,10 @@
         {{'MODEL-ERROR.SUBJECT-NAME-PATTERN' | translate}}
       </mat-error>
     </mat-form-field>
+    <div class="custom-slider">
+      <mat-label>{{'SUBJECT.FORM-TITLE.CLASS-RANGE' | translate}}</mat-label>
+      <ng5-slider [manualRefresh]="slidersRefresh" [options]="options" formControlName="classRange"></ng5-slider>
+    </div>
   </form>
 </mat-dialog-content>
 <mat-dialog-actions>

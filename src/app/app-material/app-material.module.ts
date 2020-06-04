@@ -22,6 +22,7 @@ import {MatBadgeModule} from '@angular/material/badge';
 import {MatStepperModule} from '@angular/material/stepper';
 import {SatDatepickerModule, SatNativeDateModule} from 'saturn-datepicker';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {Ng5SliderModule} from 'ng5-slider';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatStepperModule,
     SatDatepickerModule,
     SatNativeDateModule,
-    MatGridListModule
+    MatGridListModule,
+    Ng5SliderModule
   ]
 })
 export class AppMaterialModule {

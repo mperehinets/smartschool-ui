@@ -1,10 +1,12 @@
+import {environment} from '../../environments/environment.prod';
+
 export class AppConstants {
   public static get BASE_URL(): string {
     return 'http://localhost:8081/api/smartschool';
   }
 
   public static get AVATAR_URL(): string {
-    return `${this.BASE_URL}/avatars/download`;
+    return `${environment.apiUrl}/avatars/download`;
   }
 
   public static get JWT_STORAGE_KEY(): string {

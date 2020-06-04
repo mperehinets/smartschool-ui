@@ -73,6 +73,7 @@ export class NavBarComponent implements OnInit {
     this.translateService.use(selectedLanguage);
     this.currentLang = selectedLanguage;
     localStorage.setItem('lang', selectedLanguage);
+    window.location.reload();
   }
 
   signOut() {

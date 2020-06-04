@@ -18,8 +18,9 @@ import {MatPaginator} from '@angular/material/paginator';
 })
 export class SubjectsComponent implements OnInit {
 
+
   modelStatus = ModelStatus;
-  displayedColumns: string[] = ['actions', 'name', 'status'];
+  displayedColumns: string[] = ['actions', 'name', 'classNumberRange', 'status'];
   dataSource: MatTableDataSource<Subject>;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;

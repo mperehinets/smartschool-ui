@@ -169,6 +169,7 @@
   "SUBJECTS": {
     "TABLE-HEADER": {
       "NAME": "Назва",
+      "CLASS-NUMBER-RANGE": "Проміжок класів",
       "STATUS": "Статус"
     },
     "MESSAGE": {
@@ -184,7 +185,8 @@
     "TITLE-CREATE": "Створення предмету",
     "TITLE-EDIT": "Редагування предмету",
     "FORM-TITLE": {
-      "NAME": "Назва"
+      "NAME": "Назва",
+      "CLASS-RANGE": "Проміжок класів"
     },
     "SUCCESSFULLY-CREATED": "Предмет успішно створено",
     "SUCCESSFULLY-EDITED": "Предмет успішно відредаговано"

@@ -167,6 +167,7 @@
   "SUBJECTS": {
     "TABLE-HEADER": {
       "NAME": "Name",
+      "CLASS-NUMBER-RANGE": "Class range",
       "STATUS": "Status"
     },
     "MESSAGE": {
@@ -182,7 +183,8 @@
     "TITLE-CREATE": "Create subject",
     "TITLE-EDIT": "Edit subject",
     "FORM-TITLE": {
-      "NAME": "Name"
+      "NAME": "Name",
+      "CLASS-RANGE": "Class range"
     },
     "SUCCESSFULLY-CREATED": "Subject successfully created",
     "SUCCESSFULLY-EDITED": "Subject successfully edited"
